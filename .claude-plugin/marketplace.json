@@ -1,0 +1,13 @@
+{
+  "name": "resume-optimizer",
+  "owner": {
+    "name": "Kivanc Serefoglu"
+  },
+  "plugins": [
+    {
+      "name": "resume-optimizer",
+      "source": "./plugins/resume-optimizer",
+      "description": "Tailor your resume to any job description without fabricating a word."
+    }
+  ]
+}
