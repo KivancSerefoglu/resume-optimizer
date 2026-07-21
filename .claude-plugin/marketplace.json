@@ -3,6 +3,9 @@
   "owner": {
     "name": "Kivanc Serefoglu"
   },
+  "metadata": {
+    "description": "Marketplace for the resume-optimizer Claude Code plugin: tailor your resume to any job description without fabricating a word."
+  },
   "plugins": [
     {
       "name": "resume-optimizer",
