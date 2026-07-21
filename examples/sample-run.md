@@ -50,3 +50,55 @@ The skill must return all five sections:
 - "Responsible for" / "Helped with" / "Worked on" / "Participated in" surviving in bullets
 - "Helped with the migration" silently upgraded to sole ownership without a confirming question
 - A summary section (early-career candidate with a clear direction)
+
+---
+
+# Sample Run — Dossier Mode
+
+## Input: background dossier (fictional)
+
+```
+# Background — Jordan Example
+
+## Contact
+Jordan Example · Chicago, IL · jordan@example.com · github.com/jordanexample
+
+## Education
+Example University — B.S. Computer Science (2020 – 2024). Coursework: databases,
+distributed systems. Dean's list 2023.
+
+## Experience
+### Example Corp — Software Engineer (Jun 2024 – Present), Chicago, IL
+- Team of 6 engineers; internal data-platform group
+- Migrated 12 nightly ETL jobs from Bash to Python, roughly halving failure rate
+- Built reporting dashboard used by 3 teams (Python, PostgreSQL)
+
+## Projects
+- Course scheduler web app (TypeScript, React) — about 200 student users
+- Homelab monitoring stack (Docker, Grafana)
+
+## Skills
+Python, SQL, PostgreSQL, TypeScript, React, Docker, Git, Bash
+
+## Extras
+Volunteer coding tutor (2022 – 2023)
+```
+
+Use the same fictional Data Engineer job description from the resume-mode run above.
+
+## Expected output shape (dossier mode)
+
+1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Weight | Status | Credit |` table. Airflow: *not demonstrated*, zero credit.
+2. **Optimized Résumé** — one page. Only dossier facts. The homelab project and volunteering may be omitted entirely (selection is the point). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
+3. **Changes Made** — says which dossier items were selected and which were left out.
+4. **Information Requests** — targeted (e.g., data volume of the ETL jobs).
+5. **Factual Validation** — explicit "None" rows when nothing unsupported was added.
+6. Both `optimized-resume.md` and `optimized-resume.pdf` are written; the PDF is one page.
+
+## Additional red flags (dossier mode)
+
+- Any fact in the CV that is not in the dossier (dates, metrics, technologies, titles)
+- Approximate dossier figures sharpened into precise claims ("roughly halving" → "50%")
+- Match percentage without the breakdown table, or presented as an ATS score
+- A multi-page PDF left unfixed in dossier mode
+- Run ends without writing both output files while Chrome is available
