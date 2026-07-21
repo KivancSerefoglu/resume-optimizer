@@ -46,7 +46,7 @@ Return these five sections, in order:
 After the user approves the résumé content:
 
 1. Write `optimized-resume.md` in the working directory.
-2. Offer PDF export. If accepted: copy `assets/resume-template.html`, replace the contents of `<main>` with the résumé rendered as HTML using the template's existing classes, save as `optimized-resume.html`, then convert with headless Chrome:
+2. Offer PDF export. If accepted: copy `assets/resume-template.html` (bundled with this skill — resolve the path relative to this skill's directory, not the user's working directory), replace the contents of `<main>` with the résumé rendered as HTML using the template's existing classes, save as `optimized-resume.html`, then convert with headless Chrome:
    - macOS: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --print-to-pdf=optimized-resume.pdf optimized-resume.html`
    - Linux: `google-chrome --headless --print-to-pdf=optimized-resume.pdf optimized-resume.html` (or `chromium`)
    - If Chrome is unavailable, tell the user to open `optimized-resume.html` in a browser and print to PDF.
