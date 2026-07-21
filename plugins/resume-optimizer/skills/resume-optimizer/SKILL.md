@@ -69,7 +69,7 @@ Run this after presenting the five sections and getting the user's approval of t
 2. Check the page count: `mdls -name kMDItemNumberOfPages -raw optimized-resume.pdf` on macOS, or `pdfinfo optimized-resume.pdf` if available; otherwise open the PDF and check visually. If the count cannot be verified by any method, skip forced trimming, tell the user the page count is unverified, and continue to step 4.
 3. **Dossier mode:** if the count exceeds 1, trim the items that support only the lowest-relevance requirements (per the Step-3 classification), re-render, and repeat until the PDF is one page — then update the Changes Made section you presented, noting exactly what was trimmed. If the résumé is already minimal and still exceeds one page, stop and tell the user instead of over-trimming. **Resume mode:** no forced trimming — keep the page guidance from Input modes.
 4. Only after the content is final, write `optimized-resume.md` in the working directory with exactly the content the PDF was rendered from — the two files must always match.
-5. If Chrome is unavailable, keep `optimized-resume.html` and tell the user to open it in a browser and print to PDF.
+5. If Chrome is unavailable, still write `optimized-resume.md` per step 4, keep `optimized-resume.html`, and tell the user to open it in a browser and print to PDF.
 
 ## Final principle
 
