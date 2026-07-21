@@ -1,0 +1,10 @@
+{
+  "name": "resume-optimizer",
+  "version": "1.0.0",
+  "description": "Tailor your resume to any job description without fabricating a word. Provides a resume-optimizer skill: give it a resume (PDF/DOCX/MD/TXT) and a job description (file, text, or URL) and it produces a role-tailored, factually validated resume in markdown with optional PDF export.",
+  "author": {
+    "name": "Kivanc Serefoglu"
+  },
+  "license": "MIT",
+  "keywords": ["resume", "cv", "job-search", "career", "skill"]
+}
