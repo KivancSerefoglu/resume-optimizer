@@ -1,20 +1,21 @@
 # Resume Optimizer
 
-Tailor your resume to any job description without fabricating a word — a Claude Code skill.
+Tailor your resume — or generate a one-page CV from your full background — for any job description, without fabricating a word. A Claude Code skill.
 
-Give it your resume (PDF, DOCX, Markdown, or plain text) and a job description (file, pasted text, or URL). It returns a role-tailored resume in clean markdown — plus an optional ATS-friendly PDF — after running a strict factual validation pass: nothing appears in the output that you didn't actually claim.
+Two ways to use it:
+
+- **Dossier mode (recommended):** keep one `background.md` master file with everything you've ever done — every job, project, metric, and course. Give the skill that file plus a job posting; it selects the relevant subset and generates a one-page, ATS-friendly CV as markdown **and PDF**.
+- **Resume mode:** give it an existing resume and a job description; it tailors the resume.
 
 ## What it does
 
-1. Extracts a factual record from your resume.
+1. Extracts a factual record from your background file or resume.
 2. Analyzes the job description (requirements, keywords, what the employer values).
-3. Classifies every requirement: strongly supported / partially supported / not demonstrated / unknown.
-4. Rewrites the resume to lead with your strongest *supported* evidence.
-5. Validates every claim in the output against your original input.
+3. Classifies every requirement and computes a transparent **job-match percentage** — a weighted breakdown table you can audit, never a black-box "ATS score".
+4. Writes the resume to lead with your strongest *supported* evidence.
+5. Validates every claim against your input, then writes `optimized-resume.md` and `optimized-resume.pdf` (one page enforced in dossier mode).
 
-You get five sections back: a job match analysis, the optimized resume, a list of changes made, targeted questions that could strengthen the application, and an explicit factual-validation report.
-
-**What it will never do:** invent metrics, add technologies from the job posting that you didn't list, inflate titles or seniority, or turn "contributed to" into "led". A less impressive but fully defensible claim always beats one you can't back up in an interview.
+**What it will never do:** invent metrics, add technologies from the job posting that you didn't list, inflate titles or seniority, or turn "contributed to" into "led". Leaving things out is fair game — that's tailoring. Changing facts is not. A less impressive but fully defensible claim always beats one you can't back up in an interview.
 
 ## Install
 
@@ -27,17 +28,23 @@ In Claude Code:
 
 ## Use
 
-Just ask, with your files at hand:
+First run (no background file yet):
 
 ```
 Tailor my resume (resume.pdf) to this job posting: https://example.com/jobs/data-engineer
 ```
 
-or paste the job description directly. The skill asks only for what's missing (e.g., your career level), then produces the five-section output. Approve the result and it writes `optimized-resume.md` and, if you want, exports a PDF.
+The skill offers to build a reusable `background.md` from your resume plus a few targeted questions. Keep that file — every later application is then just:
+
+```
+Generate a CV from background.md for this job posting: https://example.com/jobs/data-engineer
+```
+
+Either way you get: a job-match score with its breakdown, the optimized resume, a list of changes, targeted questions that could strengthen the application, a factual-validation report — and `optimized-resume.md` + `optimized-resume.pdf` on disk.
 
 ## Example
 
-See [examples/sample-run.md](examples/sample-run.md) for a fictional before/after with the expected output shape.
+See [examples/sample-run.md](examples/sample-run.md) for fictional before/after runs in both modes with the expected output shape.
 
 ## How it's built
 

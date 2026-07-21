@@ -25,6 +25,10 @@ When a metric would improve a bullet but has not been provided:
 
 When describing team accomplishments, accurately distinguish the candidate's contribution from the team's overall result. Never imply direct ownership when the candidate only supported the work.
 
+## Selection vs. alteration
+
+Omitting an item from the résumé is always allowed — tailoring is selection, and omission is not misrepresentation. Altering a fact inside an included item is never allowed. If an item is worth including but weak as stated, include it accurately or ask the user for the missing detail.
+
 ## Step-5 validation checklist
 
 Before returning the résumé, review every factual claim against the candidate's original information. Remove or flag:
