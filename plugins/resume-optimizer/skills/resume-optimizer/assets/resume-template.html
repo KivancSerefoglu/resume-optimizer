@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Resume</title>
+<style>
+  @page { size: letter; margin: 0.6in 0.7in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    color: #1a1a1a;
+    max-width: 7.1in;
+    margin: 0 auto;
+  }
+  main { display: block; }
+  h1.name {
+    font-size: 20pt;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin-bottom: 2pt;
+  }
+  p.contact {
+    text-align: center;
+    font-size: 9.5pt;
+    margin-bottom: 12pt;
+  }
+  p.contact a { color: #1a1a1a; text-decoration: none; }
+  section.section { margin-bottom: 10pt; }
+  section.section > h2 {
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid #1a1a1a;
+    padding-bottom: 2pt;
+    margin-bottom: 6pt;
+  }
+  .job { margin-bottom: 8pt; }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .job-title { font-weight: bold; }
+  .job-meta { font-style: italic; font-size: 9.5pt; }
+  ul { padding-left: 16pt; margin-top: 2pt; }
+  li { margin-bottom: 2pt; }
+  p.skills-line { margin-bottom: 2pt; }
+  p.skills-line strong { font-weight: bold; }
+</style>
+</head>
+<body>
+<main>
+  <!-- Replace everything inside <main> with the candidate's resume.
+       Structure reference (uses fictional placeholder data): -->
+  <h1 class="name">Jordan Example</h1>
+  <p class="contact">
+    Chicago, IL · jordan@example.com ·
+    <a href="https://github.com/jordanexample">github.com/jordanexample</a> ·
+    <a href="https://linkedin.com/in/jordanexample">linkedin.com/in/jordanexample</a>
+  </p>
+
+  <section class="section">
+    <h2>Experience</h2>
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">Software Engineer — Example Corp</span>
+        <span class="job-meta">Jun 2024 – Present</span>
+      </div>
+      <ul>
+        <li>Built an internal reporting pipeline by consolidating three legacy ETL jobs, using Python and PostgreSQL.</li>
+        <li>Reduced deployment time by automating release checks with GitHub Actions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Education</h2>
+    <div class="job">
+      <div class="job-header">
+        <span class="job-title">B.S. Computer Science — Example University</span>
+        <span class="job-meta">2020 – 2024</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Technical Skills</h2>
+    <p class="skills-line"><strong>Languages:</strong> Python, TypeScript, SQL</p>
+    <p class="skills-line"><strong>Tools:</strong> PostgreSQL, Docker, GitHub Actions</p>
+  </section>
+</main>
+</body>
+</html>
