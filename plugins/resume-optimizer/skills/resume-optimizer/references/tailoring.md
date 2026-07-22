@@ -20,10 +20,4 @@ For career changers, emphasize transferable achievements and demonstrated techni
 
 ## Section ordering
 
-Choose order by relevance, not a rigid template.
-
-**Early-career:** (1) education or experience — whichever is stronger, (2) experience, (3) projects, (4) technical skills, (5) publications/awards/activities when relevant.
-
-**Mid-level:** (1) experience, (2) technical skills, (3) projects/publications/patents/open source when strong, (4) education.
-
-**Senior or leadership:** (1) targeted summary when useful, (2) experience, (3) technical skills or areas of expertise, (4) patents/publications/talks/open source, (5) education.
+Section order is fixed by the resume template: Education → Experience → Leadership & Activities (when the candidate has such items) → Skills & Interests. Do not reorder sections by career level. Tailoring happens within sections: which entries lead, which bullets appear, and how much space each item gets — guided by the Step-3 relevance classification and the company-type emphasis above.
