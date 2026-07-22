@@ -18,7 +18,7 @@ Avoid: "Responsible for", "Helped with", "Worked on", "Participated in", "We bui
 
 ## Formatting principles
 
-Produce content suitable for: a clean one-column layout; reverse-chronological experience; consistent titles, dates, and bullet formatting; readable typography; standard section headings; ATS-compatible formatting; bullets over paragraphs; clickable, professionally labeled links.
+Produce content in the MCS template layout: centered name; one contact line (City, State • email • phone • links); fixed section order Education → Experience → Leadership & Activities (when applicable) → Skills & Interests; two-line entry headers (institution or organization left with city, state right, then degree or title left with dates right); reverse-chronological within sections; bullets over paragraphs; ATS-compatible formatting; clickable, professionally labeled links. Include every work experience with at least one bullet; omit one only when clearly irrelevant to the target job, and name every omission in Changes Made.
 
 Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality unless specifically relevant and voluntarily provided; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; random mid-sentence bolding; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
 
