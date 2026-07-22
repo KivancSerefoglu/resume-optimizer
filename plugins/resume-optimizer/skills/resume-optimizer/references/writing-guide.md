@@ -18,7 +18,7 @@ Avoid: "Responsible for", "Helped with", "Worked on", "Participated in", "We bui
 
 ## Formatting principles
 
-Produce content in the MCS template layout: centered name; one contact line (City, State • email • phone • links); fixed section order Education → Experience → Leadership & Activities (when applicable) → Skills & Interests; two-line entry headers (institution or organization left with city, state right, then degree or title left with dates right); reverse-chronological within sections; bullets over paragraphs; ATS-compatible formatting; clickable, professionally labeled links. Include every work experience with at least one bullet; omit one only when clearly irrelevant to the target job, and name every omission in Changes Made.
+Produce content in the MCS template layout: centered name; one contact line (City, State • email • phone • links); fixed section order (optional Summary for senior/career-changer profiles) → Education → Experience → Projects (when relevant) → Leadership & Activities (when applicable) → Awards & Publications (when applicable) → Skills & Interests; two-line entry headers (institution, organization, or project name left with city, state or date context right, then degree, title, or role left with dates right); reverse-chronological within sections; bullets over paragraphs; ATS-compatible formatting; clickable, professionally labeled links. Include every work experience with at least one bullet; omit one only when clearly irrelevant to the target job, and name every omission in Changes Made.
 
 Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality unless specifically relevant and voluntarily provided; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; random mid-sentence bolding; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
 
@@ -34,7 +34,7 @@ Do not: add a technology solely because it appears in the job description; claim
 
 Generally omit for early-career candidates when the résumé already communicates a clear direction. Consider one for: senior engineers, technical leads, engineering managers, career changers, candidates returning from a significant break, candidates moving between management and IC tracks, or unusually broad/specialized profiles.
 
-Keep summaries concise, specific, and tailored. Avoid: "Team player", "Fast learner", "Results-driven professional", "Passionate engineer", "Excellent communication skills", unsupported years-of-experience claims, and career ambitions that conflict with the target role.
+Keep summaries concise, specific, and tailored. When included, place the summary directly below the contact line, above Education. Avoid: "Team player", "Fast learner", "Results-driven professional", "Passionate engineer", "Excellent communication skills", unsupported years-of-experience claims, and career ambitions that conflict with the target role.
 
 ## Promotions and titles
 

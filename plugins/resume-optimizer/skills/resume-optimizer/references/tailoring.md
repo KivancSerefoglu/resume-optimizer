@@ -20,4 +20,4 @@ For career changers, emphasize transferable achievements and demonstrated techni
 
 ## Section ordering
 
-Section order is fixed by the resume template: Education → Experience → Leadership & Activities (when the candidate has such items) → Skills & Interests. Do not reorder sections by career level. Tailoring happens within sections: which entries lead, which bullets appear, and how much space each item gets — guided by the Step-3 relevance classification and the company-type emphasis above.
+Section order is fixed by the resume template: optional Summary (senior, lead, management, or career-changer profiles only) → Education → Experience → Projects (when the candidate has relevant projects) → Leadership & Activities (when the candidate has such items) → Awards & Publications (when the candidate has such items) → Skills & Interests. Do not reorder sections by career level. Tailoring happens within sections: which entries lead, which bullets appear, and how much space each item gets — guided by the Step-3 relevance classification and the company-type emphasis above.
