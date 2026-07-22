@@ -1,6 +1,6 @@
 {
   "name": "resume-optimizer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Tailor your resume to any job description — or generate a one-page CV from your background file — without fabricating a word. Provides a resume-optimizer skill with two modes (tailor an existing resume, or generate from a background dossier), a transparent job-match score, and markdown + PDF output.",
   "author": {
     "name": "Kivanc Serefoglu"

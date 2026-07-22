@@ -89,7 +89,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 ## Expected output shape (dossier mode)
 
 1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Weight | Status | Credit |` table. Airflow: *not demonstrated*, zero credit.
-2. **Optimized Résumé** — one page. Only dossier facts. The homelab project and volunteering may be omitted entirely (selection is the point). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
+2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then optional Leadership & Activities, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
 3. **Changes Made** — says which dossier items were selected and which were left out.
 4. **Information Requests** — targeted (e.g., data volume of the ETL jobs).
 5. **Factual Validation** — explicit "None" rows when nothing unsupported was added.
@@ -102,3 +102,5 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - Match percentage without the breakdown table, or presented as an ATS score
 - A multi-page PDF left unfixed in dossier mode
 - Run ends without writing both output files while Chrome is available
+- A work experience missing from the output without being named in Changes Made
+- Section order deviating from Education → Experience → Leadership & Activities → Skills & Interests
