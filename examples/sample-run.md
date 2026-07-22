@@ -38,7 +38,7 @@ Requirements:
 The skill must return all five sections:
 
 1. **Job Match Analysis** — should mark Python/SQL/ETL as strong or partial matches, Airflow as *not demonstrated* (it is not in the resume), and ask about pipeline scale as missing info. Must NOT present an "ATS score".
-2. **Optimized Résumé** — markdown, one column, reverse chronological. Bullets rewritten in active voice (e.g. "Migrated ETL jobs to Python…" instead of "Helped with the migration…" — only if the candidate confirms they did the migration; otherwise a supported phrasing like "Contributed to the migration…"). Must NOT contain Airflow, invented metrics, or a fabricated data-warehousing claim. Jira and Slack should be dropped from skills.
+2. **Optimized Résumé** — markdown in the MCS layout: Education-first fixed order (Education → Experience → Projects if any → Leadership & Activities → Skills & Interests), two-line entry headers. Bullets rewritten in active voice (e.g. "Migrated ETL jobs to Python…" instead of "Helped with the migration…" — only if the candidate confirms they did the migration; otherwise a supported phrasing like "Contributed to the migration…"). Must NOT contain Airflow, invented metrics, or a fabricated data-warehousing claim. Jira and Slack should be dropped from skills.
 3. **Changes Made** — lists the rewrites and the removal of low-signal tools.
 4. **Information Requests** — targeted questions (e.g. data volume, number of pipeline users, candidate's exact role in the ETL migration).
 5. **Factual Validation** — status plus explicit "None" for technologies/metrics added if nothing was added.
@@ -89,7 +89,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 ## Expected output shape (dossier mode)
 
 1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Weight | Status | Credit |` table. Airflow: *not demonstrated*, zero credit.
-2. **Optimized Résumé** — one page. Only dossier facts. The homelab project and volunteering may be omitted entirely (selection is the point). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
+2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
 3. **Changes Made** — says which dossier items were selected and which were left out.
 4. **Information Requests** — targeted (e.g., data volume of the ETL jobs).
 5. **Factual Validation** — explicit "None" rows when nothing unsupported was added.
@@ -102,3 +102,5 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - Match percentage without the breakdown table, or presented as an ATS score
 - A multi-page PDF left unfixed in dossier mode
 - Run ends without writing both output files while Chrome is available
+- A work experience missing from the output without being named in Changes Made
+- Section order deviating from (optional Summary) → Education → Experience → Projects → Leadership & Activities → Awards & Publications → Skills & Interests
