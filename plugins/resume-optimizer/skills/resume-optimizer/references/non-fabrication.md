@@ -27,7 +27,9 @@ When describing team accomplishments, accurately distinguish the candidate's con
 
 ## Selection vs. alteration
 
-Omitting an item from the résumé is always allowed — tailoring is selection, and omission is not misrepresentation. Altering a fact inside an included item is never allowed. If an item is worth including but weak as stated, include it accurately or ask the user for the missing detail.
+Omitting an item from the résumé is always allowed — tailoring is selection, and omission is not misrepresentation. Rephrasing an included item per the writing guide is allowed. Altering any fact inside an included item — dates, titles, metrics, technologies, scope — is never allowed. If an item is worth including but weak as stated, include it accurately or ask the user for the missing detail.
+
+Work experiences are the one exception to free omission: they follow the experience-selection rule in [writing-guide.md](writing-guide.md).
 
 ## Step-5 validation checklist
 

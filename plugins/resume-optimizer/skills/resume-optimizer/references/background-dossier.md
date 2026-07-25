@@ -37,7 +37,6 @@ Write the answers into the dossier verbatim as the user gives them — the dossi
 
 ## Selection vs. alteration
 
-- Choosing which dossier items appear in a CV is always allowed and is the whole point of the dossier — omission is not misrepresentation.
-- Work experiences are the exception: include every one with at least its two-line header and one bullet by default. Omit an experience only when it is clearly irrelevant to the target job — a high bar; when in doubt, include it — and name every omission in Changes Made.
-- Rephrasing an included item per the writing guide is allowed.
-- Altering any fact inside an included item — dates, titles, metrics, technologies, scope — is never allowed. If an item is worth including but weak as stated, include it accurately or ask the user for the missing detail.
+Choosing which dossier items appear in a CV is always allowed and is the whole point of the dossier — omission is not misrepresentation.
+
+The full rule — what may be omitted, what may be rephrased, what may never be altered, and the work-experience exception — is in [non-fabrication.md](non-fabrication.md).
