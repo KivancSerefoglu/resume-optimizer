@@ -16,9 +16,40 @@ Quantify outcomes when the user has supplied reliable numbers. Not every bullet 
 
 Avoid: "Responsible for", "Helped with", "Worked on", "Participated in", "We built", unsupported ownership claims, and bullets that only list technologies without explaining their use.
 
-## Formatting principles
+## MCS template layout
 
-Produce content in the MCS template layout: centered name; one contact line (City, State • email • phone • links); fixed section order (optional Summary for senior/career-changer profiles) → Education → Experience → Projects (when relevant) → Leadership & Activities (when applicable) → Awards & Publications (when applicable) → Skills & Interests; two-line entry headers (institution, organization, or project name left with city, state or date context right, then degree, title, or role left with dates right); reverse-chronological within sections; bullets over paragraphs; ATS-compatible formatting; clickable, professionally labeled links. Include every work experience with at least one bullet; omit one only when clearly irrelevant to the target job, and name every omission in Changes Made.
+This is the canonical layout spec. `SKILL.md`, `tailoring.md`, and `assets/resume-template.html` all defer to it — change the layout here and nowhere else.
+
+**Header:** name centered; one contact line below it — `City, State • email • phone • links`.
+
+**Section order (fixed — never reorder by career level):**
+
+1. **Summary** — optional; only for senior, technical-lead, management, or career-changer profiles. Placed directly below the contact line.
+2. **Education**
+3. **Experience**
+4. **Projects** — only when the candidate has relevant projects.
+5. **Leadership & Activities** — only when such items exist.
+6. **Awards & Publications** — only when such items exist.
+7. **Skills & Interests**
+
+**Entry format** — Education, Experience, Projects, and Leadership & Activities entries are headed by two lines:
+
+- Line 1: organization, institution, or project name left; city, state (or "remote") or date context right.
+- Line 2: degree, title, or role left; `Month Year – Month Year` right.
+
+Below the header: action-verb bullets without personal pronouns. Bullets are **required for Experience entries** and optional for the other three, which may instead carry a single note line. An optional Education note line may hold GPA, coursework, or honors.
+
+**Awards & Publications:** concise bullet lines, no entry headers.
+
+**Skills & Interests:** labeled lines — `Technical: …`, `Language: …`, `Interests: …` — only labels that have content.
+
+**Throughout:** reverse-chronological within sections; bullets over paragraphs; ATS-compatible formatting; clickable, professionally labeled links.
+
+## Experience selection
+
+Include every work experience with at least its two-line header and one bullet. Omit an experience only when it is clearly irrelevant to the target job — a high bar; when in doubt, include it — and name every omission in the Changes Made output section.
+
+## Formatting principles
 
 Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality unless specifically relevant and voluntarily provided; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; random mid-sentence bolding; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
 
