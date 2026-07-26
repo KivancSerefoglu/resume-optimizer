@@ -51,7 +51,11 @@
   li { margin-bottom: 2pt; }
   .skills-line { margin-bottom: 2pt; }
   .skills-line strong { font-weight: bold; }
-  .entry, .section { break-inside: avoid; }
+  /* Keep entries intact, but let sections fragment. A section taller than one
+     page cannot be kept whole, so Chrome pushes it to a fresh page and overflows
+     it anyway — costing a near-empty page on any multi-page resume. */
+  .entry { break-inside: avoid; }
+  .section > h2 { break-after: avoid; }
 </style>
 </head>
 <body>
