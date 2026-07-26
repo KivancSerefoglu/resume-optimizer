@@ -64,9 +64,10 @@ Return these five sections, in order:
 Run this after presenting the five sections and getting the user's approval of the content — produce both files by default, don't wait to be asked for the PDF:
 
 1. Render the PDF first: copy `assets/resume-template.html` (bundled with this skill — resolve the path relative to this skill's directory, not the user's working directory), replace the contents of `<main>` with the résumé rendered as HTML using the template's existing classes, save as `optimized-resume.html`, then convert with headless Chrome:
-   - macOS: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --print-to-pdf=optimized-resume.pdf optimized-resume.html`
-   - Linux: `google-chrome --headless --print-to-pdf=optimized-resume.pdf optimized-resume.html` (or `chromium`)
-   - Windows: `"C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --print-to-pdf=optimized-resume.pdf optimized-resume.html` (also try `%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe`, or `msedge.exe` at `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` — Edge takes the same flags)
+   Keep `--no-pdf-header-footer`: without it Chrome stamps the print date and the local `file://` path of the HTML onto every page, leaking the user's home directory onto a document they send to employers.
+   - macOS: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --no-pdf-header-footer --print-to-pdf=optimized-resume.pdf optimized-resume.html`
+   - Linux: `google-chrome --headless --no-pdf-header-footer --print-to-pdf=optimized-resume.pdf optimized-resume.html` (or `chromium`)
+   - Windows: `"C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --no-pdf-header-footer --print-to-pdf=optimized-resume.pdf optimized-resume.html` (also try `%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe`, or `msedge.exe` at `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` — Edge takes the same flags)
 2. Check the page count. Use the first method that returns a number:
    - `python3 -c "import re,sys;d=open(sys.argv[1],'rb').read();c=[int(x) for x in re.findall(rb'/Count\s+(\d+)',d)];print(max(c) if c else len(re.findall(rb'/Type\s*/Page[^s]',d)))" optimized-resume.pdf` — no dependencies, works anywhere Python 3 exists. Prefer this.
    - `pdfinfo optimized-resume.pdf` — only if poppler is installed; it often is not.
@@ -75,7 +76,7 @@ Run this after presenting the five sections and getting the user's approval of t
    If no method returns a number, skip forced trimming, tell the user the page count is unverified, and continue to step 4.
 3. **Dossier mode:** if the count exceeds 1, trim in this order, re-rendering after each pass until the PDF is one page: (a) cut bullets from the least job-relevant experiences, never below one bullet per included experience; (b) trim Projects, Leadership & Activities, and Awards & Publications items, optional Education lines (coursework, GPA, honors), and an optional Summary if present; (c) only then omit an experience that is clearly irrelevant to the target job; (d) if everything is minimal and the PDF still exceeds one page, stop and tell the user instead of over-trimming. After trimming, update the Changes Made section you presented, naming exactly what was cut or omitted. **Resume mode:** no forced trimming — keep the page guidance from Input modes.
 4. Only after the content is final, write `optimized-resume.md` in the working directory with exactly the content the PDF was rendered from — the two files must always match.
-5. If Chrome is unavailable, still write `optimized-resume.md` per step 4, keep `optimized-resume.html`, and tell the user to open it in a browser and print to PDF.
+5. If Chrome is unavailable, still write `optimized-resume.md` per step 4, keep `optimized-resume.html`, and tell the user to open it in a browser and print to PDF — telling them to turn **off** "Headers and footers" in the print dialog, which is on by default and would otherwise stamp the date and local file path onto the résumé.
 
 ## Final principle
 
