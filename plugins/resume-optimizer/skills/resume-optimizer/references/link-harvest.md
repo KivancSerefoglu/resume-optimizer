@@ -58,7 +58,7 @@ Check remaining quota any time with `gh api rate_limit --jq '.rate'`.
 - `https://api.github.com/users/<user>/repos?per_page=100&sort=pushed`
 - `https://api.github.com/repos/<owner>/<repo>/languages`
 - `https://api.github.com/repos/<owner>/<repo>/contributors?per_page=100`
-- README as raw text: `https://raw.githubusercontent.com/<owner>/<repo>/HEAD/README.md`
+- README in two steps: fetch `https://api.github.com/repos/<owner>/<repo>/readme`, then fetch the `download_url` from the JSON response. That endpoint resolves the real filename — `README.rst`, `Readme.md`, an extensionless `README` — so do not guess at `raw.githubusercontent.com/<owner>/<repo>/HEAD/README.md`: it 404s on every repo whose README is not named exactly that, and a 404 there is indistinguishable from a repo that genuinely has no README. Only conclude a repo has no README when this endpoint returns 404.
 
 Budget deliberately at 60 requests: one profile listing plus roughly a dozen per-repo calls is the realistic ceiling. Private repos are invisible on this rung.
 
