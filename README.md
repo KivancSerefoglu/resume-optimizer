@@ -6,7 +6,7 @@ Two ways to use it, plus an optional shortcut:
 
 - **Dossier mode (recommended):** keep one `background.md` master file with everything you've ever done — every job, project, metric, and course. Give the skill that file plus a job posting; it selects the relevant subset and generates a one-page, ATS-friendly CV as markdown **and PDF**.
 - **Resume mode:** give it an existing resume and a job description; it tailors the resume.
-- **Portfolio links (optional):** add your GitHub profile, specific repos, or a portfolio site and it reads your projects from there instead of making you describe each one. Harvested projects are merged with your background file — the repo supplies languages, dates, and scale; your file supplies impact and context — and are used for that run only. Nothing is written back to `background.md`.
+- **Portfolio links (optional):** add your GitHub profile, specific repos, a portfolio site, or a LinkedIn URL and it reads your projects from there instead of making you describe each one. Harvested projects are merged with your background file — the repo supplies languages, dates, and scale; your file supplies impact and context — and are used for that run only. Nothing is written back to `background.md`.
 
 ## What it does
 

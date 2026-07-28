@@ -43,7 +43,7 @@ Below the header: action-verb bullets without personal pronouns. Bullets are **r
 
 **Skills & Interests:** labeled lines — `Technical: …`, `Language: …`, `Interests: …` — only labels that have content.
 
-**Throughout:** reverse-chronological within sections; bullets over paragraphs; ATS-compatible formatting; clickable, professionally labeled links.
+**Throughout:** reverse-chronological within sections; bullets over paragraphs; ATS-compatible formatting; clickable, professionally labeled links, and never a link to a private repository — describe it without the URL.
 
 ## Experience selection
 
