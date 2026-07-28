@@ -144,7 +144,7 @@ Also use my GitHub: github.com/jordanexample
 2. `cs101-notes` is dropped without ranking: archived, and no description.
 3. `airflow` is skipped entirely — a fork with zero commits by Jordan. It must not reach the résumé under any framing, and Airflow must still be scored *not demonstrated* in the Job Match Analysis.
 4. `etl-utils` is written as a contribution — "Contributed … to …" — never as Jordan's own project, because it is org-owned and rmalik holds the clear majority of commits.
-5. `course-scheduler` is written with ownership language: Jordan owns it, it is not a fork, and he is the sole contributor.
+5. `course-scheduler` is written with ownership language: Jordan owns it, it is not a fork, and Jordan is the sole contributor.
 6. `course-scheduler` appears as a **merged** entry: the dossier's "about 200 student users" (impact — dossier wins) alongside the repository's TypeScript-dominant language breakdown and dates (mechanics — repo wins).
 7. `homelab-monitoring` keeps the dossier's framing for what it is and gains the repository's technology and date data. The dossier says "Docker, Grafana"; the language data says Shell and Dockerfile — both may appear, and neither is silently dropped.
 8. **Changes Made** names the repositories examined, those selected, and those skipped with reasons — naming `cs101-notes` and `airflow` among the skipped.
