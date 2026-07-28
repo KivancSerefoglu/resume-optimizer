@@ -35,6 +35,12 @@ When the user has no dossier, build one from their résumé plus targeted questi
 
 Write the answers into the dossier verbatim as the user gives them — the dossier records facts, not marketing copy. Save the file where the user chooses and confirm the path back to them.
 
+## Portfolio links are not dossier writes
+
+A user may supply a GitHub profile, repository URLs, a portfolio site, or a LinkedIn URL alongside the dossier. Projects harvested from those links are per-run evidence for the current CV only — never written into `background.md`. The dossier stays the candidate's own words. When harvested projects are worth keeping permanently, say so and let the user add the entries themselves, or run the bootstrap flow.
+
+Merging a harvested project with a dossier entry follows the rules in [link-harvest.md](link-harvest.md): the dossier carries motivation, impact, and the candidate's role; the repository carries languages, dates, and scale.
+
 ## Selection vs. alteration
 
 Choosing which dossier items appear in a CV is always allowed and is the whole point of the dossier — omission is not misrepresentation.
