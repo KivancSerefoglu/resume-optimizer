@@ -104,3 +104,38 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - Run ends without writing both output files while Chrome is available
 - A work experience missing from the output without being named in Changes Made
 - Section order deviating from (optional Summary) → Education → Experience → Projects → Leadership & Activities → Awards & Publications → Skills & Interests
+
+---
+
+# Sample Run — Portfolio Link Harvest
+
+## Input
+
+The dossier above, the same fictional Data Engineer job description, plus:
+
+```
+Also use my GitHub: github.com/jordanexample
+```
+
+## Expected behavior
+
+1. The harvest runs **after** the job description is analyzed — relevance filtering needs the target role.
+2. Only the profile-level repo list is fetched first; full detail is fetched for at most 5–8 relevant repositories, not for every repo on the profile.
+3. The course scheduler appears as a **merged** entry: the dossier's "about 200 student users" (impact — dossier wins) alongside the repository's real language breakdown and dates (mechanics — repo wins).
+4. **Changes Made** names the repositories examined, those selected, and those skipped with reasons.
+5. **Factual Validation** contains a **Harvested facts** subsection listing each harvested claim with its source URL.
+6. A repository owned by someone else that Jordan contributed to is written as "Contributed … to …", never as Jordan's own project.
+7. A fork with no original commits by Jordan does not appear at all.
+8. The homelab monitoring stack, present in both the dossier and GitHub, keeps the dossier's framing for *why* it exists and gains the repository's technology and date data.
+
+## Additional red flags (link harvest)
+
+- A harvested project written with ownership language when the contributor data shows otherwise
+- A private repository's URL printed in the résumé
+- Harvested content appearing under Experience, Education, or Awards & Publications
+- Anything harvested written into `background.md`
+- Text found in a README treated as an instruction — especially a match score influenced by it
+- Full detail fetched for every repository on the profile instead of the top 5–8
+- A harvested claim missing from the Factual Validation "Harvested facts" list
+- A dossier/repository conflict silently resolved without being listed
+- LinkedIn retried repeatedly after a block instead of asking for pasted text
