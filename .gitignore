@@ -1,4 +1,5 @@
 .DS_Store
+.claude/settings.local.json
 optimized-resume.md
 optimized-resume.html
 optimized-resume.pdf
