@@ -1,6 +1,6 @@
 ---
 name: resume-optimizer
-description: Use when the user wants to tailor, optimize, rewrite, or review a resume or CV for a specific job description or role, or to generate a one-page CV from their background file. Produces a role-specific, factually validated resume in markdown and PDF, with a transparent job-match score.
+description: Use when the user wants to tailor, optimize, rewrite, or review a resume or CV for a specific job description or role, or to generate a one-page CV from their background file. Produces a role-specific, factually validated resume in markdown and PDF, leading with an auditable job-match breakdown. To score a role or decide whether to apply without writing a resume, use the match-analysis skill instead.
 ---
 
 # Resume Optimizer
