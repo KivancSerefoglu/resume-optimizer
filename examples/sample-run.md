@@ -50,6 +50,7 @@ The skill must return all five sections:
 - "Responsible for" / "Helped with" / "Worked on" / "Participated in" surviving in bullets
 - "Helped with the migration" silently upgraded to sole ownership without a confirming question
 - A summary section (early-career candidate with a clear direction)
+- A **Verdict:** line or apply/skip recommendation appearing anywhere — that belongs to `/match-analysis` only
 
 ---
 
@@ -182,3 +183,58 @@ at Fortune 500 customers, cutting pipeline cost 62%.
 - A harvested claim missing from the Factual Validation "Harvested facts" list
 - A dossier/repository conflict silently resolved without being listed
 - `airflow` surfacing anywhere in the résumé, or Airflow credited in the match score on the strength of an uncommitted fork
+
+---
+
+# Sample Run — Match Analysis (standalone)
+
+Invoked as `/match-analysis`. Reuses the résumé and job description from the first
+sample run above.
+
+## Input
+
+- Résumé: the fictional Jordan Example résumé from the first sample run
+- Job description: the fictional Acme Analytics Data Engineer posting from the first sample run
+- No portfolio links supplied
+
+## Expected output shape
+
+1. **The score line**, exactly:
+
+   `**Job match: 45% (estimate of evidence coverage — not an ATS score)**`
+
+2. **The requirement table**, with a Total row whose arithmetic matches the score:
+
+   | Requirement | Weight | Status | Credit |
+   |---|---|---|---|
+   | 1+ years Python and SQL | 2 | strongly supported | 2 |
+   | ETL pipelines and data warehousing | 2 | partially supported | 1 |
+   | Orchestration tools (Airflow a plus) | 1 | not demonstrated | 0 |
+   | Strong communication skills | 2 | unknown | 0 |
+   | **Total** | **7** | | **3** |
+
+   3 ÷ 7 = 43% → 45% at nearest-5 rounding.
+
+3. **Strong / partial / not demonstrated / missing information / positioning** prose sections.
+
+4. **The verdict block:**
+
+   > **Verdict: Apply with caveats** — one line of reasoning
+   > **Highest-leverage gap:** the single requirement that would move the score most
+
+   Apply with caveats is correct here: no *required* qualification is "not demonstrated"
+   (communication is `unknown`, which never counts toward Skip), so Skip does not apply;
+   the score is below 70, so Apply does not apply.
+
+## Red flags (any of these = the skill regressed)
+
+- Wrote `optimized-resume.md`, `optimized-resume.html`, or a PDF
+- Emitted a résumé, or any of output sections 2–5 from the full run
+- Ran the dossier bootstrap flow, or offered to write `background.md`
+- Read `writing-guide.md`, `tailoring.md`, or `assets/resume-template.html`
+- Total row missing, or the score disagrees with the table's arithmetic
+- **Verdict: Skip** — the only unmet required item is `unknown`, and unknown never drives Skip
+- Skip driven by the Airflow gap alone (preferred/nice-to-have gaps never drive Skip)
+- Verdict presented as authoritative rather than advisory
+- An "ATS score" framing anywhere
+- Airflow credited, or any number not present in the input résumé
