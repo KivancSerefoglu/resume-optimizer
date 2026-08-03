@@ -1,6 +1,6 @@
 # Resume Optimizer
 
-Tailor your resume — or generate a one-page CV from your full background — for any job description, without fabricating a word. A Claude Code skill.
+Tailor your resume — or generate a one-page CV from your full background — for any job description, without fabricating a word. Two Claude Code skills: one scores a posting against your background, one writes the resume.
 
 Two ways to use it, plus an optional shortcut:
 
@@ -10,13 +10,25 @@ Two ways to use it, plus an optional shortcut:
 
 ## What it does
 
+Two skills, sharing one evidence engine.
+
+### `/match-analysis` — should I apply?
+
 1. Extracts a factual record from your background file or resume.
 2. Analyzes the job description (requirements, keywords, what the employer values).
 3. Classifies every requirement and computes a transparent **job-match percentage** — a weighted breakdown table you can audit, never a black-box "ATS score".
+4. Returns an **Apply / Apply with caveats / Skip** verdict plus the single gap that would move the score most.
+
+Writes nothing to disk. Run it on a posting before you spend an evening on the application.
+
+### `/resume-optimizer` — write the resume
+
+Runs the same three analysis steps, then:
+
 4. Writes the resume to lead with your strongest *supported* evidence.
 5. Validates every claim against your input, then writes `optimized-resume.md` and `optimized-resume.pdf` (one page enforced in dossier mode).
 
-**What it will never do:** invent metrics, add technologies from the job posting that you didn't list, inflate titles or seniority, or turn "contributed to" into "led". Leaving things out is fair game — that's tailoring. Changing facts is not. A less impressive but fully defensible claim always beats one you can't back up in an interview.
+**What they will never do:** invent metrics, add technologies from the job posting that you didn't list, inflate titles or seniority, or turn "contributed to" into "led". Leaving things out is fair game — that's tailoring. Changing facts is not. A less impressive but fully defensible claim always beats one you can't back up in an interview.
 
 ## Install
 
@@ -28,6 +40,16 @@ In Claude Code:
 ```
 
 ## Use
+
+### Score a posting
+
+```
+How well do I match this job posting? background.md — https://example.com/jobs/data-engineer
+```
+
+You get the match percentage, the audit table, the gaps, and an Apply / Apply with caveats / Skip verdict. Nothing is written to disk; if the verdict is positive it offers to hand off to `/resume-optimizer`.
+
+### Write the resume
 
 First run (no background file yet):
 
@@ -57,7 +79,7 @@ See [examples/sample-run.md](examples/sample-run.md) for fictional before/after 
 
 ## How it's built
 
-A single Claude Code plugin exposing one skill. The skill uses progressive disclosure: [SKILL.md](plugins/resume-optimizer/skills/resume-optimizer/SKILL.md) carries the workflow; detailed rule sets live in [references/](plugins/resume-optimizer/skills/resume-optimizer/references/); the PDF template is a static HTML file rendered via headless Chrome. No dependencies, no build step, no API keys.
+A single Claude Code plugin exposing two skills, `match-analysis` and `resume-optimizer`. Machinery both need — evidence rules, the background-dossier format, portfolio link harvest, and the scoring rubric — lives in [shared/](plugins/resume-optimizer/shared/), so the rubric has exactly one copy. Each skill's `SKILL.md` carries only its own workflow; resume-specific rule sets live in [references/](plugins/resume-optimizer/skills/resume-optimizer/references/); the PDF template is a static HTML file rendered via headless Chrome. No dependencies, no build step, no API keys.
 
 ## License
 
