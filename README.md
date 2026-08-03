@@ -2,10 +2,11 @@
 
 Tailor your resume — or generate a one-page CV from your full background — for any job description, without fabricating a word. A Claude Code skill.
 
-Two ways to use it:
+Two ways to use it, plus an optional shortcut:
 
 - **Dossier mode (recommended):** keep one `background.md` master file with everything you've ever done — every job, project, metric, and course. Give the skill that file plus a job posting; it selects the relevant subset and generates a one-page, ATS-friendly CV as markdown **and PDF**.
 - **Resume mode:** give it an existing resume and a job description; it tailors the resume.
+- **Portfolio links (optional):** add your GitHub profile, specific repos, a portfolio site, or a LinkedIn URL and it reads your projects from there instead of making you describe each one. Harvested projects are merged with your background file — the repo supplies languages, dates, and scale; your file supplies impact and context — and are used for that run only. Nothing is written back to `background.md`.
 
 ## What it does
 
@@ -41,6 +42,14 @@ Generate a CV from background.md for this job posting: https://example.com/jobs/
 ```
 
 Either way you get: a job-match score with its breakdown, the optimized resume, a list of changes, targeted questions that could strengthen the application, a factual-validation report — and `optimized-resume.md` + `optimized-resume.pdf` on disk.
+
+To pull your projects straight from GitHub:
+
+```
+Generate a CV from background.md for https://example.com/jobs/data-engineer — also use my projects at github.com/myusername
+```
+
+It fetches your repos, picks the ones that fit the role, and describes each one according to what the commit history actually shows — your own projects as yours, contributions to other people's repos as contributions.
 
 ## Example
 

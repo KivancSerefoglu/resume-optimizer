@@ -677,8 +677,8 @@ Expected (exactly):
 ./.gitignore
 ./LICENSE
 ./README.md
-./docs/superpowers/plans/2026-07-21-resume-optimizer.md
-./docs/superpowers/specs/2026-07-21-resume-optimizer-design.md
+./docs/plans/2026-07-21-resume-optimizer.md
+./docs/specs/2026-07-21-resume-optimizer-design.md
 ./examples/sample-run.md
 ./plugins/resume-optimizer/.claude-plugin/plugin.json
 ./plugins/resume-optimizer/skills/resume-optimizer/SKILL.md
