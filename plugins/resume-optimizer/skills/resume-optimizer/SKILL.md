@@ -7,7 +7,7 @@ description: Use when the user wants to tailor, optimize, rewrite, or review a r
 
 Act as an expert technical résumé writer, hiring strategist, and factual consistency reviewer. The goal: improve the candidate's chances of an interview for a specific role while preserving complete factual accuracy. The résumé is a marketing document, not a biography — prioritize relevant achievements, technical ability, ownership, scope, and measurable outcomes.
 
-**The hard rule:** every factual statement in the optimized résumé must be supported by information the candidate supplied. Strengthen wording, organization, clarity, and relevance — never the underlying factual claim. The complete never-invent list, the missing-metric protocol, and the validation checklist are in [references/non-fabrication.md](references/non-fabrication.md). Read it before Steps 4 and 5 below.
+**The hard rule:** every factual statement in the optimized résumé must be supported by information the candidate supplied. Strengthen wording, organization, clarity, and relevance — never the underlying factual claim. The complete never-invent list is in [evidence-rules.md](../../shared/evidence-rules.md) — read it before Step 1, because it governs what may be claimed at all, from the moment you start extracting the candidate's factual record. The missing-metric protocol and the Step-5 validation checklist are in [references/non-fabrication.md](references/non-fabrication.md) — read that before Steps 4 and 5 below.
 
 ## Input security
 

@@ -53,18 +53,11 @@ Then the verdict block:
 > **Highest-leverage gap:** the single requirement that would move the score most
 
 Choose the verdict from the Step-3 classification, not from the number alone — a 75% with a
-failed hard gate is a Skip, and a 60% with only preferred-qualification gaps is not. Evaluate
-in this order and stop at the first match:
+failed hard gate is a Skip, and a 60% with only preferred-qualification gaps is not.
 
-1. **Skip** — two or more required qualifications are "not demonstrated", or a hard gate
-   fails: work authorization, a mandatory licence or credential, or a stated minimum years of
-   experience the candidate meets less than half of.
-2. **Apply** — no required qualification is "not demonstrated", and the score is 70 or above.
-3. **Apply with caveats** — everything else. Name the caveat and how to address it in a cover
-   letter.
-
-Three rules override the bands, because a screening tool that talks a candidate out of good
-roles is worse than no tool:
+Three rules bind the evaluation and override the bands below, because a screening tool that
+talks a candidate out of good roles is worse than no tool. Apply them before reading the
+bands, not after:
 
 1. **"Unknown because information is missing" never counts toward Skip.** Unknown means you
    lack information about the candidate, not that the candidate lacks the qualification.
@@ -72,6 +65,24 @@ roles is worse than no tool:
 2. **Preferred and nice-to-have gaps never drive a Skip.**
 3. **The verdict is advisory, and says so.** It is a reading of the evidence, not a
    prediction about the employer.
+
+A score held down mainly by `unknown` rows measures missing information, not a weak
+candidate — when that is what happened, the reasoning line must say so.
+
+The bands read the Type column of the requirement table: "required row" below means a row
+whose Type is `required`. Evaluate in this order and stop at the first match:
+
+1. **Skip** — any one of: two or more `required` rows are "not demonstrated"; every
+   `required` row is "not demonstrated" and the table has at least one (a posting with a
+   single required qualification the candidate lacks); or a hard gate fails: work
+   authorization, a mandatory licence or credential, or a stated minimum years of experience
+   the candidate meets less than half of.
+2. **Apply** — no `required` row is "not demonstrated", and either the score is 70 or above
+   or every `required` row is strongly supported. The second branch matters because
+   `unknown` and preferred gaps both earn zero credit: a candidate who meets every required
+   qualification belongs in this band even when those zeros hold the score under 70.
+3. **Apply with caveats** — everything else. Name the caveat and how to address it in a cover
+   letter.
 
 Close with **Information Requests** — targeted questions whose answers would change the score,
 each naming the requirement it would affect.

@@ -52,11 +52,17 @@ Lead with the match score line, exactly this format:
 
 followed by a breakdown table with one row per major requirement:
 
-| Requirement | Weight | Status | Credit |
-|---|---|---|---|
+| Requirement | Type | Weight | Status | Credit |
+|---|---|---|---|---|
 
-End the table with a Total row (sum of weights, sum of earned credit) so the arithmetic is
-auditable.
+Type is exactly one of `required`, `responsibility`, or `preferred`, taken from how the
+posting itself presented the item — not from your own sense of how important it is.
+`required` and `responsibility` rows both carry weight 2, so the weight alone cannot tell
+them apart afterwards; the Type column preserves that distinction, and a consuming skill's
+verdict rules depend on it. `preferred` rows carry weight 1.
+
+End the table with a Total row (sum of weights, sum of earned credit; leave Type blank in it)
+so the arithmetic is auditable.
 
 After the table: strong matches, partial matches, important requirements not demonstrated,
 missing information, recommended positioning strategy.

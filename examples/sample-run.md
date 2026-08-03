@@ -89,7 +89,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 
 ## Expected output shape (dossier mode)
 
-1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Weight | Status | Credit |` table. Airflow: *not demonstrated*, zero credit.
+1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Type | Weight | Status | Credit |` table. Airflow: Type `preferred`, *not demonstrated*, zero credit.
 2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
 3. **Changes Made** — says which dossier items were selected and which were left out.
 4. **Information Requests** — targeted (e.g., data volume of the ETL jobs).
@@ -205,13 +205,13 @@ sample run above.
 
 2. **The requirement table**, with a Total row whose arithmetic matches the score:
 
-   | Requirement | Weight | Status | Credit |
-   |---|---|---|---|
-   | 1+ years Python and SQL | 2 | strongly supported | 2 |
-   | ETL pipelines and data warehousing | 2 | partially supported | 1 |
-   | Orchestration tools (Airflow a plus) | 1 | not demonstrated | 0 |
-   | Strong communication skills | 2 | unknown | 0 |
-   | **Total** | **7** | | **3** |
+   | Requirement | Type | Weight | Status | Credit |
+   |---|---|---|---|---|
+   | 1+ years Python and SQL | required | 2 | strongly supported | 2 |
+   | ETL pipelines and data warehousing | required | 2 | partially supported | 1 |
+   | Orchestration tools (Airflow a plus) | preferred | 1 | not demonstrated | 0 |
+   | Strong communication skills | required | 2 | unknown | 0 |
+   | **Total** | | **7** | | **3** |
 
    3 ÷ 7 = 43% → 45% at nearest-5 rounding.
 
@@ -222,14 +222,28 @@ sample run above.
    > **Verdict: Apply with caveats** — one line of reasoning
    > **Highest-leverage gap:** the single requirement that would move the score most
 
-   Apply with caveats is correct here: no *required* qualification is "not demonstrated"
+   Apply with caveats is correct here: no `required` row is "not demonstrated"
    (communication is `unknown`, which never counts toward Skip), so Skip does not apply;
-   the score is below 70, so Apply does not apply.
+   the score is below 70 and the ETL and communication `required` rows are not strongly
+   supported, so neither branch of Apply fires either.
+
+5. **Information Requests** — required in this run, not optional: the table carries an
+   `unknown` row, and the rubric says unknown "also generates an Information Request". At
+   least one question must ask for something that would evidence communication skills —
+   presentations, written documentation, stakeholder or cross-team work — and each question
+   names the requirement it would affect.
+
+6. **The handoff offer** — the verdict is not Skip, so the run ends by asking whether to run
+   `resume-optimizer` to write the tailored résumé.
 
 ## Red flags (any of these = the skill regressed)
 
 - Wrote `optimized-resume.md`, `optimized-resume.html`, or a PDF
-- Emitted a résumé, or any of output sections 2–5 from the full run
+- Emitted an **Optimized Résumé** section or a **Changes Made** section — those belong to the
+  full run only (an **Information Requests** section is required here, not a regression)
+- No **Information Requests** section, or none of its questions would evidence communication
+  skills, even though the table carries an `unknown` row
+- Ended without offering the `resume-optimizer` handoff after a non-Skip verdict
 - Ran the dossier bootstrap flow, or offered to write `background.md`
 - Read `writing-guide.md`, `tailoring.md`, or `assets/resume-template.html`
 - Total row missing, or the score disagrees with the table's arithmetic
