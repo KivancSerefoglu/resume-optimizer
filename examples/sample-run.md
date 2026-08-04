@@ -188,7 +188,7 @@ at Fortune 500 customers, cutting pipeline cost 62%.
 
 # Sample Run — Match Analysis (standalone)
 
-Invoked as `/match-analysis`. Reuses the résumé and job description from the first
+Invoked as `/resume-optimizer:match-analysis`. Reuses the résumé and job description from the first
 sample run above.
 
 ## Input

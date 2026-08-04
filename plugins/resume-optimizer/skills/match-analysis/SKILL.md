@@ -78,9 +78,10 @@ whose Type is `required`. Evaluate in this order and stop at the first match:
    authorization, a mandatory licence or credential, or a stated minimum years of experience
    the candidate meets less than half of.
 2. **Apply** — no `required` row is "not demonstrated", and either the score is 70 or above
-   or every `required` row is strongly supported. The second branch matters because
-   `unknown` and preferred gaps both earn zero credit: a candidate who meets every required
-   qualification belongs in this band even when those zeros hold the score under 70.
+   or every `required` row is strongly supported and no `responsibility` row is "not
+   demonstrated". The second branch matters because `unknown` and preferred gaps both earn
+   zero credit: a candidate who meets every required qualification, with no unmet
+   responsibility row, belongs in this band even when those zeros hold the score under 70.
 3. **Apply with caveats** — everything else. Name the caveat and how to address it in a cover
    letter.
 

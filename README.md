@@ -12,7 +12,7 @@ Two ways to use it, plus an optional shortcut:
 
 Two skills, sharing one evidence engine.
 
-### `/match-analysis` — should I apply?
+### `/resume-optimizer:match-analysis` — should I apply?
 
 1. Extracts a factual record from your background file or resume.
 2. Analyzes the job description (requirements, keywords, what the employer values).
@@ -21,7 +21,7 @@ Two skills, sharing one evidence engine.
 
 Writes nothing to disk. Run it on a posting before you spend an evening on the application.
 
-### `/resume-optimizer` — write the resume
+### `/resume-optimizer:resume-optimizer` — write the resume
 
 Runs the same three analysis steps, then:
 
@@ -47,7 +47,7 @@ In Claude Code:
 How well do I match this job posting? background.md — https://example.com/jobs/data-engineer
 ```
 
-You get the match percentage, the audit table, the gaps, and an Apply / Apply with caveats / Skip verdict. Nothing is written to disk; if the verdict is positive it offers to hand off to `/resume-optimizer`.
+You get the match percentage, the audit table, the gaps, and an Apply / Apply with caveats / Skip verdict. Nothing is written to disk; if the verdict is positive it offers to hand off to `/resume-optimizer:resume-optimizer`.
 
 ### Write the resume
 
