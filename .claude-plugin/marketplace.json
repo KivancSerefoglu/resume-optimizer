@@ -10,7 +10,7 @@
     {
       "name": "resume-optimizer",
       "source": "./plugins/resume-optimizer",
-      "description": "Score a job description against your background, then tailor your resume to it — without fabricating a word."
+      "description": "Score a job description against your background, tailor your resume to it, and write the cover letter — without fabricating a word."
     }
   ]
 }
