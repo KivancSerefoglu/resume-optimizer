@@ -11,6 +11,7 @@ A markdown file, suggested name `background.md`, kept anywhere the user likes. T
 - **Experience** — per entry: employer, title(s) with dates (list distinct roles for verified promotions), location, scope (team size, users, scale), responsibilities, achievements with metrics, technologies, links.
 - **Projects** — per entry: name, dates, what it does, the candidate's contribution, outcome/scale, technologies, links.
 - **Skills** — grouped: languages, frameworks, tools, domains. Only skills the candidate can discuss credibly.
+- **Narrative** — the story material a résumé cannot show: motivation, turning points, connections to specific employers, referrals. Detailed below.
 - **Awards & Publications** — awards, publications, patents, talks, with dates and venues.
 - **Extras** — volunteering, spoken languages, certifications, work authorization (recorded only if the user wants it considered in applications).
 
@@ -24,6 +25,41 @@ Minimal example of one Experience entry:
 - Technologies: Python, PostgreSQL, Docker, GitHub Actions
 ```
 
+## Narrative
+
+A résumé shows what the candidate did. A cover letter has to show why — and that material
+lives nowhere else, so the dossier records it. In the candidate's own words, like
+everything else in this file:
+
+- **Why this field** — how they got into it, what pulled them in.
+- **Turning points** — a project that changed their direction, a problem that stuck with
+  them, a person who redirected them.
+- **Company and product connections** — employers whose products they have genuinely used,
+  built on, or grown up around, and what the connection actually is.
+- **Referrals** — who suggested they apply, where, and how they know them.
+- **What they want next, and why.**
+- **Context they would rather explain than leave to inference** — a career change, an
+  employment break, a relocation.
+
+Minimal example:
+
+```
+- Got into data engineering after a summer job digitising my uncle's shop inventory by
+  hand — three weeks of typing that a script should have done in an afternoon.
+- Used Example Labs' open-source parser on my capstone; their docs were the first I found
+  that explained why the API was shaped the way it was.
+- Referred to the Example Water Authority posting by Dana Lin, a classmate who joined
+  their platform team in 2025.
+- Want to move from analytics into platform work — I keep ending up maintaining the
+  pipelines rather than querying them.
+```
+
+**The Narrative section is evidence, not licence.** A cover letter's hook must trace to a
+Narrative entry, an Experience or Project entry, or an answer the user gives during that
+run — never composed from nothing. That is the same rule as everywhere else in
+[evidence-rules.md](evidence-rules.md); the Narrative section exists so that the honest
+version of the hook is available to write.
+
 ## Bootstrap: building the dossier from a résumé
 
 When the user has no dossier, build one from their résumé plus targeted questions. Ask only what could materially improve future CVs:
@@ -32,6 +68,9 @@ When the user has no dossier, build one from their résumé plus targeted questi
 - Anything the résumé omitted: side projects, coursework, older experience, open-source, volunteering, publications.
 - Links worth including: repos, live projects, papers.
 - For each vague bullet ("worked on X"): what exactly did the candidate do, and what was the outcome?
+- Narrative: how did they get into this field? Is there a project or moment that changed
+  their direction? Any company whose product they actually use or have built on?
+- Referrals: has anyone suggested they apply somewhere, and how do they know them?
 
 Write the answers into the dossier verbatim as the user gives them — the dossier records facts, not marketing copy. Save the file where the user chooses and confirm the path back to them.
 
