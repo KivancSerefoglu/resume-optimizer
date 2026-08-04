@@ -252,3 +252,66 @@ sample run above.
 - Verdict presented as authoritative rather than advisory
 - An "ATS score" framing anywhere
 - Airflow credited, or any number not present in the input résumé
+
+---
+
+# Sample Run — Cover Letter
+
+## Input: background dossier excerpt (fictional)
+
+Reuses the dossier from "Sample Run — Dossier Mode" above, plus this section:
+
+```
+## Narrative
+- Got into data work after a summer job digitising my uncle's shop inventory by hand —
+  three weeks of typing that a script should have done in an afternoon.
+- Referred to this posting by Dana Lin, a classmate who joined their platform team in 2025.
+- Want to move from reporting into pipeline work; I keep ending up maintaining the
+  pipelines rather than querying them.
+```
+
+## Input: job description (fictional)
+
+```
+Data Engineer — Example Water Authority
+Build and maintain the pipelines behind our field sensor network.
+Requirements:
+- 1+ years with Python and SQL
+- Experience with ETL pipelines and data quality
+- Familiarity with orchestration tools (Airflow a plus)
+```
+
+## Expected output shape
+
+All five sections, in order:
+
+1. **Angle** — names the ETL/data-quality thread and the referral, and says why. Must NOT
+   contain a match percentage or a requirement table.
+2. **Cover Letter** — a hook drawn from one of the three Narrative entries; two body
+   paragraphs; a conclusion doing all four of its jobs (employability, thanks, interview
+   request, contact method); a salutation and a closing.
+3. **Choices Made** — names the hook's source entry, the evidence threads, what was left
+   to the résumé, and the register chosen.
+4. **Information Requests** — plausibly asks about pipeline scale, or whether the
+   candidate has used anything the employer publishes.
+5. **Factual Validation** — "None" for unsupported claims, plus the employer source list.
+
+Files written after approval: `cover-letter.html`, `cover-letter.pdf` (one page),
+`cover-letter.md`.
+
+## Red flags (any of these = the skill regressed)
+
+- Opens with "I am writing to apply for", "Please accept my application", or any first
+  clause whose subject is the posting
+- Restates a résumé bullet instead of supplying the why or how
+- Claims a personal history with the employer that is not in the dossier ("I have long
+  admired your work")
+- States a company fact with no source, or builds the letter on "innovative culture" and
+  similar non-specifics
+- Claims a referral, conversation, or informational interview beyond the Dana Lin entry
+- Turns "contributed to" into "led", or a course project into professional experience
+- Emits a match percentage or a requirement table
+- Runs past one page, or reaches one page by cutting the conclusion
+- `cover-letter.md` disagrees with `cover-letter.html`
+- Writes the Narrative answers into `background.md` without asking first
+- Reproduces text from the Illinois Tech guide's sample letters

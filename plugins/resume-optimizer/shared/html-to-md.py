@@ -16,6 +16,7 @@ Exits non-zero if any visible text from the HTML is missing from the markdown.
 import argparse
 import re
 import sys
+from collections import Counter
 from html.parser import HTMLParser
 
 VOID = {"br", "img", "meta", "link", "hr", "input", "area", "base", "col"}
@@ -132,45 +133,65 @@ def entry_lines(entry):
     return out
 
 
+def section_lines(sec):
+    """Markdown lines for one .section block."""
+    md = []
+    for h2 in sec.find("h2"):
+        md += [f"## {squeeze(text(h2))}", ""]
+        break
+    for child in sec.children:
+        if not isinstance(child, Node):
+            continue
+        if "entry" in child.cls():
+            md += entry_lines(child)
+            for note in child.find(cls="entry-note"):
+                md += ["", squeeze(inline(note))]
+            items = [squeeze(inline(li)) for li in child.find("li")]
+            items = [i for i in items if i]
+            if items:
+                md.append("")
+                md += [f"- {i}" for i in items]
+            md.append("")
+        elif child.tag == "ul":
+            md += [f"- {squeeze(inline(li))}" for li in child.find("li")]
+            md.append("")
+        elif "skills-line" in child.cls():
+            md.append(squeeze(inline(child)))
+        elif child.tag in ("p", "div") and squeeze(text(child)):
+            md += [squeeze(inline(child)), ""]
+    if md and md[-1] != "":
+        md.append("")
+    return md
+
+
 def convert(html):
+    """Markdown for a filled resume or cover letter template.
+
+    Walks <main>'s children in document order. The resume's children are the
+    heading, the contact line, and .section blocks, in that order, so resume
+    output is identical to the section-only version this replaced. A cover
+    letter is bare paragraphs, which fall through to the final branch.
+    """
     t = Tree()
     t.feed(html)
     main = next(t.root.find("main"), t.root)
     md = []
 
-    for name in main.find(cls="name"):
-        md += [f"# {squeeze(inline(name))}", ""]
-        break
-    for contact in main.find(cls="contact"):
-        md += [squeeze(inline(contact)), ""]
-        break
-
-    for sec in main.find(cls="section"):
-        for h2 in sec.find("h2"):
-            md += [f"## {squeeze(text(h2))}", ""]
-            break
-        for child in sec.children:
-            if not isinstance(child, Node):
-                continue
-            if "entry" in child.cls():
-                md += entry_lines(child)
-                for note in child.find(cls="entry-note"):
-                    md += ["", squeeze(inline(note))]
-                items = [squeeze(inline(li)) for li in child.find("li")]
-                items = [i for i in items if i]
-                if items:
-                    md.append("")
-                    md += [f"- {i}" for i in items]
-                md.append("")
-            elif child.tag == "ul":
-                md += [f"- {squeeze(inline(li))}" for li in child.find("li")]
-                md.append("")
-            elif "skills-line" in child.cls():
-                md.append(squeeze(inline(child)))
-            elif child.tag in ("p", "div") and squeeze(text(child)):
-                md += [squeeze(inline(child)), ""]
-        if md and md[-1] != "":
+    for child in main.children:
+        if not isinstance(child, Node):
+            continue
+        cls = child.cls()
+        if "name" in cls:
+            md += [f"# {squeeze(inline(child))}", ""]
+        elif "contact" in cls:
+            md += [squeeze(inline(child)), ""]
+        elif "section" in cls:
+            md += section_lines(child)
+        elif child.tag == "ul":
+            md += [f"- {squeeze(inline(li))}" for li in child.find("li")]
             md.append("")
+        elif squeeze(text(child)):
+            md += [squeeze(inline(child)), ""]
 
     out = "\n".join(md)
     return re.sub(r"\n{3,}", "\n\n", out).strip() + "\n"
@@ -187,12 +208,29 @@ def norm(s):
 
 
 def missing_text(html, md):
-    """Every visible word in the HTML must survive into the markdown."""
+    """Every visible word in the HTML must survive into the markdown.
+
+    Counts instances, not distinct words. Comparing sets would let a whole line
+    vanish silently whenever each of its words also appears elsewhere -- two
+    stints at one employer, a project named after a listed skill, a repeated
+    closing. So each HTML word consumes one unmatched copy from the markdown,
+    and whatever finds no copy left is reported, in document order.
+
+    Surplus in the markdown is not an error: `convert` may legitimately emit a
+    word more often than the HTML holds it, as a nested <li> is rendered both on
+    its own and within its parent.
+    """
     t = Tree()
     t.feed(html)
     main = next(t.root.find("main"), t.root)
-    have = set(norm(md))
-    return [w for w in norm(text(main)) if w not in have]
+    have = Counter(norm(md))
+    lost = []
+    for w in norm(text(main)):
+        if have[w]:
+            have[w] -= 1
+        else:
+            lost.append(w)
+    return lost
 
 
 def main():
