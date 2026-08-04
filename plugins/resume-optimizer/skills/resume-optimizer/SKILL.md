@@ -75,8 +75,10 @@ Run this after presenting the five sections and getting the user's approval of t
 
    If no method returns a number, skip forced trimming, tell the user the page count is unverified, and continue to step 4.
 3. **Dossier mode:** if the count exceeds 1, trim in this order, re-rendering after each pass until the PDF is one page: (a) cut bullets from the least job-relevant experiences, never below one bullet per included experience; (b) trim Projects, Leadership & Activities, and Awards & Publications items, optional Education lines (coursework, GPA, honors), and an optional Summary if present; (c) only then omit an experience that is clearly irrelevant to the target job; (d) if everything is minimal and the PDF still exceeds one page, stop and tell the user instead of over-trimming. After trimming, update the Changes Made section you presented, naming exactly what was cut or omitted. **Resume mode:** no forced trimming — keep the page guidance from Input modes.
-4. Only after the content is final, write `optimized-resume.md` in the working directory with exactly the content the PDF was rendered from — the two files must always match.
-5. If Chrome is unavailable, still write `optimized-resume.md` per step 4, keep `optimized-resume.html`, and tell the user to open it in a browser and print to PDF — telling them to turn **off** "Headers and footers" in the print dialog, which is on by default and would otherwise stamp the date and local file path onto the résumé.
+4. Only after the content is final, **derive** `optimized-resume.md` from the HTML — never retype the résumé, which costs a second full pass and lets the two files drift:
+   `python3 assets/html-to-md.py optimized-resume.html -o optimized-resume.md` (resolve the script path relative to this skill's directory, as with the template; stdlib only, nothing to install)
+   The script exits non-zero and names the words it lost if any visible text failed to carry over. If that happens, fix the HTML and re-run — do not hand-write the markdown, because deriving the file is what guarantees the two deliverables match.
+5. If Chrome is unavailable, keep `optimized-resume.html`, still derive `optimized-resume.md` per step 4 (the script reads only the HTML, so this path is unaffected), and tell the user to open the HTML in a browser and print to PDF — telling them to turn **off** "Headers and footers" in the print dialog, which is on by default and would otherwise stamp the date and local file path onto the résumé.
 
 ## Final principle
 
