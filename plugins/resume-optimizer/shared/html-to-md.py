@@ -132,45 +132,65 @@ def entry_lines(entry):
     return out
 
 
+def section_lines(sec):
+    """Markdown lines for one .section block."""
+    md = []
+    for h2 in sec.find("h2"):
+        md += [f"## {squeeze(text(h2))}", ""]
+        break
+    for child in sec.children:
+        if not isinstance(child, Node):
+            continue
+        if "entry" in child.cls():
+            md += entry_lines(child)
+            for note in child.find(cls="entry-note"):
+                md += ["", squeeze(inline(note))]
+            items = [squeeze(inline(li)) for li in child.find("li")]
+            items = [i for i in items if i]
+            if items:
+                md.append("")
+                md += [f"- {i}" for i in items]
+            md.append("")
+        elif child.tag == "ul":
+            md += [f"- {squeeze(inline(li))}" for li in child.find("li")]
+            md.append("")
+        elif "skills-line" in child.cls():
+            md.append(squeeze(inline(child)))
+        elif child.tag in ("p", "div") and squeeze(text(child)):
+            md += [squeeze(inline(child)), ""]
+    if md and md[-1] != "":
+        md.append("")
+    return md
+
+
 def convert(html):
+    """Markdown for a filled resume or cover letter template.
+
+    Walks <main>'s children in document order. The resume's children are the
+    heading, the contact line, and .section blocks, in that order, so resume
+    output is identical to the section-only version this replaced. A cover
+    letter is bare paragraphs, which fall through to the final branch.
+    """
     t = Tree()
     t.feed(html)
     main = next(t.root.find("main"), t.root)
     md = []
 
-    for name in main.find(cls="name"):
-        md += [f"# {squeeze(inline(name))}", ""]
-        break
-    for contact in main.find(cls="contact"):
-        md += [squeeze(inline(contact)), ""]
-        break
-
-    for sec in main.find(cls="section"):
-        for h2 in sec.find("h2"):
-            md += [f"## {squeeze(text(h2))}", ""]
-            break
-        for child in sec.children:
-            if not isinstance(child, Node):
-                continue
-            if "entry" in child.cls():
-                md += entry_lines(child)
-                for note in child.find(cls="entry-note"):
-                    md += ["", squeeze(inline(note))]
-                items = [squeeze(inline(li)) for li in child.find("li")]
-                items = [i for i in items if i]
-                if items:
-                    md.append("")
-                    md += [f"- {i}" for i in items]
-                md.append("")
-            elif child.tag == "ul":
-                md += [f"- {squeeze(inline(li))}" for li in child.find("li")]
-                md.append("")
-            elif "skills-line" in child.cls():
-                md.append(squeeze(inline(child)))
-            elif child.tag in ("p", "div") and squeeze(text(child)):
-                md += [squeeze(inline(child)), ""]
-        if md and md[-1] != "":
+    for child in main.children:
+        if not isinstance(child, Node):
+            continue
+        cls = child.cls()
+        if "name" in cls:
+            md += [f"# {squeeze(inline(child))}", ""]
+        elif "contact" in cls:
+            md += [squeeze(inline(child)), ""]
+        elif "section" in cls:
+            md += section_lines(child)
+        elif child.tag == "ul":
+            md += [f"- {squeeze(inline(li))}" for li in child.find("li")]
             md.append("")
+        elif squeeze(text(child)):
+            md += [squeeze(inline(child)), ""]
 
     out = "\n".join(md)
     return re.sub(r"\n{3,}", "\n\n", out).strip() + "\n"
