@@ -45,4 +45,4 @@ Merging a harvested project with a dossier entry follows the rules in [link-harv
 
 Choosing which dossier items appear in a CV is always allowed and is the whole point of the dossier — omission is not misrepresentation.
 
-The full rule — what may be omitted, what may be rephrased, what may never be altered, and the work-experience exception — is in [non-fabrication.md](non-fabrication.md).
+The full rule — what may be omitted, what may be rephrased, and what may never be altered — is in [evidence-rules.md](evidence-rules.md).
