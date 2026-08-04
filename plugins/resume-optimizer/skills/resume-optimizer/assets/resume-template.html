@@ -4,39 +4,47 @@
 <meta charset="utf-8">
 <title>Resume</title>
 <style>
-  @page { size: letter; margin: 0.6in 0.7in; }
+  @page { size: letter; margin: 0.5in; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: Georgia, "Times New Roman", serif;
+    /* Georgia covers macOS and Windows. Neither Georgia nor Times New Roman
+       ships on a stock Linux box, and the generic `serif` there is usually
+       DejaVu Serif — much wider than Georgia, so the same resume would lose
+       content to the one-page trim on Linux only. The Liberation/Nimbus entries
+       are Times-metric and keep line breaks close to the Georgia rendering. */
+    font-family: Georgia, "Liberation Serif", "Nimbus Roman", "Times New Roman", serif;
+    /* Density: line-height is by far the strongest lever (~+14% content per page
+       on its own, measured). Drop font-size to 10pt for roughly 5% more if a
+       resume is still slightly over one page. */
     font-size: 10.5pt;
-    line-height: 1.35;
+    line-height: 1.20;
     color: #1a1a1a;
-    max-width: 7.1in;
+    max-width: 7.5in;
     margin: 0 auto;
   }
   main { display: block; }
   .name {
-    font-size: 20pt;
+    font-size: 19pt;
     letter-spacing: 0.02em;
     text-align: center;
-    margin-bottom: 2pt;
+    margin-bottom: 1pt;
   }
   .contact {
     text-align: center;
     font-size: 9.5pt;
-    margin-bottom: 10pt;
+    margin-bottom: 7pt;
   }
   .contact a { color: #1a1a1a; text-decoration: none; }
-  .section { margin-bottom: 10pt; }
+  .section { margin-bottom: 7pt; }
   .section > h2 {
     font-size: 11pt;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     border-bottom: 1px solid #1a1a1a;
-    padding-bottom: 2pt;
-    margin-bottom: 6pt;
+    padding-bottom: 1pt;
+    margin-bottom: 4pt;
   }
-  .entry { margin-bottom: 8pt; }
+  .entry { margin-bottom: 5pt; }
   .entry-line {
     display: flex;
     justify-content: space-between;
@@ -47,9 +55,9 @@
   .entry-title { font-style: italic; }
   .entry-dates { font-size: 9.5pt; }
   .entry-note { font-size: 9.5pt; margin-top: 1pt; }
-  ul { padding-left: 16pt; margin-top: 2pt; }
-  li { margin-bottom: 2pt; }
-  .skills-line { margin-bottom: 2pt; }
+  ul { padding-left: 12pt; margin-top: 1pt; }
+  li { margin-bottom: 1pt; }
+  .skills-line { margin-bottom: 1pt; }
   .skills-line strong { font-weight: bold; }
   /* Keep entries intact, but let sections fragment. A section taller than one
      page cannot be kept whole, so Chrome pushes it to a fresh page and overflows
