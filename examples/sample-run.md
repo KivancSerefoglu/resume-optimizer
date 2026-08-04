@@ -50,7 +50,7 @@ The skill must return all five sections:
 - "Responsible for" / "Helped with" / "Worked on" / "Participated in" surviving in bullets
 - "Helped with the migration" silently upgraded to sole ownership without a confirming question
 - A summary section (early-career candidate with a clear direction)
-- A **Verdict:** line or apply/skip recommendation appearing anywhere — that belongs to `/match-analysis` only
+- A **Verdict:** line or apply/skip recommendation appearing anywhere — that belongs to `/resume-optimizer:match-analysis` only
 
 ---
 
