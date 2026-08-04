@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cover Letter</title>
+<style>
+  @page { size: letter; margin: 0.75in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    /* Same stack as resume-template.html, for the same reason: Georgia covers
+       macOS and Windows, and the Liberation/Nimbus entries are Times-metric so
+       a Linux render stays close. The letterhead has to match the resume this
+       letter arrives with, which means matching its line breaks too. */
+    font-family: Georgia, "Liberation Serif", "Nimbus Roman", "Times New Roman", serif;
+    /* Prose, not the resume's density target. The letter has a hard one-page
+       limit but far less content, so readability wins over fitting more in. */
+    font-size: 11pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+    max-width: 7in;
+    margin: 0 auto;
+  }
+  main { display: block; }
+  /* .name and .contact mirror resume-template.html exactly so the letterhead
+     matches. Change them there and here together. */
+  .name {
+    font-size: 19pt;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin-bottom: 1pt;
+  }
+  .contact {
+    text-align: center;
+    font-size: 9.5pt;
+    margin-bottom: 22pt;
+  }
+  .contact a { color: #1a1a1a; text-decoration: none; }
+  .date { margin-bottom: 2pt; }
+  .company { margin-bottom: 14pt; }
+  .salutation { margin-bottom: 11pt; }
+  p.body-par { margin-bottom: 11pt; }
+  .closing { margin-top: 16pt; }
+  .signature { margin-top: 22pt; }
+</style>
+</head>
+<body>
+<main>
+  <!-- Replace everything inside <main> with the candidate's letter, reusing the
+       classes below. The markup here is only a rendering example with fictional
+       placeholder data — the canonical structure spec (what each paragraph must
+       do, in what order) lives in ../references/letter-structure.md. Do not
+       restate it here. -->
+  <h1 class="name">Jordan Example</h1>
+  <p class="contact">
+    Chicago, IL • jordan@example.com • (312) 555-0100
+  </p>
+
+  <p class="date">March 3, 2026</p>
+  <p class="company">Example Water Authority</p>
+  <p class="salutation">Dear Marcus Example,</p>
+
+  <p class="body-par">Opening paragraph — the hook, per one of the four methods in the structure reference.</p>
+  <p class="body-par">Body paragraph — one concrete experience tied to one key point in the posting, supplying the why or how the resume bullet had no room for.</p>
+  <p class="body-par">Body paragraph — motivation, or understanding of the organisation built on a usable specific.</p>
+  <p class="body-par">Closing paragraph — employability, thanks for reading, an explicit request for an interview, and the best way to make contact.</p>
+
+  <p class="closing">Kind regards,</p>
+  <p class="signature">Jordan Example</p>
+</main>
+</body>
+</html>
