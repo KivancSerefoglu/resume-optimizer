@@ -16,6 +16,7 @@ Exits non-zero if any visible text from the HTML is missing from the markdown.
 import argparse
 import re
 import sys
+from collections import Counter
 from html.parser import HTMLParser
 
 VOID = {"br", "img", "meta", "link", "hr", "input", "area", "base", "col"}
@@ -207,12 +208,29 @@ def norm(s):
 
 
 def missing_text(html, md):
-    """Every visible word in the HTML must survive into the markdown."""
+    """Every visible word in the HTML must survive into the markdown.
+
+    Counts instances, not distinct words. Comparing sets would let a whole line
+    vanish silently whenever each of its words also appears elsewhere -- two
+    stints at one employer, a project named after a listed skill, a repeated
+    closing. So each HTML word consumes one unmatched copy from the markdown,
+    and whatever finds no copy left is reported, in document order.
+
+    Surplus in the markdown is not an error: `convert` may legitimately emit a
+    word more often than the HTML holds it, as a nested <li> is rendered both on
+    its own and within its parent.
+    """
     t = Tree()
     t.feed(html)
     main = next(t.root.find("main"), t.root)
-    have = set(norm(md))
-    return [w for w in norm(text(main)) if w not in have]
+    have = Counter(norm(md))
+    lost = []
+    for w in norm(text(main)):
+        if have[w]:
+            have[w] -= 1
+        else:
+            lost.append(w)
+    return lost
 
 
 def main():
