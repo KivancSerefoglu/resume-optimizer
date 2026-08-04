@@ -1,6 +1,6 @@
 {
   "name": "resume-optimizer",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Two skills for job applications, neither of which fabricates a word. match-analysis scores one job description against your background and tells you whether to apply. resume-optimizer tailors your resume to a job description — or generates a one-page CV from your background file — with a transparent job-match score and markdown + PDF output.",
   "author": {
     "name": "Kivanc Serefoglu"
