@@ -34,7 +34,8 @@ Before returning the letter, check every sentence. Remove or flag:
 - Any emotion or long-standing interest not present in the dossier or this run's answers
 - Any company fact with no source in the posting, a fetched page, or the user's words
 - Any personal history with the employer the candidate did not state
-- Any referral, contact, or conversation not recorded in the Narrative section
+- Any referral, contact, or conversation not recorded in the Narrative section, or given
+  as an answer during this run
 - Any claim whose scope exceeds the dossier or résumé entry it came from
 - Any technology, metric, title, or date not supported by the candidate's material
 - Any statement about future performance offered as though it were evidence

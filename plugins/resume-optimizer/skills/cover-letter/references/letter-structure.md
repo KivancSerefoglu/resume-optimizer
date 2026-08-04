@@ -70,6 +70,10 @@ cut to reach one page.
 Fictional throughout. It shows the shape and the register; it is not a form to fill in —
 a letter that reads like a filled-in form is the failure this file exists to prevent.
 
+The hook below traces to one Narrative entry: "Got into data work after watching my
+mother run a six-flat's water billing off a spreadsheet." Everything else comes from the
+candidate's Experience section and the employer's published material.
+
 > **Priya Example**
 > Chicago, IL • priya@example.edu • (312) 555-0142
 >
@@ -82,8 +86,7 @@ a letter that reads like a filled-in form is the failure this file exists to pre
 > *[Hook — anecdote, traced to a Narrative entry]*
 > The first data pipeline I ever built was a spreadsheet my mother used to track water
 > bills for the six-flat she managed. It was terrible. It also caught a billing error
-> that had been running for two years, and I have been chasing that particular feeling
-> ever since.
+> that had been running for two years.
 >
 > *[Body — one experience against one posting requirement, supplying the why]*
 > Your posting asks for someone who can take sensor data from the field and make it
@@ -94,9 +97,9 @@ a letter that reads like a filled-in form is the failure this file exists to pre
 > honest, which took some explaining.
 >
 > *[Body — organisation understanding, from a usable specific]*
-> I read the source-water assessment you publish. The section on aging meter
-> infrastructure is the part of this job I want — not the modelling, but the unglamorous
-> work of making a measurement mean what it says it means.
+> Your published source-water assessment describes aging meter infrastructure. That is
+> the part of this job I want — not the modelling, but the unglamorous work of making a
+> measurement mean what it says it means.
 >
 > *[Conclusion — employability, thanks, interview, contact]*
 > You would be getting an engineer who has already argued for accuracy over a prettier
@@ -109,5 +112,7 @@ a letter that reads like a filled-in form is the failure this file exists to pre
 > Priya Example
 
 Note what the example does not do: it never restates a résumé bullet, it never claims a
-history with the employer beyond reading one public document, and its hook comes from a
-fact about the candidate's life that no amount of company research could have supplied.
+history with the employer at all, and every fact about the employer is attributed to the
+employer's own published material rather than to the candidate having read it. Its hook
+comes from a fact about the candidate's life that no amount of company research could
+have supplied.

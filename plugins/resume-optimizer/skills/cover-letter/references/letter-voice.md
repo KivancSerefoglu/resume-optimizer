@@ -2,7 +2,7 @@
 
 ## Length
 
-250–400 words of letter body, three to five paragraphs, one page. A cover letter that runs
+250–400 words of letter body, three to four paragraphs, one page. A cover letter that runs
 long does not read as thorough. It reads as unedited.
 
 ## Openings that are never used
