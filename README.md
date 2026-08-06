@@ -1,112 +1,103 @@
 # Resume Optimizer
 
-Tailor your resume — or generate a one-page CV from your full background — for any job description, without fabricating a word. Three Claude Code skills: one scores a posting against your background, one writes the resume, one writes the cover letter.
+A Claude Code plugin that helps you apply to jobs faster — without lying on your resume.
 
-Two ways to use it, plus an optional shortcut:
+It does three things:
 
-- **Dossier mode (recommended):** keep one `background.md` master file with everything you've ever done — every job, project, metric, and course — plus a Narrative section for the story material a resume cannot show. Give the skill that file plus a job posting; it selects the relevant subset and generates a one-page, ATS-friendly CV as markdown **and PDF**.
-- **Resume mode:** give it an existing resume and a job description; it tailors the resume.
-- **Portfolio links (optional):** add your GitHub profile, specific repos, a portfolio site, or a LinkedIn URL and it reads your projects from there instead of making you describe each one. Harvested projects are merged with your background file — the repo supplies languages, dates, and scale; your file supplies impact and context — and are used for that run only. Nothing is written back to `background.md`.
+1. **Tells you if a job is worth applying to** (before you waste an evening on it)
+2. **Tailors your resume** to a specific job posting
+3. **Writes a cover letter** to go with it
 
-## What it does
+Everything it writes only uses facts you actually gave it. It will never invent a metric, a skill, or a feeling you didn't mention — it just picks the truest, most relevant parts of your background and presents them well.
 
-Three skills, sharing one evidence engine.
+## Who this is for
 
-### `/resume-optimizer:match-analysis` — should I apply?
+Anyone tired of manually rewriting their resume for every single job application. You give it your background once, and from then on, tailoring a resume or writing a cover letter for a new job takes one message instead of an hour.
 
-1. Extracts a factual record from your background file or resume.
-2. Analyzes the job description (requirements, keywords, what the employer values).
-3. Classifies every requirement and computes a transparent **job-match percentage** — a weighted breakdown table you can audit, never a black-box "ATS score".
-4. Returns an **Apply / Apply with caveats / Skip** verdict plus the single gap that would move the score most.
+## Before you start
 
-Writes nothing to disk. Run it on a posting before you spend an evening on the application.
+You need [Claude Code](https://claude.com/claude-code) installed and running. That's it — no accounts, no API keys, no extra setup.
 
-### `/resume-optimizer:resume-optimizer` — write the resume
+## Step 1: Install the plugin
 
-Runs the same three analysis steps, then:
-
-4. Writes the resume to lead with your strongest *supported* evidence.
-5. Validates every claim against your input, then writes `optimized-resume.md` and `optimized-resume.pdf` (one page enforced in dossier mode).
-
-**What they will never do:** invent metrics, add technologies from the job posting that you didn't list, inflate titles or seniority, or turn "contributed to" into "led". Leaving things out is fair game — that's tailoring. Changing facts is not. A less impressive but fully defensible claim always beats one you can't back up in an interview.
-
-### `/resume-optimizer:cover-letter` — write the letter
-
-Runs the same analysis silently to pick the two or three things worth writing about, then:
-
-1. Draws a hook from the **Narrative** section of your background file — how you got into
-   the field, a project that redirected you, a product you actually use, who referred you.
-   It offers a few openings and you pick one. It will not invent an anecdote.
-2. Researches the employer from the posting and their own site, and uses only specifics it
-   can cite back to you.
-3. Writes `cover-letter.md` and `cover-letter.pdf`, one page, on a letterhead matching your
-   resume.
-
-Paste in an existing letter instead and it critiques that against the same rules.
-
-**The failure it is built to prevent:** a resume fabricates by inventing a metric; a cover
-letter fabricates by inventing a feeling. "I've long admired your work" reads as warmth,
-not as a lie — so the skill will not write it unless you said it.
-
-## Install
-
-In Claude Code:
+Open Claude Code and paste these two lines:
 
 ```
 /plugin marketplace add KivancSerefoglu/resume-optimizer
 /plugin install resume-optimizer@resume-optimizer
 ```
 
-## Use
+That's the whole installation.
 
-### Score a posting
+## Step 2: Give it something to work with
+
+You need one of these two things:
+
+- **An existing resume** (a PDF or doc), OR
+- **A `background.md` file** — a plain text file listing everything you've done: jobs, projects, numbers, courses. (Recommended if you're job-hunting seriously — see below.)
+
+If you only have a resume, that's fine to start. The first time you use it, it will offer to turn your resume into a reusable `background.md` file automatically, so future applications are faster.
+
+## Step 3: Use it
+
+Everything below is a message you type directly into Claude Code, in plain English. Just swap in your own file and job link.
+
+### "Should I even apply?"
 
 ```
 How well do I match this job posting? background.md — https://example.com/jobs/data-engineer
 ```
 
-You get the match percentage, the audit table, the gaps, and an Apply / Apply with caveats / Skip verdict. Nothing is written to disk; if the verdict is positive it offers to hand off to `/resume-optimizer:resume-optimizer`.
+You'll get a percentage match, a table showing exactly why, and a clear verdict: **Apply**, **Apply with caveats**, or **Skip**. Nothing gets saved to your computer — this is just a gut check.
 
-### Write the resume
-
-First run (no background file yet):
+### "Tailor my resume to this job"
 
 ```
 Tailor my resume (resume.pdf) to this job posting: https://example.com/jobs/data-engineer
 ```
 
-The skill offers to build a reusable `background.md` from your resume plus a few targeted questions. Keep that file — every later application is then just:
+or, once you have a `background.md` file:
 
 ```
 Generate a CV from background.md for this job posting: https://example.com/jobs/data-engineer
 ```
 
-Either way you get: a job-match score with its breakdown, the optimized resume, a list of changes, targeted questions that could strengthen the application, a factual-validation report — and `optimized-resume.md` + `optimized-resume.pdf` on disk.
+You get back:
+- A match score and why
+- A tailored resume, as both `optimized-resume.md` and a ready-to-send `optimized-resume.pdf` (one page)
+- A plain list of what it changed and why
+- A few questions that could make your application even stronger
 
-To pull your projects straight from GitHub:
+**Tip:** If you have a GitHub profile, add it to the message and it will pull your real projects from your repos automatically:
 
 ```
 Generate a CV from background.md for https://example.com/jobs/data-engineer — also use my projects at github.com/myusername
 ```
 
-It fetches your repos, picks the ones that fit the role, and describes each one according to what the commit history actually shows — your own projects as yours, contributions to other people's repos as contributions.
-
-### Write the cover letter
+### "Write me a cover letter"
 
 ```
 Write a cover letter for this posting: https://example.com/jobs/data-engineer — background.md
 ```
 
-It asks what it needs for the hook if your background file has no Narrative section yet,
-and offers to save your answers there so the next letter is cheaper.
+It writes a one-page cover letter (`cover-letter.md` and `cover-letter.pdf`) that opens with something true and specific about you — not a generic "I am excited to apply" line — and ties it to why you fit the role. If it needs a personal detail it doesn't have yet, it will just ask you.
 
-## Example
+## What it will never do
 
-See [examples/sample-run.md](examples/sample-run.md) for fictional before/after runs in both modes with the expected output shape.
+- Make up a number, metric, or result you didn't provide
+- Add a skill or technology from the job posting that you never mentioned
+- Upgrade your job title or turn "helped with" into "led"
+- Invent a feeling or story for the cover letter's opening line
 
-## How it's built
+If something isn't strong enough to say honestly, it leaves it out rather than stretching it. A believable resume beats an impressive one you can't defend in an interview.
 
-A single Claude Code plugin exposing three skills: `match-analysis`, `resume-optimizer`, and `cover-letter`. Machinery both need — evidence rules, the background-dossier format, portfolio link harvest, and the scoring rubric — lives in [shared/](plugins/resume-optimizer/shared/), so the rubric has exactly one copy. Each skill's `SKILL.md` carries only its own workflow; resume-specific rule sets live in [references/](plugins/resume-optimizer/skills/resume-optimizer/references/); the PDF templates are static HTML files rendered via headless Chrome, and one shared script derives the markdown from the rendered HTML so the two deliverables cannot drift. No dependencies, no build step, no API keys.
+## Want to see it in action first?
+
+Check [examples/sample-run.md](examples/sample-run.md) for full example runs, showing exactly what the input looks like and what you get back.
+
+## How it works, briefly
+
+One plugin, three skills (`match-analysis`, `resume-optimizer`, `cover-letter`) that all share the same fact-checking engine, so a claim that's rejected in one is rejected in all three. No dependencies to install, no build step, no API keys — it runs entirely inside Claude Code.
 
 ## License
 
