@@ -7,7 +7,11 @@ The framework is theirs; the wording and the example letter here are original.
 
 1. **Heading block** — the candidate's name and contact line, matching the résumé header
    exactly. A letter set in a different typeface than the résumé it arrives with looks
-   assembled from parts.
+   assembled from parts. Names, employers, institutions, and places are written in
+   unaccented English letters throughout the letter — including the typed name in the
+   closing — per the character-set rule in
+   [writing-guide.md](../../resume-optimizer/references/writing-guide.md), so the two
+   documents agree.
 2. **Date** — the date the letter is sent, written out: `March 3, 2026`.
 3. **Company name** — on its own line.
 4. **Salutation** — `Dear First Last,` when the hiring manager is known, `Dear Hiring
