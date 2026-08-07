@@ -2,7 +2,7 @@
 
 ## First-glance priorities
 
-Organize the résumé so a recruiter can quickly identify: current or most relevant role; relevant technical skills; relevant years and type of experience; strongest supported achievements; notable employers, projects, publications, patents, or open-source contributions; education when relevant to career level; work authorization only when the candidate requests it or it provides a clear advantage. Do not use graduation year as a substitute for calculating years of professional experience.
+Organize the résumé so a recruiter can quickly identify: current or most relevant role; relevant technical skills; relevant years and type of experience; strongest supported achievements; notable employers, projects, publications, patents, or open-source contributions; education when relevant to career level. Do not use graduation year as a substitute for calculating years of professional experience.
 
 ## Work-experience bullets
 
@@ -49,9 +49,19 @@ Below the header: action-verb bullets without personal pronouns. Bullets are **r
 
 Include every work experience with at least its two-line header and one bullet. Omit an experience only when it is clearly irrelevant to the target job — a high bar; when in doubt, include it — and name every omission in the Changes Made output section.
 
+## Character set
+
+Write the whole résumé in unaccented English letters. Transliterate diacritics wherever they appear — the candidate's own name, employers, institutions, cities, countries, project and paper titles: `Kıvanç Şerefoğlu` → `Kivanc Serefoglu`, `Özyeğin` → `Ozyegin`, `Türkiye` → `Turkiye`, `S²IP-LLM` → `S2IP-LLM`. Accented glyphs are mangled by some ATS parsers and PDF text layers, and a name that arrives in a recruiter's system as `Kvan efolu` is worse than an unaccented one.
+
+Transliteration is a rendering choice, not a fact change: the item is preserved exactly, so it is not "altering a fact" under [evidence-rules.md](../../../shared/evidence-rules.md) and never needs to be reported as a modification. Two limits: it means dropping diacritics only, never translating a name into a different word; and URLs, email addresses, and repository names are reproduced character-for-character, because those must still resolve. Punctuation — em dashes, en dashes, bullets, middots — is not affected.
+
+## Work authorization
+
+Never put work authorization, visa status, citizenship, or sponsorship needs on the résumé — not in the header, not on a Skills line, not in a Summary — even when the posting makes authorization an explicit requirement and even when the dossier records it. Application forms ask that question directly and that is where it gets answered. Authorization still matters as *input*: it informs the match analysis and the apply/skip reasoning. It just never reaches the page.
+
 ## Formatting principles
 
-Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality unless specifically relevant and voluntarily provided; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; random mid-sentence bolding; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
+Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality; work authorization, visa, or sponsorship statements; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; random mid-sentence bolding; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
 
 One page is generally preferred for students, new graduates, and early-career candidates when their relevant information fits comfortably. A second page is acceptable when relevant experience, leadership, research, publications, projects, or technical accomplishments justify it. Do not remove strong evidence solely to satisfy an arbitrary page rule.
 
