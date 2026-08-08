@@ -1,6 +1,6 @@
 ---
 name: cover-letter
-description: Use when the user wants a cover letter, application letter, or letter of interest written or reviewed for a specific job description or employer. Produces a one-page, factually validated cover letter in markdown and PDF, built on a hook drawn from the candidate's own material. To tailor a résumé, use the resume-optimizer skill; to decide whether a role is worth applying to, use match-analysis.
+description: Use when the user wants a cover letter, application letter, or letter of interest written or reviewed for a job description or employer. Outputs a one-page, factually validated letter in markdown and PDF, built on a hook drawn from the candidate's own material. For résumés use resume-optimizer; to score a role, match-analysis.
 ---
 
 # Cover Letter
@@ -91,33 +91,34 @@ Return these five sections, in order:
 Run this after presenting the five sections and getting the user's approval of the content
 — produce both files by default, don't wait to be asked for the PDF.
 
-1. Copy `assets/cover-letter-template.html` (bundled with this skill — resolve the path
-   relative to this skill's directory, not the user's working directory), replace the
-   contents of `<main>` with the letter using the template's existing classes, and save as
-   `cover-letter.html`. Then render with headless Chrome. Keep `--no-pdf-header-footer`:
-   without it Chrome stamps the print date and the local `file://` path onto a document
-   the user sends to employers.
-   - macOS: `"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --no-pdf-header-footer --print-to-pdf=cover-letter.pdf cover-letter.html`
-   - Linux: `google-chrome --headless --no-pdf-header-footer --print-to-pdf=cover-letter.pdf cover-letter.html` (or `chromium`)
-   - Windows: `"C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --no-pdf-header-footer --print-to-pdf=cover-letter.pdf cover-letter.html` (also try `%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe`, or `msedge.exe` at `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` — Edge takes the same flags)
-2. Check the page count:
-   `python3 -c "import re,sys;d=open(sys.argv[1],'rb').read();c=[int(x) for x in re.findall(rb'/Count\s+(\d+)',d)];print(max(c) if c else len(re.findall(rb'/Type\s*/Page[^s]',d)))" cover-letter.pdf`
-   If it returns no number, tell the user the page count is unverified and continue.
-3. **One page is a hard limit.** If the count exceeds 1, trim in this order, re-rendering
-   after each pass: (a) cut the second body paragraph, if there is one; (b) tighten the remaining
+1. Write `letter-body.html` — only the markup that belongs *inside* `<main>`, reusing the
+   classes in `assets/cover-letter-template.html` (bundled with this skill — resolve
+   bundled paths relative to this skill's directory, not the user's working directory).
+   Never copy the template's `<head>` or CSS into your output: the renderer supplies them,
+   and retyping that boilerplate costs a full pass on every re-render of the trim loop.
+2. Assemble and render:
+   `python3 ../../shared/render.py assets/cover-letter-template.html letter-body.html cover-letter`
+   It writes `cover-letter.html` and `cover-letter.pdf`, then prints `pages: N`. The script
+   locates Chrome, Chromium, or Edge on macOS, Linux, or Windows itself, and keeps
+   `--no-pdf-header-footer`: without it Chrome stamps the print date and the local
+   `file://` path onto a document the user sends to employers. If it prints
+   `pages: unknown`, tell the user the page count is unverified and continue.
+3. **One page is a hard limit.** If the count exceeds 1, trim in this order, editing
+   `letter-body.html` and re-running step 2 after each pass: (a) cut the second body
+   paragraph, if there is one; (b) tighten the remaining
    paragraphs; (c) shorten the hook. Never trim the salutation, the conclusion, or the
    closing — a letter missing its close is broken, not short. Update Choices Made with
    what was cut.
-4. Only once the content is final, **derive** `cover-letter.md` from the HTML — never
-   retype the letter, which costs a second pass and lets the two files drift:
-   `python3 ../../shared/html-to-md.py cover-letter.html -o cover-letter.md` (resolve the
-   script path relative to this skill's directory; stdlib only, nothing to install). The
-   script exits non-zero and names the words it lost if any visible text failed to carry
-   over. Fix the HTML and re-run rather than hand-writing the markdown.
-5. If Chrome is unavailable, keep `cover-letter.html`, still derive the `.md` per step 4,
-   and tell the user to open the HTML in a browser and print to PDF — with "Headers and
-   footers" turned **off**, which is on by default and would otherwise stamp the date and
-   local file path onto the letter.
+4. Only once the content is final, **derive** `cover-letter.md` from the assembled HTML —
+   never retype the letter, which costs a second pass and lets the two files drift:
+   `python3 ../../shared/html-to-md.py cover-letter.html -o cover-letter.md` (stdlib only,
+   nothing to install). The script exits non-zero and names the words it lost if any
+   visible text failed to carry over. Fix `letter-body.html`, re-run step 2, then re-run
+   this rather than hand-writing the markdown.
+5. If `render.py` exits 2, no browser was found. `cover-letter.html` is still written, so
+   still derive the `.md` per step 4, and tell the user to open the HTML in a browser and
+   print to PDF — with "Headers and footers" turned **off**, which is on by default and
+   would otherwise stamp the date and local file path onto the letter.
 
 ## Review mode
 

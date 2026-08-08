@@ -63,7 +63,9 @@ Never put work authorization, visa status, citizenship, or sponsorship needs on 
 
 Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality; work authorization, visa, or sponsorship statements; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; random mid-sentence bolding; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
 
-One page is generally preferred for students, new graduates, and early-career candidates when their relevant information fits comfortably. A second page is acceptable when relevant experience, leadership, research, publications, projects, or technical accomplishments justify it. Do not remove strong evidence solely to satisfy an arbitrary page rule.
+**The résumé is one page.** This holds at every career level and in both input modes — a long history, publications, or a deep project list are reasons to select harder, not reasons to run onto a second page. The limit is verified against the rendered PDF at export, not estimated from the markdown.
+
+Treat the page as the constraint that forces the tailoring: when everything will not fit, keep what this posting cares about and cut by relevance, not by shaving every item until nothing reads as substantial. A strong item omitted for space is fine and gets named in Changes Made; the same item reduced to a fragment is not.
 
 ## Technical skills section
 

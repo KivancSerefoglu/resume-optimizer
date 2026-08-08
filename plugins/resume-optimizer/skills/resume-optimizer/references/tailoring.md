@@ -1,5 +1,41 @@
 # Role-Specific Tailoring
 
+## Reframing bullets for the target role
+
+Selection is the first optimization lever; rewording is the second, and it is expected — a
+bullet lifted verbatim from the dossier is rarely the strongest version for *this* posting.
+The candidate's wording is a record of what happened, not the sentence that has to appear on
+the page. Rewrite it. What stays fixed is the fact underneath: what was built, when, with
+what, at what scale, and whose work it was.
+
+Do:
+
+- **Lead with what the posting cares about.** Same work, different first clause — one data
+  pipeline bullet can lead with latency for a low-latency role, with schema design for a
+  data-platform role, with uptime for an infrastructure role.
+- **Use the posting's term for something the candidate genuinely did** — "event-driven" for
+  pub/sub work, "distributed systems" for a real multi-node service. The term has to describe
+  the work as it actually was, not as the posting wishes it were.
+- **Split or merge.** One dense dossier bullet becomes two when both halves matter here; two
+  become one when only one aspect does.
+- **Cut the irrelevant clause.** A bullet often carries detail that matters for a different
+  role — drop it rather than spending a line of the page on it.
+- **Move emphasis within an experience.** Which bullet of an entry leads, and how many lines
+  each gets, is tailoring.
+
+Never:
+
+- Change a fact to fit the posting — dates, titles, metrics, technologies, scope, or team vs.
+  individual framing. See selection vs. alteration in
+  [evidence-rules.md](../../../shared/evidence-rules.md).
+- Adopt a posting's term the work does not fit: "led" for participation, "production" for a
+  prototype, "petabyte-scale" for a dataset the candidate never sized.
+- Escalate a claim because the posting asks for more than the dossier supports. A real gap
+  belongs in the match analysis, not in a reworded bullet.
+
+Test for any rewrite: could the candidate defend this exact sentence in an interview using
+only what they told you? If not, it is alteration, not reframing.
+
 ## By company type
 
 **Technology-first product companies:** emphasize supported evidence of scale, reliability, architecture, algorithms, distributed systems, performance, product impact, experimentation, engineering quality, ownership.
