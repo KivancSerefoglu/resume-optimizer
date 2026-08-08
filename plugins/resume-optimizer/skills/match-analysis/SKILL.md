@@ -1,6 +1,6 @@
 ---
 name: match-analysis
-description: Use when the user wants to know how well their background fits a specific job description or role — "should I apply", "how well do I match this", "score this job against my background". Scores one job description against a résumé or background dossier and returns an auditable requirement table, a match percentage, and an apply/skip verdict. Writes no files and produces no résumé; use the resume-optimizer skill to write or tailor a résumé.
+description: Use when the user wants to know how well their background fits a job — "should I apply", "how well do I match this", "score this job against my background". Returns an auditable requirement table, a match percentage, and an apply/skip verdict. Writes no files; to write or tailor a résumé, use resume-optimizer.
 ---
 
 # Match Analysis

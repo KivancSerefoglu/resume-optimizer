@@ -1,8 +1,10 @@
 .DS_Store
 .claude/settings.local.json
+resume-body.html
 optimized-resume.md
 optimized-resume.html
 optimized-resume.pdf
+letter-body.html
 cover-letter.md
 cover-letter.html
 cover-letter.pdf
