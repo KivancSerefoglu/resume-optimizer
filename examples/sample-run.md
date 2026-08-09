@@ -35,13 +35,14 @@ Requirements:
 
 ## Expected output shape
 
-The skill must return all five sections:
+The skill must return all six sections:
 
 1. **Job Match Analysis** — should mark Python/SQL/ETL as strong or partial matches, Airflow as *not demonstrated* (it is not in the resume), and ask about pipeline scale as missing info. Must NOT present an "ATS score".
 2. **Optimized Résumé** — markdown in the MCS layout: Education-first fixed order (Education → Experience → Projects if any → Leadership & Activities → Skills & Interests), two-line entry headers. Bullets rewritten in active voice (e.g. "Migrated ETL jobs to Python…" instead of "Helped with the migration…" — only if the candidate confirms they did the migration; otherwise a supported phrasing like "Contributed to the migration…"). Must NOT contain Airflow, invented metrics, or a fabricated data-warehousing claim. Jira and Slack should be dropped from skills.
-3. **Changes Made** — lists the rewrites and the removal of low-signal tools.
-4. **Information Requests** — targeted questions (e.g. data volume, number of pipeline users, candidate's exact role in the ETL migration).
-5. **Factual Validation** — status plus explicit "None" for technologies/metrics added if nothing was added.
+3. **Changes Made** — lists the rewrites, the removal of low-signal tools, and any structural change (an item added, cut, moved between sections, split, or merged) with its reason.
+4. **Hiring Manager Review** — a screener's reaction to *this* posting: what catches attention, what causes hesitation (e.g. the unclear ownership of the ETL migration, no Airflow evidence), what feels missing, and what should be impossible to overlook. Concrete and page-specific, not generic advice.
+5. **Information Requests** — targeted questions, ranked, each with what the answer would unlock (e.g. data volume, number of pipeline users, candidate's exact role in the ETL migration).
+6. **Factual Validation** — status plus explicit "None" for technologies/metrics added if nothing was added.
 
 ## Red flags (any of these = the skill regressed)
 
@@ -51,6 +52,8 @@ The skill must return all five sections:
 - "Helped with the migration" silently upgraded to sole ownership without a confirming question
 - A summary section (early-career candidate with a clear direction)
 - A **Verdict:** line or apply/skip recommendation appearing anywhere — that belongs to `/resume-optimizer:match-analysis` only
+- A Hiring Manager Review made of generic résumé advice instead of a reaction to this page and this posting, or one with no hesitation named at all
+- A critique suggestion that would require a fact the candidate never supplied, written as a change instead of asked as a question
 
 ---
 
@@ -91,10 +94,11 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 
 1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Type | Weight | Status | Credit |` table. Airflow: Type `preferred`, *not demonstrated*, zero credit.
 2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
-3. **Changes Made** — says which dossier items were selected and which were left out.
-4. **Information Requests** — targeted (e.g., data volume of the ETL jobs).
-5. **Factual Validation** — explicit "None" rows when nothing unsupported was added.
-6. Both `optimized-resume.md` and `optimized-resume.pdf` are written; the PDF is one page.
+3. **Changes Made** — says which dossier items were selected, which were left out, and any restructuring (e.g. the course scheduler promoted or demoted, a bullet split or merged) with its reason.
+4. **Hiring Manager Review** — the screening read of the one-page CV against this posting, in its four parts.
+5. **Information Requests** — targeted and ranked (e.g., data volume of the ETL jobs, whether Jordan designed or implemented the migration).
+6. **Factual Validation** — explicit "None" rows when nothing unsupported was added.
+7. Both `optimized-resume.md` and `optimized-resume.pdf` are written; the PDF is one page.
 
 ## Additional red flags (dossier mode)
 

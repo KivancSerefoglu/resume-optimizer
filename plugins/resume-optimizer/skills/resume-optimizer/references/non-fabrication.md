@@ -17,7 +17,7 @@ When a metric would improve a bullet but has not been provided:
 3. Add a targeted information request after the résumé, e.g. "Do you know approximately how
    much processing time the automation saved or how many users used the system?"
 
-## Step-5 validation checklist
+## Final validation checklist
 
 Before returning the résumé, review every factual claim against the candidate's original
 information. Remove or flag:
