@@ -62,7 +62,9 @@ Ask only targeted questions. Never re-ask for information already provided.
    statement / question / referral). Let the user pick or edit. If no material supports
    any of the four, ask first — a fabricated anecdote is the worst failure this skill can
    produce.
-5. **Draft the letter** per [letter-structure.md](references/letter-structure.md).
+5. **Draft the letter** per [letter-structure.md](references/letter-structure.md), then run
+   the revision pass in [letter-voice.md](references/letter-voice.md) on the draft. Never
+   send a first draft to Step 6.
 6. **Validate** per
    [non-fabrication-letter.md](references/non-fabrication-letter.md).
 
@@ -127,8 +129,8 @@ check it against [letter-structure.md](references/letter-structure.md),
 [letter-voice.md](references/letter-voice.md), and
 [non-fabrication-letter.md](references/non-fabrication-letter.md): does it open with a
 real hook or a banned opening; does it duplicate the résumé; does it connect to the
-posting; does the conclusion do all four of its jobs; is it one page; does every factual
-claim survive validation.
+posting; does the conclusion do all four of its jobs; is it one page; does it carry the
+tells of a generated draft; does every factual claim survive validation.
 
 Review mode does **not** emit the five sections above. Return a findings list — one entry
 per issue, each naming the rule it breaks and the fix — then offer to redraft. Write no
