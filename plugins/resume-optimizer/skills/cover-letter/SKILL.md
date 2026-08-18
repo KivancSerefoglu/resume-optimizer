@@ -93,34 +93,46 @@ Return these five sections, in order:
 Run this after presenting the five sections and getting the user's approval of the content
 — produce both files by default, don't wait to be asked for the PDF.
 
-1. Write `letter-body.html` — only the markup that belongs *inside* `<main>`, reusing the
-   classes in `assets/cover-letter-template.html` (bundled with this skill — resolve
+1. Fix the application folder `<dir>` once and use it for every path below:
+   `<company>-<position>` taken from the job description, lowercased, reduced to ASCII,
+   every run of non-alphanumerics collapsed to one hyphen, with legal suffixes (Inc., LLC,
+   Ltd., Corp., GmbH) and posting noise (requisition numbers, location and remote
+   parentheticals) dropped. `Acme Corp.` + `Senior Data Engineer (Remote — US)` →
+   `acme-senior-data-engineer`. This is the same folder the `resume-optimizer` skill uses,
+   so when the résumé for this job was already written, reuse that folder and let the
+   letter land beside it rather than creating a near-duplicate. If the posting hides the
+   company, use the position alone; if it names neither, use `application`. If the working
+   directory is already that folder, write in place instead of nesting a copy inside it.
+   `render.py` creates `<dir>` on the first render, so there is no separate mkdir step.
+2. Write `<dir>/letter-body.html` — only the markup that belongs *inside* `<main>`, reusing
+   the classes in `assets/cover-letter-template.html` (bundled with this skill — resolve
    bundled paths relative to this skill's directory, not the user's working directory).
    Never copy the template's `<head>` or CSS into your output: the renderer supplies them,
    and retyping that boilerplate costs a full pass on every re-render of the trim loop.
-2. Assemble and render:
-   `python3 ../../shared/render.py assets/cover-letter-template.html letter-body.html cover-letter`
-   It writes `cover-letter.html` and `cover-letter.pdf`, then prints `pages: N`. The script
-   locates Chrome, Chromium, or Edge on macOS, Linux, or Windows itself, and keeps
+3. Assemble and render:
+   `python3 ../../shared/render.py assets/cover-letter-template.html <dir>/letter-body.html <dir>/cover-letter`
+   It writes `<dir>/cover-letter.html` and `<dir>/cover-letter.pdf`, then prints `pages: N`.
+   The script locates Chrome, Chromium, or Edge on macOS, Linux, or Windows itself, and keeps
    `--no-pdf-header-footer`: without it Chrome stamps the print date and the local
    `file://` path onto a document the user sends to employers. If it prints
    `pages: unknown`, tell the user the page count is unverified and continue.
-3. **One page is a hard limit.** If the count exceeds 1, trim in this order, editing
-   `letter-body.html` and re-running step 2 after each pass: (a) cut the second body
+4. **One page is a hard limit.** If the count exceeds 1, trim in this order, editing
+   `<dir>/letter-body.html` and re-running step 3 after each pass: (a) cut the second body
    paragraph, if there is one; (b) tighten the remaining
    paragraphs; (c) shorten the hook. Never trim the salutation, the conclusion, or the
    closing — a letter missing its close is broken, not short. Update Choices Made with
    what was cut.
-4. Only once the content is final, **derive** `cover-letter.md` from the assembled HTML —
+5. Only once the content is final, **derive** `<dir>/cover-letter.md` from the assembled HTML —
    never retype the letter, which costs a second pass and lets the two files drift:
-   `python3 ../../shared/html-to-md.py cover-letter.html -o cover-letter.md` (stdlib only,
+   `python3 ../../shared/html-to-md.py <dir>/cover-letter.html -o <dir>/cover-letter.md` (stdlib only,
    nothing to install). The script exits non-zero and names the words it lost if any
-   visible text failed to carry over. Fix `letter-body.html`, re-run step 2, then re-run
+   visible text failed to carry over. Fix `<dir>/letter-body.html`, re-run step 3, then re-run
    this rather than hand-writing the markdown.
-5. If `render.py` exits 2, no browser was found. `cover-letter.html` is still written, so
-   still derive the `.md` per step 4, and tell the user to open the HTML in a browser and
+6. If `render.py` exits 2, no browser was found. `<dir>/cover-letter.html` is still written, so
+   still derive the `.md` per step 5, and tell the user to open the HTML in a browser and
    print to PDF — with "Headers and footers" turned **off**, which is on by default and
    would otherwise stamp the date and local file path onto the letter.
+7. Close by telling the user the full path of each file written.
 
 ## Review mode
 

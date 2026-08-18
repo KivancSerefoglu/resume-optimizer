@@ -14,7 +14,8 @@ document the user sends to employers.
 Usage:  python3 render.py TEMPLATE BODY OUTPUT_BASE
         python3 render.py --pages FILE.pdf
 
-Writes OUTPUT_BASE.html and OUTPUT_BASE.pdf, then prints the page count.
+Writes OUTPUT_BASE.html and OUTPUT_BASE.pdf, creating OUTPUT_BASE's parent
+directory when needed, then prints the page count.
 Exit 0 = rendered, 2 = no browser found (the .html is still written), 1 = error.
 """
 import argparse
@@ -140,6 +141,10 @@ def main() -> int:
         return 1
 
     html = Path(f"{base}.html")
+    # The base carries the per-application folder, which usually does not exist
+    # yet on the first render. Creating it here rather than in each SKILL.md
+    # keeps a forgotten mkdir from surfacing as a bare FileNotFoundError.
+    html.parent.mkdir(parents=True, exist_ok=True)
     html.write_text(merged, encoding="utf-8")
     print(f"wrote {html}")
 

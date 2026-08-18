@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Derive optimized-resume.md from optimized-resume.html.
+"""Derive the markdown deliverable from its rendered HTML.
 
 The résumé is authored once, as HTML filling resume-template.html. This converts
 that HTML to markdown so the two deliverables cannot drift — SKILL.md requires
@@ -10,7 +10,7 @@ Handles the template's fixed class vocabulary only. Anything unrecognized falls
 through to its plain text rather than being dropped, and the built-in check
 asserts that no visible text was lost in translation.
 
-Usage:  python3 html-to-md.py optimized-resume.html [-o optimized-resume.md]
+Usage:  python3 html-to-md.py DOC.html [-o DOC.md]
 Exits non-zero if any visible text from the HTML is missing from the markdown.
 """
 import argparse
@@ -235,7 +235,7 @@ def missing_text(html, md):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("html", help="filled optimized-resume.html")
+    ap.add_argument("html", help="the assembled HTML render.py wrote")
     ap.add_argument("-o", "--out", help="output path (default: alongside input)")
     ap.add_argument("--stdout", action="store_true", help="print instead of writing")
     args = ap.parse_args()
