@@ -98,7 +98,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 4. **Hiring Manager Review** — the screening read of the one-page CV against this posting, in its four parts.
 5. **Information Requests** — targeted and ranked (e.g., data volume of the ETL jobs, whether Jordan designed or implemented the migration).
 6. **Factual Validation** — explicit "None" rows when nothing unsupported was added.
-7. Both `optimized-resume.md` and `optimized-resume.pdf` are written; the PDF is one page.
+7. Both `jordan-example-resume.md` and `jordan-example-resume.pdf` are written inside an application folder named for the posting (company + position, e.g. `acme-senior-data-engineer/`) — never loose in the working directory, and never named `optimized-resume.*`; the PDF is one page.
 
 ## Additional red flags (dossier mode)
 
@@ -107,6 +107,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - Match percentage without the breakdown table, or presented as an ATS score
 - A multi-page PDF left unfixed in dossier mode
 - Run ends without writing both output files while Chrome is available
+- Output files written loose in the working directory instead of the application folder
 - A work experience missing from the output without being named in Changes Made
 - Section order deviating from (optional Summary) → Education → Experience → Projects → Leadership & Activities → Awards & Publications → Skills & Interests
 
@@ -242,7 +243,7 @@ sample run above.
 
 ## Red flags (any of these = the skill regressed)
 
-- Wrote `optimized-resume.md`, `optimized-resume.html`, or a PDF
+- Wrote a résumé file of any kind — `<name>-resume.md`, `<name>-resume.html`, or a PDF
 - Emitted an **Optimized Résumé** section or a **Changes Made** section — those belong to the
   full run only (an **Information Requests** section is required here, not a regression)
 - No **Information Requests** section, or none of its questions would evidence communication

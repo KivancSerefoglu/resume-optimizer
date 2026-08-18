@@ -64,7 +64,7 @@ Generate a CV from background.md for this job posting: https://example.com/jobs/
 
 You get back:
 - A match score and why
-- A tailored resume, as both `optimized-resume.md` and a ready-to-send `optimized-resume.pdf` (one page)
+- A tailored resume, as both `jordan-example-resume.md` and a ready-to-send `jordan-example-resume.pdf` (one page), written into a folder named for the job — `acme-senior-data-engineer/` — so each application keeps its own files, and the PDF a recruiter downloads carries your name rather than a generic one
 - A plain list of what it changed and why
 - A few questions that could make your application even stronger
 
@@ -80,7 +80,7 @@ Generate a CV from background.md for https://example.com/jobs/data-engineer — 
 Write a cover letter for this posting: https://example.com/jobs/data-engineer — background.md
 ```
 
-It writes a one-page cover letter (`cover-letter.md` and `cover-letter.pdf`) that opens with something true and specific about you — not a generic "I am excited to apply" line — and ties it to why you fit the role. If it needs a personal detail it doesn't have yet, it will just ask you.
+It writes a one-page cover letter (`cover-letter.md` and `cover-letter.pdf`, in the same job-named folder as the resume for that application) that opens with something true and specific about you — not a generic "I am excited to apply" line — and ties it to why you fit the role. If it needs a personal detail it doesn't have yet, it will just ask you.
 
 ## What it will never do
 
