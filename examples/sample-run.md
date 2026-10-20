@@ -68,7 +68,7 @@ The skill must return all six sections:
 Jordan Example · Chicago, IL · jordan@example.com · github.com/jordanexample
 
 ## Education
-Example University — B.S. Computer Science (2020 – 2024). Coursework: databases,
+Example University — B.S. Computer Science (2020 – 2024). GPA 3.7. Coursework: databases,
 distributed systems. Dean's list 2023.
 
 ## Experience
@@ -86,6 +86,12 @@ Python, SQL, PostgreSQL, TypeScript, React, Docker, Git, Bash
 
 ## Extras
 Volunteer coding tutor (2022 – 2023)
+
+## Preferences
+- Page size: A4
+- Never printed: GPA
+- Never trimmed: personal website link
+- Deal-breakers: fully on-site outside Chicago
 ```
 
 Use the same fictional Data Engineer job description from the resume-mode run above.
@@ -93,12 +99,12 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 ## Expected output shape (dossier mode)
 
 1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Type | Weight | Status | Credit |` table. Airflow: Type `preferred`, *not demonstrated*, zero credit.
-2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+".
-3. **Changes Made** — says which dossier items were selected, which were left out, and any restructuring (e.g. the course scheduler promoted or demoted, a bullet split or merged) with its reason.
-4. **Hiring Manager Review** — the screening read of the one-page CV against this posting, in its four parts.
+2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+". No GPA anywhere on the page: Preferences says never printed. At most a handful of bold phrases, each a term the posting uses ("ETL pipelines", "Python and SQL"), one per bullet.
+3. **Changes Made** — says which dossier items were selected, which were left out, and any restructuring (e.g. the course scheduler promoted or demoted, a bullet split or merged) with its reason; lists every bolded phrase with the posting phrase it mirrors; lists the reviewer's edits accepted and rejected by reason.
+4. **Hiring Manager Review** — the reviewer's Part B (or a screen labelled "reviewed in-context" when the Agent tool was unavailable) against this posting, in its four parts.
 5. **Information Requests** — targeted and ranked (e.g., data volume of the ETL jobs, whether Jordan designed or implemented the migration).
-6. **Factual Validation** — explicit "None" rows when nothing unsupported was added.
-7. Both `jordan-example-resume.md` and `jordan-example-resume.pdf` are written inside an application folder named for the posting (company + position, e.g. `acme-senior-data-engineer/`) — never loose in the working directory, and never named `optimized-resume.*`; the PDF is one page.
+6. **Factual Validation** — explicit "None" rows when nothing unsupported was added; ends with a `**Dossier updates:**` line (`None offered` when nothing new was confirmed) and an **ATS Check** subsection holding the finding lines and the keyword table, with the PDF part marked unverified when no extractor is installed.
+7. Both `jordan-example-resume.md` and `jordan-example-resume.pdf` are written inside an application folder named for the posting (company + position, e.g. `acme-senior-data-engineer/`) — never loose in the working directory, and never named `optimized-resume.*`; the PDF is one page, rendered A4 per Preferences.
 
 ## Additional red flags (dossier mode)
 
@@ -110,6 +116,14 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - Output files written loose in the working directory instead of the application folder
 - A work experience missing from the output without being named in Changes Made
 - Section order deviating from (optional Summary) → Education → Experience → Projects → Leadership & Activities → Awards & Publications → Skills & Interests
+- GPA printed when Preferences says never printed, or the page size question asked when Preferences answers it
+- The website link trimmed while coursework survives
+- More than one bold phrase in a bullet, a bold phrase over four words, or more than eight on the page
+- A bold term the posting never uses, or bold in a heading, an entry line, or the contact line
+- ATS Check subsection missing, or reported as passed when the PDF part was unverified
+- A keyword added to the résumé only because the ATS table reported it missing
+- A fact the user confirmed in chat written to `background.md` without a yes, or dropped with no offer and no `Dossier updates:` line
+- A reviewer Part A edit applied that introduces a fact not in the dossier
 
 ---
 
@@ -241,8 +255,21 @@ sample run above.
 6. **The handoff offer** — the verdict is not Skip, so the run ends by asking whether to run
    `resume-optimizer` to write the tailored résumé.
 
+## Deal-breaker variant
+
+Same inputs, plus the dossier's Preferences line `Deal-breakers: fully on-site outside
+Chicago`, and this line added to the posting: `On-site, Dallas, TX, five days a week`.
+
+Expected: the table and score are unchanged, and the verdict block reads
+`**Verdict: Skip** — deal-breaker: fully on-site, Dallas (preference: Chicago or remote)`.
+Had the posting said nothing about location, the verdict would be unchanged and an
+Information Request would ask about it instead.
+
 ## Red flags (any of these = the skill regressed)
 
+- A stated deal-breaker violation without a Skip verdict, or a Skip that does not name the
+  deal-breaker it rests on
+- A deal-breaker the posting is silent on treated as failed
 - Wrote a résumé file of any kind — `<name>-resume.md`, `<name>-resume.html`, or a PDF
 - Emitted an **Optimized Résumé** section or a **Changes Made** section — those belong to the
   full run only (an **Information Requests** section is required here, not a regression)
@@ -299,7 +326,8 @@ All five sections, in order:
    to the résumé, and the register chosen.
 4. **Information Requests** — plausibly asks about pipeline scale, or whether the
    candidate has used anything the employer publishes.
-5. **Factual Validation** — "None" for unsupported claims, plus the employer source list.
+5. **Factual Validation** — "None" for unsupported claims, plus the employer source list,
+   ending with a `**Dossier updates:**` line.
 
 Files written after approval: `cover-letter.html`, `cover-letter.pdf` (one page),
 `cover-letter.md`.
@@ -319,4 +347,7 @@ Files written after approval: `cover-letter.html`, `cover-letter.pdf` (one page)
 - Runs past one page, or reaches one page by cutting the conclusion
 - `cover-letter.md` disagrees with `cover-letter.html`
 - Writes the Narrative answers into `background.md` without asking first
+- No reviewer dispatched and the revision pass skipped, or a review labelled as the agent's
+  when it ran in-context
+- A reviewer Part A edit that widens scope ("contributed to" → "led") applied
 - Reproduces text from the Illinois Tech guide's sample letters
