@@ -103,8 +103,10 @@ unevidenced claim wearing a different hat.
 
 ## The revision pass
 
-Never ship a first draft. After drafting the letter and before validating it, run one
-revision pass in three steps:
+Never ship a first draft. In the normal flow the `application-reviewer` agent performs
+this pass with fresh eyes and returns its edits; the drafter runs it directly only when
+the agent is unavailable. Either way, after drafting the letter and before validating it,
+one revision pass in three steps:
 
 1. Read the draft as if reading it aloud. Vary sentence length, prefer the specific detail
    over the summarising abstraction, and let plain verbs stand — *is*, *has*, *built*,
