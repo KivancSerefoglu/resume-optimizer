@@ -100,17 +100,24 @@ class HtmlFailures(Files, unittest.TestCase):
         self.assertEqual(fails(ats.check_html(wrap(body), page_limit)), [])
 
     def test_bold_budget(self):
-        bullets = [f"Built <strong>data pipeline {i}</strong> for the team." for i in range(9)]
-        self.assert_fail(CONTACT + entry(bullets), "bold", "budget is 8")
+        bullets = [f"Built <strong>data pipeline {i}</strong> for the team." for i in range(11)]
+        self.assert_fail(CONTACT + entry(bullets), "bold", "budget is 10")
+
+    def test_ten_tool_bolds_pass(self):
+        bullets = [f"Built pipeline {i} in <strong>Python</strong>." for i in range(10)]
+        self.assert_clean(CONTACT + entry(bullets))
 
     def test_page_limit_lifts_budget(self):
-        bullets = [f"Built <strong>data pipeline {i}</strong> for the team." for i in range(16)]
+        bullets = [f"Built <strong>data pipeline {i}</strong> for the team." for i in range(20)]
         self.assert_clean(CONTACT + entry(bullets), page_limit=2)
         bullets.append("Built <strong>one more pipeline</strong> too.")
-        self.assert_fail(CONTACT + entry(bullets), "bold", "budget is 16", page_limit=2)
+        self.assert_fail(CONTACT + entry(bullets), "bold", "budget is 20", page_limit=2)
 
-    def test_two_bolds_in_one_bullet(self):
-        self.assert_fail(CONTACT + entry(["Used <strong>Python</strong> and <strong>Airflow</strong> daily."]), "bold", "2 bold phrases")
+    def test_two_tool_bolds_in_one_bullet_pass(self):
+        self.assert_clean(CONTACT + entry(["Used <strong>Python</strong> and <strong>Airflow</strong> daily."]))
+
+    def test_three_bolds_in_one_bullet(self):
+        self.assert_fail(CONTACT + entry(["Used <strong>Python</strong>, <strong>Airflow</strong> and <strong>Docker</strong> daily."]), "bold", "3 bold phrases")
 
     def test_five_word_bold(self):
         self.assert_fail(CONTACT + entry(["Built <strong>a very long bold phrase here</strong>."]), "bold", "longer than 4")

@@ -99,7 +99,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 ## Expected output shape (dossier mode)
 
 1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Type | Weight | Status | Credit |` table. Airflow: Type `preferred`, *not demonstrated*, zero credit.
-2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+". No GPA anywhere on the page: Preferences says never printed. At most a handful of bold phrases, each a term the posting uses ("ETL pipelines", "Python and SQL"), one per bullet.
+2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+". No GPA anywhere on the page: Preferences says never printed. Bold lands on the tools the posting names where a bullet shows them in use ("Python", "SQL"), at most two per bullet and ten on the page.
 3. **Changes Made** — says which dossier items were selected, which were left out, and any restructuring (e.g. the course scheduler promoted or demoted, a bullet split or merged) with its reason; lists every bolded phrase with the posting phrase it mirrors; lists the reviewer's edits accepted and rejected by reason.
 4. **Hiring Manager Review** — the reviewer's Part B (or a screen labelled "reviewed in-context" when the Agent tool was unavailable) against this posting, in its four parts.
 5. **Information Requests** — targeted and ranked (e.g., data volume of the ETL jobs, whether Jordan designed or implemented the migration).
@@ -118,7 +118,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - Section order deviating from (optional Summary) → Education → Experience → Projects → Leadership & Activities → Awards & Publications → Skills & Interests
 - GPA printed when Preferences says never printed, or the page size question asked when Preferences answers it
 - The website link trimmed while coursework survives
-- More than one bold phrase in a bullet, a bold phrase over four words, or more than eight on the page
+- More than two bold phrases in a bullet, a bold phrase over four words, or more than ten on the page
 - A bold term the posting never uses, or bold in a heading, an entry line, or the contact line
 - ATS Check subsection missing, or reported as passed when the PDF part was unverified
 - A keyword added to the résumé only because the ATS table reported it missing
