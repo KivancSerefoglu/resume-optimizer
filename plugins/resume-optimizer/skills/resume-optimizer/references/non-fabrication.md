@@ -34,6 +34,9 @@ information. Remove or flag:
 - Harvested claims whose ownership framing exceeds what the commit record supports
 - A private repository's URL printed as a link, or a private repository's name exposing an
   employer's internal project
+- A bold phrase on a term the posting never uses, or on a claim the match table does not
+  mark strongly supported (the rule is Keyword emphasis in
+  [writing-guide.md](writing-guide.md))
 
 Report the result in the Factual Validation output section. The validation must explicitly
 state "None" when no unsupported additions were made.

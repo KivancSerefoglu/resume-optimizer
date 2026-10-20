@@ -123,7 +123,8 @@ def entry_lines(entry):
                 continue
             c = span.cls()
             if "entry-org" in c:
-                styled.append(f"**{raw}**")
+                # The org is bold by class; a <strong> inside it would double-wrap.
+                styled.append(f"**{raw.replace('**', '')}**")
             elif "entry-title" in c:
                 styled.append(f"*{raw}*")
             else:

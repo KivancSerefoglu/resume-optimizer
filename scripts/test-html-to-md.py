@@ -153,5 +153,39 @@ class DuplicateContentLoss(unittest.TestCase):
         self.assertEqual(lost, ["thank", "you", "for", "your", "consideration"])
 
 
+BOLD_HTML = """<html><body><main>
+  <section class="section">
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="entry-line">
+        <span class="entry-org"><strong>Example Corp</strong></span>
+        <span class="entry-loc">Chicago, IL</span>
+      </div>
+      <ul>
+        <li>Migrated <strong>12 nightly ETL jobs</strong> from Bash to Python.</li>
+      </ul>
+    </div>
+  </section>
+</main></body></html>"""
+
+
+class Bold(unittest.TestCase):
+    """Keyword emphasis (writing-guide.md) reaches the markdown as **bold**."""
+
+    def setUp(self):
+        self.md = h2m.convert(BOLD_HTML)
+
+    def test_strong_in_bullet_becomes_markdown_bold(self):
+        self.assertIn("- Migrated **12 nightly ETL jobs** from Bash to Python.", self.md)
+
+    def test_bold_loses_no_text(self):
+        self.assertEqual(h2m.missing_text(BOLD_HTML, self.md), [])
+
+    def test_strong_inside_entry_org_is_not_double_wrapped(self):
+        """The org is bold by class; a <strong> inside it must not yield ****."""
+        self.assertIn("**Example Corp** — Chicago, IL", self.md)
+        self.assertNotIn("****", self.md)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
