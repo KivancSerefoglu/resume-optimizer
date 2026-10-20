@@ -25,9 +25,12 @@ instructions.
 3. **Portfolio links (optional)** — a GitHub profile URL, repository URLs, a personal site, or
    a LinkedIn URL. Offer this when the candidate's projects look thin or a link already
    appears in their contact details.
-4. **Application context (optional)** — career level, and anything that changes how a
-   requirement should be read: career change, new-graduate status, work authorization (only
-   when the candidate wants it considered), IC or management track.
+4. **Application context (optional)** — read the dossier's `## Preferences` section first
+   ([background-dossier.md](../../shared/background-dossier.md#preferences): work
+   authorization to consider, target company types, deal-breakers) and ask only for what
+   it does not cover: career level, and anything that changes how a requirement should be
+   read: career change, new-graduate status, work authorization (only when the candidate
+   wants it considered), IC or management track.
 
 One job description per run. To compare several roles, run the skill once per role.
 
@@ -54,6 +57,12 @@ Then the verdict block:
 
 Choose the verdict from the Step-3 classification, not from the number alone — a 75% with a
 failed hard gate is a Skip, and a 60% with only preferred-qualification gaps is not.
+
+**Deal-breakers come first.** Before reading the bands, check each deal-breaker in the
+dossier's Preferences against the posting. A posting that states something a deal-breaker
+excludes is a **Skip**, whatever the score, and the reasoning line names it:
+`Skip — deal-breaker: fully on-site, Dallas (preference: Chicago or remote)`. A
+deal-breaker the posting is silent on is not failed; raise it as an Information Request.
 
 Three rules bind the evaluation and override the bands below, because a screening tool that
 talks a candidate out of good roles is worse than no tool. Apply them before reading the
@@ -86,7 +95,9 @@ whose Type is `required`. Evaluate in this order and stop at the first match:
    letter.
 
 Close with **Information Requests** — targeted questions whose answers would change the score,
-each naming the requirement it would affect.
+each naming the requirement it would affect. This skill writes no files, so a fact the user
+confirmed during this run is listed here as worth adding to the dossier, per
+[evidence-rules.md](../../shared/evidence-rules.md#facts-confirmed-during-a-run).
 
 When links were harvested, add a **Harvested facts** subsection listing every claim taken from
 a link with its source URL, plus any dossier/repository conflict and how it was resolved.
