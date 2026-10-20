@@ -65,6 +65,32 @@ class Assemble(unittest.TestCase):
             render.assemble("<html><body>x</body></html>", "<p>x</p>")
 
 
+class PageSize(unittest.TestCase):
+    """--page-size rewrites only the @page size value, in either template."""
+
+    def test_resume_a4_keeps_margin(self):
+        out = render.set_page_size(RESUME.read_text(**READ), "a4")
+        self.assertIn("@page { size: A4; margin: 0.5in; }", out)
+
+    def test_letter_template_a4_keeps_margin(self):
+        out = render.set_page_size(LETTER.read_text(**READ), "A4")
+        self.assertIn("@page { size: A4; margin: 0.75in; }", out)
+
+    def test_letter_round_trips_byte_identical(self):
+        html = RESUME.read_text(**READ)
+        self.assertEqual(render.set_page_size(html, "letter"), html)
+
+    def test_only_the_size_changes(self):
+        html = RESUME.read_text(**READ)
+        out = render.set_page_size(html, "a4")
+        self.assertEqual(out.replace("size: A4", "size: letter"), html)
+        self.assertIn(".entry-line", out)
+
+    def test_template_without_page_rule_is_an_error(self):
+        with self.assertRaises(ValueError):
+            render.set_page_size("<html><main>x</main></html>", "a4")
+
+
 class RoundTrip(unittest.TestCase):
     """Assembling a template's own body back into it reproduces the document."""
 
