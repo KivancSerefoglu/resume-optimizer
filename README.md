@@ -105,6 +105,19 @@ Check [examples/sample-run.md](examples/sample-run.md) for full example runs, sh
 
 One plugin, three skills (`match-analysis`, `resume-optimizer`, `cover-letter`) that all share the same fact-checking engine, so a claim that's rejected in one is rejected in all three. No dependencies to install, no build step, no API keys — it runs entirely inside Claude Code.
 
+### Tests
+
+Four stdlib-only scripts cover the engine. They run offline and never launch Chrome:
+
+```bash
+python3 scripts/test-render.py
+python3 scripts/test-html-to-md.py
+python3 scripts/test-ats-check.py
+python3 scripts/check-links.py
+```
+
+The first three are `unittest` suites; the last verifies relative markdown links and the `shared/` layering rule. GitHub Actions runs all four on every push and pull request to `main` (see `.github/workflows/ci.yml`).
+
 ## License
 
 [MIT](LICENSE)
