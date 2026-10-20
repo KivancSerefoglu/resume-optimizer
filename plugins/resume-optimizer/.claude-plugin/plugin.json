@@ -1,10 +1,18 @@
 {
   "name": "resume-optimizer",
-  "version": "1.7.0",
-  "description": "Three skills for job applications, none of which fabricates a word. match-analysis scores one job description against your background and tells you whether to apply. resume-optimizer tailors your resume to a job description — or generates a one-page CV from your background file. cover-letter writes the one-page letter that ties them together, with a hook drawn from your own material.",
+  "version": "1.8.0",
+  "description": "Three skills for job applications, none of which fabricates a word. match-analysis scores one job description against your background and tells you whether to apply. resume-optimizer tailors your resume to a job description — or generates a CV from your background file — with a fresh-context review and an ATS check on the rendered PDF. cover-letter writes the one-page letter that ties them together, with a hook drawn from your own material. Your standing preferences (page size, page limit, language, deal-breakers) live in the background file and every skill reads them.",
   "author": {
     "name": "Kivanc Serefoglu"
   },
   "license": "MIT",
-  "keywords": ["resume", "cv", "job-search", "career", "skill", "cover-letter"]
+  "keywords": [
+    "resume",
+    "cv",
+    "job-search",
+    "career",
+    "skill",
+    "cover-letter",
+    "ats"
+  ]
 }
