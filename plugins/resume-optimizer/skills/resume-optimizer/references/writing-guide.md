@@ -19,23 +19,36 @@ Avoid: "Responsible for", "Helped with", "Worked on", "Participated in", "We bui
 ## Keyword emphasis
 
 A screener gives the page six seconds. Bold is how the eye finds the match in that time,
-and it works only while it is rare. The rule:
+and it works only while it is rare. What gets bold, in priority order:
 
-- **Bold a term only when the posting uses it verbatim and the Step-3 table marks the
-  requirement it answers as strongly supported.** A term the posting never uses, or a
-  claim that is only partially supported, is never bold.
-- **One phrase per bullet, 2–4 words.** Never a whole sentence, never a metric on its own
-  ("40%" is not a keyword), never two phrases in one bullet.
-- **At most 8 bold phrases per page.** Fewer is better; a page with twelve bold terms has
-  none.
+1. **The tools and technologies the posting asks for, where an Experience or Projects
+   bullet shows the candidate using them.** This is what bold is for. A posting that
+   lists Python, PyTorch and Docker should let the eye land on **Python**, **PyTorch** and
+   **Docker** inside the bullets that earned them — written exactly as the posting writes
+   them, and only where the Step-3 table marks that requirement strongly supported.
+2. A posting's own phrase for a responsibility the candidate genuinely carried
+   ("**event-driven pipelines**"), when no tool name in that bullet does the job.
+
+The limits that keep it rare:
+
+- **Only terms the posting uses verbatim**, backing a strongly supported requirement. A
+  tool the posting never names, or a claim that is only partially supported, is never
+  bold — however impressive the tool.
+- **At most two bold phrases per bullet, 1–4 words each.** A tool name is usually one
+  word; a bullet that names two asked-for tools may bold both. Never a whole sentence,
+  never a metric on its own ("40%" is not a keyword), never three phrases in one bullet.
+- **At most 10 bold phrases per page.** When more tools qualify than that, bold the ones
+  the posting lists as required before the ones it lists as preferred, and bold each tool
+  once on the page, in its strongest bullet, rather than everywhere it appears.
 - **Only inside bullets.** Never in the name, the contact line, section headings, entry
-  header lines, or the Skills values beyond the existing `Technical:` style labels.
+  header lines, or the Skills values beyond the existing `Technical:` style labels — the
+  Skills section already lists every tool, so bold there says nothing.
 - Write the phrase as `<strong>…</strong>` in the body HTML; the converter carries it into
   the markdown as `**…**`.
 
 Name every bolded phrase in Changes Made, with the posting phrase it mirrors. The limits
 are enforced mechanically at export by `../../../shared/ats-check.py`, which fails the run
-when a bullet carries two phrases, a phrase runs long, or the page budget is exceeded.
+when a bullet carries three phrases, a phrase runs long, or the page budget is exceeded.
 
 ## MCS template layout
 

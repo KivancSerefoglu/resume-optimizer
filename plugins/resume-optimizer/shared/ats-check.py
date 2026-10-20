@@ -3,7 +3,8 @@
 
 Two layers. The HTML checks always run on the assembled document render.py
 wrote: contact details as literal text, no images or tables, a single column,
-the keyword-emphasis bold budget from writing-guide.md, a year on every entry,
+the keyword-emphasis bold budget from writing-guide.md (asked-for tools, at most
+two per bullet and ten per page), a year on every entry,
 ASCII letters only. The PDF checks run on the PDF's embedded text layer when an
 extractor is available -- pypdf first, then Poppler's pdftotext -- and report
 "unverified" when neither is installed, because the plugin promises no installs.
@@ -36,7 +37,8 @@ h2m = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(h2m)
 Node, Tree, text, norm, squeeze = h2m.Node, h2m.Tree, h2m.text, h2m.norm, h2m.squeeze
 
-BOLD_PER_PAGE = 8
+BOLD_PER_PAGE = 10
+BOLD_PER_BULLET = 2
 BOLD_MAX_WORDS = 4
 EMAIL = re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+")
 PHONE = re.compile(r"\+?\d[\d\s().-]{6,}\d")
@@ -141,8 +143,8 @@ def check_bold(main, page_limit):
             continue
         total += len(bolds)
         item = squeeze(text(li))
-        if len(bolds) > 1:
-            out.append(Finding("fail", "bold", f"{len(bolds)} bold phrases in one bullet (max 1): \"{item[:60]}\""))
+        if len(bolds) > BOLD_PER_BULLET:
+            out.append(Finding("fail", "bold", f"{len(bolds)} bold phrases in one bullet (max {BOLD_PER_BULLET}): \"{item[:60]}\""))
         for b in bolds:
             phrase = squeeze(text(b))
             if len(phrase.split()) > BOLD_MAX_WORDS:

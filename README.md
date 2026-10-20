@@ -67,7 +67,7 @@ Generate a CV from background.md for this job posting: https://example.com/jobs/
 You get back:
 - A match score and why
 - A tailored resume, as both `jordan-example-resume.md` and a ready-to-send `jordan-example-resume.pdf` (one page), written into a folder named for the job — `acme-senior-data-engineer/` — so each application keeps its own files, and the PDF a recruiter downloads carries your name rather than a generic one
-- A plain list of what it changed and why, including which of the posting's own terms were bolded (a few per page, never more)
+- A plain list of what it changed and why, including which of the tools the posting asks for were bolded inside your bullets (a few per page, never more)
 - A hiring-manager review written by a second, fresh-context reviewer that never saw the drafting conversation
 - An ATS check on the rendered PDF: contact details as literal text, a single column, and the posting's keywords found in the text layer. The text-layer part needs `pip install pypdf` or Poppler's `pdftotext`; without either it is reported as unverified and the HTML checks still run
 - A few questions that could make your application even stronger. Anything you answer can be added to `background.md` with your say-so, so the next application starts from it
