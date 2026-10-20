@@ -15,7 +15,9 @@ Do:
   data-platform role, with uptime for an infrastructure role.
 - **Use the posting's term for something the candidate genuinely did** — "event-driven" for
   pub/sub work, "distributed systems" for a real multi-node service. The term has to describe
-  the work as it actually was, not as the posting wishes it were.
+  the work as it actually was, not as the posting wishes it were. Mirroring a term and
+  bolding it are separate decisions: the second is governed by Keyword emphasis in
+  [writing-guide.md](writing-guide.md).
 - **Split or merge.** One dense dossier bullet becomes two when both halves matter here; two
   become one when only one aspect does.
 - **Cut the irrelevant clause.** A bullet often carries detail that matters for a different

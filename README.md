@@ -38,6 +38,8 @@ You need one of these two things:
 
 If you only have a resume, that's fine to start. The first time you use it, it will offer to turn your resume into a reusable `background.md` file automatically, so future applications are faster.
 
+`background.md` can also carry a short **Preferences** section: A4 or Letter, how many pages, which language the letter is written in, anything that must never be printed (a GPA, say), anything that must never be cut (your website link), and deal-breakers that make a role not worth applying to. Every skill reads it, so you set these once instead of answering the same questions every run. The format is in [plugins/resume-optimizer/shared/background-dossier.md](plugins/resume-optimizer/shared/background-dossier.md).
+
 ## Step 3: Use it
 
 Everything below is a message you type directly into Claude Code, in plain English. Just swap in your own file and job link.
@@ -65,8 +67,10 @@ Generate a CV from background.md for this job posting: https://example.com/jobs/
 You get back:
 - A match score and why
 - A tailored resume, as both `jordan-example-resume.md` and a ready-to-send `jordan-example-resume.pdf` (one page), written into a folder named for the job — `acme-senior-data-engineer/` — so each application keeps its own files, and the PDF a recruiter downloads carries your name rather than a generic one
-- A plain list of what it changed and why
-- A few questions that could make your application even stronger
+- A plain list of what it changed and why, including which of the posting's own terms were bolded (a few per page, never more)
+- A hiring-manager review written by a second, fresh-context reviewer that never saw the drafting conversation
+- An ATS check on the rendered PDF: contact details as literal text, a single column, and the posting's keywords found in the text layer. The text-layer part needs `pip install pypdf` or Poppler's `pdftotext`; without either it is reported as unverified and the HTML checks still run
+- A few questions that could make your application even stronger. Anything you answer can be added to `background.md` with your say-so, so the next application starts from it
 
 **Tip:** If you have a GitHub profile, add it to the message and it will pull your real projects from your repos automatically:
 
@@ -88,6 +92,8 @@ It writes a one-page cover letter (`cover-letter.md` and `cover-letter.pdf`, in 
 - Add a skill or technology from the job posting that you never mentioned
 - Upgrade your job title or turn "helped with" into "led"
 - Invent a feeling or story for the cover letter's opening line
+- Write to your `background.md` without an explicit yes
+- Add a keyword to the resume because an ATS table said it was missing
 
 If something isn't strong enough to say honestly, it leaves it out rather than stretching it. A believable resume beats an impressive one you can't defend in an interview.
 

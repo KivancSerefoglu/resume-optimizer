@@ -56,8 +56,11 @@ done this work) that exists in the source but never reached the page.
 
 ## Screen it as the hiring manager
 
-Before returning the résumé, read it once as the person hiring for this exact role, with a
-stack of other applications on the desk and a minute to spend. Say plainly:
+This screen is normally performed by the `application-reviewer` agent, which reads the
+draft with fresh eyes and this file as its lens; the drafter performs it directly only
+when the agent is unavailable, and labels the result "reviewed in-context". Either way,
+read the page once as the person hiring for this exact role, with a stack of other
+applications on the desk and a minute to spend. Say plainly:
 
 - **What catches attention** — what would make this one worth a second read.
 - **What makes you hesitate** — the gap, the ambiguity, the thing that reads as thin, the

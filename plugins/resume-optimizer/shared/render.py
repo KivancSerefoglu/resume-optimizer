@@ -11,8 +11,12 @@ because both skills need them identically, and the flag is not optional:
 without it Chrome stamps the print date and the local file:// path onto a
 document the user sends to employers.
 
-Usage:  python3 render.py TEMPLATE BODY OUTPUT_BASE
+Usage:  python3 render.py [--page-size A4|letter] TEMPLATE BODY OUTPUT_BASE
         python3 render.py --pages FILE.pdf
+
+--page-size rewrites the template's @page size before the HTML is written, so
+the saved HTML, the PDF, and the markdown later derived from the HTML agree.
+Omitted, the template's own size stands.
 
 Writes OUTPUT_BASE.html and OUTPUT_BASE.pdf, creating OUTPUT_BASE's parent
 directory when needed, then prints the page count.
@@ -71,6 +75,18 @@ def assemble(template: str, body: str) -> str:
     )
 
 
+PAGE_SIZE = re.compile(r"(@page\s*\{[^}]*?\bsize\s*:\s*)([^;}]+)")
+PAGE_SIZES = {"a4": "A4", "letter": "letter"}
+
+
+def set_page_size(html: str, size: str) -> str:
+    """The HTML with its first @page size declaration set to A4 or letter."""
+    label = PAGE_SIZES[size.lower()]
+    if not PAGE_SIZE.search(html):
+        raise ValueError("template has no @page size rule")
+    return PAGE_SIZE.sub(lambda m: f"{m.group(1)}{label}", html, count=1)
+
+
 def find_browser():
     for name in PATH_NAMES:
         found = shutil.which(name)
@@ -119,6 +135,10 @@ def main() -> int:
     ap.add_argument(
         "--pages", metavar="FILE.pdf", help="report an existing PDF's page count and exit"
     )
+    ap.add_argument(
+        "--page-size", choices=tuple(PAGE_SIZES), type=str.lower,
+        help="A4 or letter; omitted, the template's own @page size stands",
+    )
     ap.add_argument("args", nargs="*", metavar="TEMPLATE BODY OUTPUT_BASE")
     opts = ap.parse_args()
 
@@ -136,6 +156,8 @@ def main() -> int:
             template_path.read_text(encoding="utf-8"),
             body_path.read_text(encoding="utf-8"),
         )
+        if opts.page_size:
+            merged = set_page_size(merged, opts.page_size)
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1

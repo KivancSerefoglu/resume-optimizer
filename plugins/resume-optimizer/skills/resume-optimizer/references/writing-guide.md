@@ -16,6 +16,27 @@ Quantify outcomes when the user has supplied reliable numbers. Not every bullet 
 
 Avoid: "Responsible for", "Helped with", "Worked on", "Participated in", "We built", unsupported ownership claims, and bullets that only list technologies without explaining their use.
 
+## Keyword emphasis
+
+A screener gives the page six seconds. Bold is how the eye finds the match in that time,
+and it works only while it is rare. The rule:
+
+- **Bold a term only when the posting uses it verbatim and the Step-3 table marks the
+  requirement it answers as strongly supported.** A term the posting never uses, or a
+  claim that is only partially supported, is never bold.
+- **One phrase per bullet, 2–4 words.** Never a whole sentence, never a metric on its own
+  ("40%" is not a keyword), never two phrases in one bullet.
+- **At most 8 bold phrases per page.** Fewer is better; a page with twelve bold terms has
+  none.
+- **Only inside bullets.** Never in the name, the contact line, section headings, entry
+  header lines, or the Skills values beyond the existing `Technical:` style labels.
+- Write the phrase as `<strong>…</strong>` in the body HTML; the converter carries it into
+  the markdown as `**…**`.
+
+Name every bolded phrase in Changes Made, with the posting phrase it mirrors. The limits
+are enforced mechanically at export by `../../../shared/ats-check.py`, which fails the run
+when a bullet carries two phrases, a phrase runs long, or the page budget is exceeded.
+
 ## MCS template layout
 
 This is the canonical layout spec. `SKILL.md`, `tailoring.md`, and `assets/resume-template.html` all defer to it — change the layout here and nowhere else.
@@ -61,9 +82,9 @@ Never put work authorization, visa status, citizenship, or sponsorship needs on 
 
 ## Formatting principles
 
-Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality; work authorization, visa, or sponsorship statements; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; random mid-sentence bolding; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
+Avoid: photos; full mailing addresses; date of birth; gender; religion; relationship status; nationality; work authorization, visa, or sponsorship statements; skill bars/stars/percentages; "References available upon request"; decorative icons that interfere with parsing; internal acronyms without explanation; bold outside the Keyword emphasis rule above; raw excessively long URLs; multi-column layouts unless explicitly requested; clichés and unsupported adjectives.
 
-**The résumé is one page.** This holds at every career level and in both input modes — a long history, publications, or a deep project list are reasons to select harder, not reasons to run onto a second page. The limit is verified against the rendered PDF at export, not estimated from the markdown.
+**The résumé is one page** unless the dossier's Preferences section raises the limit (see [background-dossier.md](../../../shared/background-dossier.md#preferences)). The limit holds at every career level and in both input modes — a long history, publications, or a deep project list are reasons to select harder, not reasons to run onto another page. It is verified against the rendered PDF at export, not estimated from the markdown.
 
 Treat the page as the constraint that forces the tailoring: when everything will not fit, keep what this posting cares about and cut by relevance, not by shaving every item until nothing reads as substantial. A strong item omitted for space is fine and gets named in Changes Made; the same item reduced to a fragment is not.
 
