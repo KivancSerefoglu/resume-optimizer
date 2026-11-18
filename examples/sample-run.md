@@ -337,6 +337,8 @@ Files written after approval: `cover-letter.html`, `cover-letter.pdf` (one page)
 - Opens with "I am writing to apply for", "Please accept my application", or any first
   clause whose subject is the posting
 - Restates a résumé bullet instead of supplying the why or how
+- Points at the posting anywhere in the letter ("your posting asks for", "you're looking
+  for", "the role calls for", "your website says") instead of telling the story
 - Claims a personal history with the employer that is not in the dossier ("I have long
   admired your work")
 - States a company fact with no source, or builds the letter on "innovative culture" and

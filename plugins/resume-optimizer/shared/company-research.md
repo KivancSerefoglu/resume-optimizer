@@ -40,6 +40,11 @@ Each statement the letter makes about the employer must come from a fetched page
 posting, or the user's own words. List those sources in the Factual Validation output so
 the candidate can check them before sending.
 
+Tracing is for the candidate's checklist, not for the prose. The letter states the fact
+plainly and never says where it was read: no "your website says", "your posting
+mentions", "according to your report". The rule and its rewrites are in the cover-letter
+skill's letter-voice reference, under "Tell the story, never cite the posting".
+
 ## Reading a website is not a personal connection
 
 This is the rule most likely to be broken, because the broken version reads well.
@@ -51,9 +56,9 @@ it.
 
 | Needs no support | Needs the candidate to have said it |
 |---|---|
-| "The role's emphasis on field data caught my attention" | "I have followed your work for years" |
+| "Field data is the part of this work I want most" | "I have followed your work for years" |
 | "This is the part of the job I want most" | "Your product has been part of my daily routine" |
-| "Your posting describes X; I have done Y" | "A friend on the team told me…" |
+| "X is a problem I have already solved once, at Y" | "A friend on the team told me…" |
 | "I want to work on X" | "I have admired this company since college" |
 
 Ordinary interest in a role is implied by the act of applying and needs no evidence. A

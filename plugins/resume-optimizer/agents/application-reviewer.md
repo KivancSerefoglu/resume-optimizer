@@ -89,7 +89,14 @@ For a **letter**:
 - **Hook** — which of the four methods it uses, what it traces to, whether it opens on the
   candidate rather than the posting.
 - **Body** — does each paragraph tie one piece of evidence to one requirement, or explain
-  a why the résumé cannot; does it restate a bullet.
+  a why the résumé cannot; does it restate a bullet. The tie must come through the story
+  itself: a sentence that names the posting, its requirements, the reader's request or
+  the employer's site ("your posting asks for", "you're looking for", "your website
+  says") fails this check even when the evidence behind it is right. Never propose an edit
+  that introduces one.
+- **Citing the posting** — quote every sentence that points at the posting, the job
+  description, the reader's request or where an employer fact was read, and give its
+  story-form rewrite in Part A with `reason: "style"`.
 - **Conclusion** — all four jobs present.
 - **Generated-draft tells** — the structural patterns from the letter-voice reference,
   each quoted.

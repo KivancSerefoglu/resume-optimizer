@@ -158,7 +158,8 @@ check it against [letter-structure.md](references/letter-structure.md),
 [letter-voice.md](references/letter-voice.md), and
 [non-fabrication-letter.md](references/non-fabrication-letter.md): does it open with a
 real hook or a banned opening; does it duplicate the résumé; does it connect to the
-posting; does the conclusion do all four of its jobs; is it one page; does it carry the
+posting through the story it tells, without ever citing the posting, the reader's
+request or the employer's site; does the conclusion do all four of its jobs; is it one page; does it carry the
 tells of a generated draft; does every factual claim survive validation.
 
 Review mode may dispatch the `application-reviewer` agent with the user's letter as the
