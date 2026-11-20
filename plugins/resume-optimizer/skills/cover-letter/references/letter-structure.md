@@ -52,10 +52,16 @@ decided, what they learned, why it bears on this posting.
 
 Each body paragraph should do exactly one of these:
 
-- Tie one concrete piece of the candidate's experience to one key point in the posting.
+- Tell the story of one concrete piece of the candidate's experience that answers one key
+  point in the posting.
 - Explain a motivation or a turn in their path that the résumé leaves unexplained.
 - Show understanding of the role and the organisation, built on a usable specific per
   [company-research.md](../../../shared/company-research.md).
+
+The tie to the posting lives in *which* story is chosen, never in a sentence that names the
+posting, its requirements, or the reader's request. "Your posting asks for…" and "you're
+looking for…" are banned everywhere in the letter, per
+[letter-voice.md](letter-voice.md#tell-the-story-never-cite-the-posting).
 
 ## Conclusion
 
@@ -92,17 +98,16 @@ candidate's Experience section and the employer's published material.
 > bills for the six-flat she managed. It was terrible. It also caught a billing error
 > that had been running for two years.
 >
-> *[Body — one experience against one posting requirement, supplying the why]*
-> Your posting asks for someone who can take sensor data from the field and make it
-> trustworthy before anyone reports on it. That was most of my work at the campus
-> facilities lab. The meters were fine; they just dropped readings whenever the network
-> flapped, and every downstream report quietly averaged over the gaps. I rebuilt the
-> ingestion so the gaps stayed gaps. The dashboards got uglier and the numbers got
-> honest, which took some explaining.
+> *[Body — one experience told as a story; the field-data requirement is never named]*
+> Most of my work at the campus facilities lab was making field sensor data trustworthy
+> before anyone reported on it. The meters were fine; they just dropped readings whenever
+> the network flapped, and every downstream report quietly averaged over the gaps. I
+> rebuilt the ingestion so the gaps stayed gaps. The dashboards got uglier and the numbers
+> got honest, which took some explaining.
 >
-> *[Body — organisation understanding, from a usable specific]*
-> Your published source-water assessment describes aging meter infrastructure. That is
-> the part of this job I want — not the modelling, but the unglamorous work of making a
+> *[Body — organisation understanding, the specific stated as fact, not cited]*
+> A water system running on aging meters has the same problem at a larger scale. That is
+> the part of this job I want. The modelling can wait; the unglamorous work is making a
 > measurement mean what it says it means.
 >
 > *[Conclusion — employability, thanks, interview, contact]*
@@ -116,7 +121,9 @@ candidate's Experience section and the employer's published material.
 > Priya Example
 
 Note what the example does not do: it never restates a résumé bullet, it never claims a
-history with the employer at all, and every fact about the employer is attributed to the
-employer's own published material rather than to the candidate having read it. Its hook
-comes from a fact about the candidate's life that no amount of company research could
-have supplied.
+history with the employer at all, and it never points at the posting or the employer's
+site. The field-data requirement shows up as something the candidate did. The aging-meter
+fact, which comes from the employer's published source-water assessment, is stated as the
+situation and never as something the candidate read; that source is listed in Factual
+Validation, not cited in the letter. Its hook comes from a fact about the candidate's life
+that no amount of company research could have supplied.

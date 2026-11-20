@@ -11,7 +11,9 @@ long does not read as thorough. It reads as unedited.
 - "I am writing in response to…"
 - "Please accept my application for…"
 - "My name is…"
-- Any first clause whose subject is the job posting rather than the candidate.
+- Any first clause whose subject is the job posting rather than the candidate. The same
+  holds past the opening: see
+  [Tell the story, never cite the posting](#tell-the-story-never-cite-the-posting).
 
 ## Phrases that are never used
 
@@ -22,6 +24,40 @@ record", "I would love the opportunity to".
 
 Every one of these is a claim with no evidence attached, phrased so it cannot be checked.
 Replace each with the specific thing that made the candidate say it, or cut it.
+
+## Tell the story, never cite the posting
+
+The posting decides what the letter talks about. It never appears in the letter as
+something being answered. A letter that points back at the ad reads like a form being
+filled in: the reader wrote the requirements and does not need them read back.
+
+Never use, anywhere in the letter:
+
+- "the posting says / asks for / mentions / describes / lists", "your job description",
+  "the listing", "the advert", "as stated in the role"
+- "you asked for", "you're looking for", "you need someone who", "you want"
+- "the role calls for / requires / emphasises", "this position's focus on"
+- "this matches your requirement for", "which aligns with", "as required"
+- "your website says", "your site states", "I read that you", "I saw that you",
+  "according to your", "your published report describes"
+
+Answer a requirement by telling the moment the candidate did that thing: what was going
+wrong, what they decided, how it turned out. The reader recognises their own requirement
+in the story without being told it is there. Say an employer fact as plain fact, the
+situation the candidate wants to work on, without saying where it was read. Its source
+goes in Factual Validation, never in the prose.
+
+| Points at the posting | Tells the story |
+|---|---|
+| "Your posting asks for someone who can clean field sensor data. At the lab I…" | "At the lab, the meters dropped readings every time the network flapped…" |
+| "You're looking for Airflow experience, which I have." | "I moved our nightly jobs from cron to Airflow after the third silent failure in a month." |
+| "Your website says you are expanding into Europe." | "Expanding into Europe puts a second set of tax rules on the same ledger. I have built that once." |
+
+The rewrites are illustrations of shape; every fact in a real letter still has to trace to
+the candidate's material. Naming the position is still fine ("the data engineer role").
+Talking to the reader is still fine ("You would be getting an engineer who…"). What is
+banned is narrating the application itself: the ad, its requirements, and the reader's
+request.
 
 ## Patterns that give away a generated draft
 
@@ -59,6 +95,9 @@ application letters, drawn from Wikipedia's
   they do not tire of it.
 - **Em and en dashes.** Cut them. A comma, a full stop, or a colon does the same work
   without the signature.
+- **Citing the posting.** "Your posting asks for…", "you're looking for…", "which
+  matches your requirement". The full rule and its rewrites are in
+  [Tell the story, never cite the posting](#tell-the-story-never-cite-the-posting).
 
 Where these collide with Register below, Register wins. A dossier that is genuinely funny,
 or an employer type that invites personality, is no licence to reinstate promotional
@@ -90,7 +129,7 @@ team better than the posting does.
 
 Never assert an emotion or a history the candidate has not expressed.
 
-"I was glad to see this posting" is fine — ordinary interest is implied by applying. "I
+"This is the work I want to be doing" is fine — ordinary interest is implied by applying. "I
 have admired your work for years" is a claim about the candidate's life, and belongs in
 the letter only if it is in their dossier or they just told you. The line is drawn case by
 case in [company-research.md](../../../shared/company-research.md).
