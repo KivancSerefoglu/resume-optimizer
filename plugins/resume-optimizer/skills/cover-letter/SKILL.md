@@ -126,9 +126,14 @@ Run this after presenting the five sections and getting the user's approval of t
    bundled paths relative to this skill's directory, not the user's working directory).
    Never copy the template's `<head>` or CSS into your output: the renderer supplies them,
    and retyping that boilerplate costs a full pass on every re-render of the trim loop.
-3. Assemble and render, passing the Preferences page size (default Letter):
-   `python3 ../../shared/render.py --page-size <A4|letter> assets/cover-letter-template.html <dir>/letter-body.html <dir>/cover-letter`
-   It writes `<dir>/cover-letter.html` and `<dir>/cover-letter.pdf`, then prints `pages: N`.
+3. Assemble and render, passing the Preferences page size (default Letter) and the
+   candidate's name as it appears on the letter, reduced to ASCII (`Kıvanç Şerefoğlu` →
+   `Kivanc Serefoglu`):
+   `python3 ../../shared/render.py --page-size <A4|letter> --title "<Name> - Cover Letter" --author "<Name>" assets/cover-letter-template.html <dir>/letter-body.html <dir>/cover-letter`
+   It writes `<dir>/cover-letter.html` and `<dir>/cover-letter.pdf`, then prints `pages: N`
+   and a `metadata:` line — `browser creator left (pypdf not installed)` or
+   `left as rendered (…)` means the PDF still names HeadlessChrome as its creator;
+   mention it at the close and install nothing.
    The script locates Chrome, Chromium, or Edge on macOS, Linux, or Windows itself, and keeps
    `--no-pdf-header-footer`: without it Chrome stamps the print date and the local
    `file://` path onto a document the user sends to employers. If it prints
@@ -145,11 +150,24 @@ Run this after presenting the five sections and getting the user's approval of t
    nothing to install). The script exits non-zero and names the words it lost if any
    visible text failed to carry over. Fix `<dir>/letter-body.html`, re-run step 3, then re-run
    this rather than hand-writing the markdown.
-6. If `render.py` exits 2, no browser was found. `<dir>/cover-letter.html` is still written, so
-   still derive the `.md` per step 5, and tell the user to open the HTML in a browser and
+6. **Check for hidden characters and provenance marks:**
+   `python3 ../../shared/provenance-check.py <dir>/cover-letter.html <dir>/cover-letter.md <dir>/cover-letter.pdf`
+   It always scans the HTML and markdown for characters a reader cannot see (zero-width
+   and bidi controls, soft hyphens, tag characters, any non-ordinary space) and, when the
+   user runs a watermarks-remover service (`WATERMARKS_SERVICE_URL`, default
+   `http://127.0.0.1:8765`), also sends all three files to its `/inspect` endpoint. A
+   `FAIL invisible` line, or a service finding on the HTML or markdown: fix
+   `<dir>/letter-body.html`, re-run steps 3 and 5, then this step. A service finding on
+   the PDF: re-run as `python3 ../../shared/provenance-check.py --clean <dir>/cover-letter.pdf`,
+   then confirm the page count with `python3 ../../shared/render.py --pages <dir>/cover-letter.pdf`.
+   If the finding is still there after one `--clean`, stop retrying and report it.
+   `skip service: not running` is a pass; exit 2 means `WATERMARKS_SERVICE_URL` was
+   refused or the service rejected the token — tell the user. This step never rewrites wording.
+7. If `render.py` exits 2, no browser was found. `<dir>/cover-letter.html` is still written, so
+   still derive the `.md` per step 5, run step 6 on the `.html` and `.md` only, and tell the user to open the HTML in a browser and
    print to PDF — with "Headers and footers" turned **off**, which is on by default and
    would otherwise stamp the date and local file path onto the letter.
-7. Close by telling the user the full path of each file written.
+8. Close by telling the user the full path of each file written, and the step 6 result.
 
 ## Review mode
 

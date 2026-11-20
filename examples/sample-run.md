@@ -103,8 +103,8 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 3. **Changes Made** — says which dossier items were selected, which were left out, and any restructuring (e.g. the course scheduler promoted or demoted, a bullet split or merged) with its reason; lists every bolded phrase with the posting phrase it mirrors; lists the reviewer's edits accepted and rejected by reason.
 4. **Hiring Manager Review** — the reviewer's Part B (or a screen labelled "reviewed in-context" when the Agent tool was unavailable) against this posting, in its four parts.
 5. **Information Requests** — targeted and ranked (e.g., data volume of the ETL jobs, whether Jordan designed or implemented the migration).
-6. **Factual Validation** — explicit "None" rows when nothing unsupported was added; ends with a `**Dossier updates:**` line (`None offered` when nothing new was confirmed) and an **ATS Check** subsection holding the finding lines and the keyword table, with the PDF part marked unverified when no extractor is installed.
-7. Both `jordan-example-resume.md` and `jordan-example-resume.pdf` are written inside an application folder named for the posting (company + position, e.g. `acme-senior-data-engineer/`) — never loose in the working directory, and never named `optimized-resume.*`; the PDF is one page, rendered A4 per Preferences.
+6. **Factual Validation** — explicit "None" rows when nothing unsupported was added; ends with a `**Dossier updates:**` line (`None offered` when nothing new was confirmed) and an **ATS Check** subsection holding the finding lines and the keyword table, with the PDF part marked unverified when no extractor is installed, followed by the provenance lines (`ok   invisible: …`, and `skip service: not running at …` when no watermarks-remover service is up).
+7. Both `jordan-example-resume.md` and `jordan-example-resume.pdf` are written inside an application folder named for the posting (company + position, e.g. `acme-senior-data-engineer/`) — never loose in the working directory, and never named `optimized-resume.*`; the PDF is one page, rendered A4 per Preferences, titled `Jordan Example - Resume`, and — with pypdf installed — carries no HeadlessChrome creator.
 
 ## Additional red flags (dossier mode)
 
@@ -122,6 +122,8 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - A bold term the posting never uses, or bold in a heading, an entry line, or the contact line
 - ATS Check subsection missing, or reported as passed when the PDF part was unverified
 - A keyword added to the résumé only because the ATS table reported it missing
+- The PDF titled `Resume` or with a `file://` path, or the provenance check skipped without saying so
+- A `FAIL invisible` line left unfixed, or a service-cleaned PDF not re-run through the ATS check
 - A fact the user confirmed in chat written to `background.md` without a yes, or dropped with no offer and no `Dossier updates:` line
 - A reviewer Part A edit applied that introduces a fact not in the dossier
 
