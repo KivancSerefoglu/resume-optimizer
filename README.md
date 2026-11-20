@@ -70,6 +70,7 @@ You get back:
 - A plain list of what it changed and why, including which of the tools the posting asks for were bolded inside your bullets (a few per page, never more)
 - A hiring-manager review written by a second, fresh-context reviewer that never saw the drafting conversation
 - An ATS check on the rendered PDF: contact details as literal text, a single column, and the posting's keywords found in the text layer. The text-layer part needs `pip install pypdf` or Poppler's `pdftotext`; without either it is reported as unverified and the HTML checks still run
+- A clean file: the PDF's title is your name (`Jordan Example - Resume`) instead of a generic "Resume" or a path on your computer, the "HeadlessChrome" creator stamp is removed (also with `pypdf`), and the text is checked for invisible characters such as zero-width spaces that a paste can carry in
 - A few questions that could make your application even stronger. Anything you answer can be added to `background.md` with your say-so, so the next application starts from it
 
 **Tip:** If you have a GitHub profile, add it to the message and it will pull your real projects from your repos automatically:
@@ -85,6 +86,16 @@ Write a cover letter for this posting: https://example.com/jobs/data-engineer �
 ```
 
 It writes a one-page cover letter (`cover-letter.md` and `cover-letter.pdf`, in the same job-named folder as the resume for that application) that opens with something true and specific about you — not a generic "I am excited to apply" line — and ties it to why you fit the role. If it needs a personal detail it doesn't have yet, it will just ask you.
+
+### Optional: a provenance check with watermarks-remover
+
+If you run a [watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover) service, both the resume and the cover letter are also sent to it after export, so it can check the PDF, HTML and markdown for C2PA / Content Credentials and AI-metadata markers. A PDF it flags is replaced with its cleaned copy and run through the ATS check again; anything it flags in the HTML or markdown is fixed in the source and both files are regenerated. Start the service from your clone of that repository:
+
+```bash
+python3 service/scripts/server.py --host 127.0.0.1 --port 8765
+```
+
+It is looked for at `http://127.0.0.1:8765`. Set `WATERMARKS_SERVICE_URL` to use another address (it must be `https://` if it is not on your own machine), and `WATERMARKS_SERVER_API_KEY` if the service requires a token. When nothing is running, the check is simply reported as skipped. Your wording is never sent through the service's rewrite pass.
 
 ## What it will never do
 

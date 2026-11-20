@@ -11,18 +11,28 @@ because both skills need them identically, and the flag is not optional:
 without it Chrome stamps the print date and the local file:// path onto a
 document the user sends to employers.
 
-Usage:  python3 render.py [--page-size A4|letter] TEMPLATE BODY OUTPUT_BASE
+Usage:  python3 render.py [--page-size A4|letter] [--title TEXT] [--author TEXT]
+                         TEMPLATE BODY OUTPUT_BASE
         python3 render.py --pages FILE.pdf
 
 --page-size rewrites the template's @page size before the HTML is written, so
 the saved HTML, the PDF, and the markdown later derived from the HTML agree.
 Omitted, the template's own size stands.
 
+--title rewrites the template's <title>, which Chrome copies into the PDF's
+/Title: the generic "Resume" otherwise, or the local file:// path of the HTML
+when a page has no title at all. Chrome also writes its own user-agent string
+(HeadlessChrome/...) as /Creator, so when pypdf is importable the PDF's document
+information is rewritten afterwards: /Title and /Author set, /Creator and
+/Producer dropped, dates kept. Without pypdf the render still succeeds and says
+the browser creator was left in place -- the plugin promises no installs.
+
 Writes OUTPUT_BASE.html and OUTPUT_BASE.pdf, creating OUTPUT_BASE's parent
 directory when needed, then prints the page count.
 Exit 0 = rendered, 2 = no browser found (the .html is still written), 1 = error.
 """
 import argparse
+import html as htmllib
 import platform
 import re
 import shutil
@@ -87,6 +97,56 @@ def set_page_size(html: str, size: str) -> str:
     return PAGE_SIZE.sub(lambda m: f"{m.group(1)}{label}", html, count=1)
 
 
+TITLE = re.compile(r"(<title\b[^>]*>)(.*?)(</title>)", re.S | re.I)
+
+
+def set_title(html: str, title: str) -> str:
+    """The HTML with its <title> text replaced (escaped) by title."""
+    if not TITLE.search(html):
+        raise ValueError("template has no <title> element")
+    safe = htmllib.escape(title.strip(), quote=False)
+    return TITLE.sub(lambda m: f"{m.group(1)}{safe}{m.group(3)}", html, count=1)
+
+
+# Keys a browser or library stamps with its own name. Dropped, not blanked: an
+# empty /Creator still tells a reader which field was scrubbed.
+TOOL_KEYS = ("/Creator", "/Producer")
+
+
+def scrub_metadata(pdf: Path, title=None, author=None) -> str:
+    """Rewrite the PDF's document information; return a one-line status.
+
+    Keeps every entry except TOOL_KEYS, sets /Title and /Author when given, and
+    drops an XMP stream if one exists. The rewrite goes to a sibling file that
+    replaces the original only once it is complete, so a failure leaves the
+    browser's PDF untouched.
+    """
+    try:
+        from pypdf import PdfWriter
+        from pypdf.generic import NameObject
+    except ImportError:
+        return "metadata: browser creator left (pypdf not installed)"
+    tmp = pdf.with_name(pdf.name + ".tmp")
+    try:
+        writer = PdfWriter(clone_from=str(pdf))
+        info = {k: v for k, v in (writer.metadata or {}).items() if k not in TOOL_KEYS}
+        if title:
+            info["/Title"] = title.strip()
+        if author:
+            info["/Author"] = author.strip()
+        writer.metadata = info
+        root = writer._root_object
+        if NameObject("/Metadata") in root:
+            del root[NameObject("/Metadata")]
+        with tmp.open("wb") as fh:
+            writer.write(fh)
+        tmp.replace(pdf)
+    except Exception as exc:  # pypdf raises many types; the render itself succeeded
+        tmp.unlink(missing_ok=True)
+        return f"metadata: left as rendered ({type(exc).__name__}: {exc})"
+    return "metadata: scrubbed"
+
+
 def find_browser():
     for name in PATH_NAMES:
         found = shutil.which(name)
@@ -139,6 +199,8 @@ def main() -> int:
         "--page-size", choices=tuple(PAGE_SIZES), type=str.lower,
         help="A4 or letter; omitted, the template's own @page size stands",
     )
+    ap.add_argument("--title", help="document title for the HTML <title> and the PDF /Title")
+    ap.add_argument("--author", help="PDF /Author (needs pypdf; skipped without it)")
     ap.add_argument("args", nargs="*", metavar="TEMPLATE BODY OUTPUT_BASE")
     opts = ap.parse_args()
 
@@ -158,6 +220,8 @@ def main() -> int:
         )
         if opts.page_size:
             merged = set_page_size(merged, opts.page_size)
+        if opts.title:
+            merged = set_title(merged, opts.title)
     except (OSError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
@@ -189,6 +253,7 @@ def main() -> int:
             print(detail.decode("utf-8", "replace").strip()[:500], file=sys.stderr)
         return 1
 
+    print(scrub_metadata(pdf, opts.title, opts.author))
     count = pdf_pages(pdf)
     print(f"wrote {pdf}")
     print(f"pages: {count if count else 'unknown'}")
