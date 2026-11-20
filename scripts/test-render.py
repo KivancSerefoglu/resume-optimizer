@@ -122,5 +122,79 @@ class PdfPages(unittest.TestCase):
         self.assertIsNone(render.pdf_pages(self.tmp("%PDF-1.7 no page tree")))
 
 
+class Title(unittest.TestCase):
+    def test_replaces_only_the_title(self):
+        html = RESUME.read_text(**READ)
+        out = render.set_title(html, "Jordan Park - Resume")
+        self.assertIn("<title>Jordan Park - Resume</title>", out)
+        self.assertEqual(
+            re.sub(r"<title>.*?</title>", "", out), re.sub(r"<title>.*?</title>", "", html)
+        )
+
+    def test_both_templates_have_a_title(self):
+        for template in (RESUME, LETTER):
+            self.assertIn("X</title>", render.set_title(template.read_text(**READ), "X"))
+
+    def test_title_is_escaped(self):
+        out = render.set_title("<title>Resume</title>", "R&D <Lead>")
+        self.assertIn("<title>R&amp;D &lt;Lead&gt;</title>", out)
+
+    def test_template_without_title_is_an_error(self):
+        with self.assertRaises(ValueError):
+            render.set_title("<html><main></main></html>", "X")
+
+
+class ScrubMetadata(unittest.TestCase):
+    """Runs on a PDF made by pypdf itself, so nothing here needs a browser."""
+
+    def setUp(self):
+        try:
+            import pypdf
+        except ImportError:
+            self.skipTest("pypdf not installed")
+        self.pypdf = pypdf
+        writer = pypdf.PdfWriter()
+        writer.add_blank_page(width=612, height=792)
+        writer.metadata = {
+            "/Title": "file:///Users/someone/app/resume.html",
+            "/Creator": "Mozilla/5.0 HeadlessChrome/152.0.0.0",
+            "/Producer": "Skia/PDF m152",
+            "/CreationDate": "D:20260101120000+00'00'",
+        }
+        fd = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
+        writer.write(fd)
+        fd.close()
+        self.pdf = Path(fd.name)
+        self.addCleanup(self.pdf.unlink)
+
+    def test_tool_names_dropped_and_title_set(self):
+        status = render.scrub_metadata(self.pdf, "Jordan Park - Resume", "Jordan Park")
+        self.assertEqual(status, "metadata: scrubbed")
+        meta = dict(self.pypdf.PdfReader(self.pdf).metadata)
+        self.assertEqual(meta.get("/Title"), "Jordan Park - Resume")
+        self.assertEqual(meta.get("/Author"), "Jordan Park")
+        self.assertNotIn("/Creator", meta)
+        self.assertNotIn("/Producer", meta)  # pypdf must not stamp its own name either
+        self.assertEqual(meta.get("/CreationDate"), "D:20260101120000+00'00'")
+        self.assertNotIn(b"HeadlessChrome", self.pdf.read_bytes())
+
+    def test_page_count_survives(self):
+        render.scrub_metadata(self.pdf, "T")
+        self.assertEqual(render.pdf_pages(self.pdf), 1)
+
+    def test_no_title_keeps_existing_title(self):
+        render.scrub_metadata(self.pdf)
+        meta = dict(self.pypdf.PdfReader(self.pdf).metadata)
+        self.assertNotIn("/Creator", meta)
+        self.assertIn("/Title", meta)
+
+    def test_unreadable_pdf_is_left_alone(self):
+        self.pdf.write_bytes(b"not a pdf")
+        status = render.scrub_metadata(self.pdf, "T")
+        self.assertTrue(status.startswith("metadata: left as rendered"), status)
+        self.assertEqual(self.pdf.read_bytes(), b"not a pdf")
+        self.assertFalse(self.pdf.with_name(self.pdf.name + ".tmp").exists())
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
