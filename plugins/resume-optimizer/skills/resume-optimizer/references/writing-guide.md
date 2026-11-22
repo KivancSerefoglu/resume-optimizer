@@ -71,6 +71,8 @@ This is the canonical layout spec. `SKILL.md`, `tailoring.md`, and `assets/resum
 - Line 1: organization, institution, or project name left; city, state (or "remote") or date context right.
 - Line 2: degree, title, or role left; `Month Year – Month Year` right.
 
+**When the source gives no date.** If neither the dossier, the résumé, nor a harvested source (a repository's dates count — see [evidence-rules.md](../../../shared/evidence-rules.md)) gives a date for a Projects or Leadership & Activities item, ship the header undated: name on line 1, no date span, no placeholder ("n.d.", "Ongoing", a guessed year), and line 2 only if it has a role to carry. Never invent the date — ask for it in Information Requests. Experience and Education entries always need their dates: one missing from the source is a question to ask before export, not a header to ship without it. `ats-check.py` warns on the first case and fails on the second.
+
 Below the header: action-verb bullets without personal pronouns. Bullets are **required for Experience entries** and optional for the other three, which may instead carry a single note line. An optional Education note line may hold GPA, coursework, or honors.
 
 **Awards & Publications:** concise bullet lines, no entry headers.
