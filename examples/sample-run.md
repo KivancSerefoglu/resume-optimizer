@@ -132,6 +132,9 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - A bold marker moved, dropped or added by the humanizer pass, or the bold budget broken after it
 - Humanizer draft or audit bullets pasted into the résumé instead of only its final text
 - A heading, entry line, contact line or Skills line rewritten by the humanizer pass (it rewrites bullets, the Summary and project descriptions only)
+- `skipped: humanizer not installed` reported while a skill named `humanizer` (no plugin prefix) is listed
+- A bullet the humanizer pass rewrote to open with a phrase the writing guide lists under Avoid ("Worked on", "Helped with")
+- A bullet merged, split or dropped, or an "I" added, by the humanizer pass and counted as kept
 
 ---
 
@@ -366,3 +369,5 @@ Files written after approval: `cover-letter.html`, `cover-letter.pdf` (one page)
 - The humanizer pass run on a non-English letter instead of skipped with `skipped: <language> draft`
 - The salutation, closing or signature changed by the humanizer pass
 - The humanizer pass run after the reviewer, so the reviewer never saw the final wording
+- An emotion, interest, opinion or history added by the humanizer pass that the draft did not state
+- The conclusion missing one of its four jobs after the humanizer pass
