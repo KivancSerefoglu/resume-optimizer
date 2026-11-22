@@ -100,10 +100,10 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 
 1. **Job Match Analysis** opens with `**Job match: NN% (estimate of evidence coverage — not an ATS score)**` followed by a `| Requirement | Type | Weight | Status | Credit |` table. Airflow: Type `preferred`, *not demonstrated*, zero credit.
 2. **Optimized Résumé** — one page in the MCS layout: Education first, then Experience (the Example Corp role must appear with at least one bullet), then an optional Projects section (the course scheduler may appear here), optional Leadership & Activities, optional Awards & Publications, then Skills & Interests as labeled lines. Only dossier facts. The homelab project and volunteering may be omitted (projects and extras are fair game; work experiences are not). The "roughly halving failure rate" and "about 200 users" figures may appear only as stated — never sharpened to "50%" or "200+". No GPA anywhere on the page: Preferences says never printed. Bold lands on the tools the posting names where a bullet shows them in use ("Python", "SQL"), at most two per bullet and ten on the page.
-3. **Changes Made** — says which dossier items were selected, which were left out, and any restructuring (e.g. the course scheduler promoted or demoted, a bullet split or merged) with its reason; lists every bolded phrase with the posting phrase it mirrors; lists the reviewer's edits accepted and rejected by reason.
+3. **Changes Made** — says which dossier items were selected, which were left out, and any restructuring (e.g. the course scheduler promoted or demoted, a bullet split or merged) with its reason; lists every bolded phrase with the posting phrase it mirrors; lists the reviewer's edits accepted and rejected by reason; summarises what the humanizer pass changed and lists each edit it reverted, with the reason.
 4. **Hiring Manager Review** — the reviewer's Part B (or a screen labelled "reviewed in-context" when the Agent tool was unavailable) against this posting, in its four parts.
 5. **Information Requests** — targeted and ranked (e.g., data volume of the ETL jobs, whether Jordan designed or implemented the migration).
-6. **Factual Validation** — explicit "None" rows when nothing unsupported was added; ends with a `**Dossier updates:**` line (`None offered` when nothing new was confirmed) and an **ATS Check** subsection holding the finding lines and the keyword table, with the PDF part marked unverified when no extractor is installed, followed by the provenance lines (`ok   invisible: …`, and `skip service: not running at …` when no watermarks-remover service is up).
+6. **Factual Validation** — explicit "None" rows when nothing unsupported was added; a `**Humanizer:**` line (`ran (N edits kept, M reverted)`, or `skipped: humanizer not installed`); ends with a `**Dossier updates:**` line (`None offered` when nothing new was confirmed) and an **ATS Check** subsection holding the finding lines and the keyword table, with the PDF part marked unverified when no extractor is installed, followed by the provenance lines (`ok   invisible: …`, and `skip service: not running at …` when no watermarks-remover service is up).
 7. Both `jordan-example-resume.md` and `jordan-example-resume.pdf` are written inside an application folder named for the posting (company + position, e.g. `acme-senior-data-engineer/`) — never loose in the working directory, and never named `optimized-resume.*`; the PDF is one page, rendered A4 per Preferences, titled `Jordan Example - Resume`, and — with pypdf installed — carries no HeadlessChrome creator.
 
 ## Additional red flags (dossier mode)
@@ -126,6 +126,11 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - A `FAIL invisible` line left unfixed, or a service-cleaned PDF not re-run through the ATS check
 - A fact the user confirmed in chat written to `background.md` without a yes, or dropped with no offer and no `Dossier updates:` line
 - A reviewer Part A edit applied that introduces a fact not in the dossier
+- No `**Humanizer:**` line in Factual Validation, or the pass skipped without saying why
+- A date range whose en dash the humanizer pass removed (`Jun 2024 Present`, `Jun 2024 - Present`)
+- An approximate figure reworded by the humanizer pass ("roughly halving" → "about half" or "50%")
+- A bold marker moved, dropped or added by the humanizer pass, or the bold budget broken after it
+- Humanizer draft or audit bullets pasted into the résumé instead of only its final text
 
 ---
 
