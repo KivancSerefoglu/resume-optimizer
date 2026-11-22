@@ -18,12 +18,11 @@ Skipping changes nothing else in the run.
 
 ## How to call
 
-Invoke `humanizer:humanizer` with the Skill tool in its embedded mode, so it returns the
-final text only. Pass the draft (the résumé as its markdown, the letter as plain text),
-followed by [Guardrails for every document](#guardrails-for-every-document) and the
-guardrails for this document type, stated as overriding the humanizer's own rules where
-they differ. Keep only the final text it returns. Never paste its draft, its audit
-bullets or its summary into the document.
+Load `humanizer:humanizer` with the Skill tool. It returns the humanizer's instructions,
+not rewritten text: you apply them yourself, in its embedded mode, to the draft (the
+résumé as its markdown, the letter as plain text). Where the humanizer's rules and the
+guardrails below differ, the guardrails win. Put only the final rewrite into the
+document, never its draft rewrite, audit bullets or summary.
 
 ## Guardrails for every document
 
@@ -32,13 +31,23 @@ bullets or its summary into the document.
   halving", never "about half" or "50%".
 - Add no fact, metric, tool or claim. This is already the humanizer's own rule, and
   [evidence-rules.md](evidence-rules.md) still governs every claim on the page.
+- Cutting promotional wording ("pivotal", "a testament to", "fostering collaboration")
+  is the point of the pass, and so is plainer wording for an inflated phrase ("played a
+  key role" → "worked on"). Cutting a protected item, or a fact from the candidate's
+  record, is not.
 - Keep the section headings and their order.
 
 ## Résumé guardrails
 
-- Bullets stay action-verb lines with no subject ("Built …"). Never add "I".
+- Rewrite prose only: bullets, the Summary and project descriptions. Leave headings,
+  entry lines (school or employer, degree or title, dates, location), the contact line
+  and the Skills lines exactly as drafted, separators included.
+- Bullets stay action-verb lines with no subject ("Built …"). Never add "I". This
+  overrides the humanizer's rule against subjectless fragments.
 - Keep every `**bold**` marker on exactly the words it wraps.
-- Keep the en dash in date ranges (`Jun 2024 – Present`). Remove dashes only elsewhere.
+- Keep the en dash in date ranges (`Jun 2024 – Present`). This overrides the humanizer's
+  dash rule (§14) and its final dash scan. Inside the prose you rewrite, cut other dashes
+  as it says.
 - Neutral register: no personality, opinion or first person.
 - Add, drop, merge or split no bullet. Structure belongs to Steps 4 and 5 and to the
   page limit, not to this pass.
@@ -54,9 +63,12 @@ bullets or its summary into the document.
 
 1. Compare the result with the draft you passed in.
 2. Revert any edit that changes a protected item above, removes a date-range dash,
-   moves, drops or adds a bold marker, or adds a claim the draft did not make.
+   moves, drops or adds a bold marker, touches a line outside the prose this pass may
+   rewrite, or adds a claim the draft did not make. Revert the whole bullet or sentence
+   to its wording before the pass, not just the offending words.
 3. Résumé: recount bold against the budget, at most two per bullet and ten per page.
-4. Count the edits kept and the edits reverted.
+4. Count edits by bullet or sentence: each one the pass changed is one edit, kept or
+   reverted.
 
 ## What to report
 

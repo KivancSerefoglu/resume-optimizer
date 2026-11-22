@@ -131,6 +131,7 @@ Use the same fictional Data Engineer job description from the resume-mode run ab
 - An approximate figure reworded by the humanizer pass ("roughly halving" → "about half" or "50%")
 - A bold marker moved, dropped or added by the humanizer pass, or the bold budget broken after it
 - Humanizer draft or audit bullets pasted into the résumé instead of only its final text
+- A heading, entry line, contact line or Skills line rewritten by the humanizer pass (it rewrites bullets, the Summary and project descriptions only)
 
 ---
 
