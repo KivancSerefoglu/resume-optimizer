@@ -48,7 +48,8 @@ document, never its draft rewrite, audit bullets or summary.
   overrides the humanizer's rule against subjectless fragments.
 - A rewritten bullet still follows the résumé writing guide: never open it with a phrase
   the guide lists under Avoid ("Worked on", "Helped with", "Responsible for").
-- Keep every `**bold**` marker on exactly the words it wraps.
+- Keep every `**bold**` marker on exactly the words it wraps. This overrides the
+  humanizer's boldface rule (§15): the résumé bolds posting keywords on purpose.
 - Keep the en dash in date ranges (`Jun 2024 – Present`). This overrides the humanizer's
   dash rule (§14) and its final dash scan. Inside the prose you rewrite, cut other dashes
   as it says.
@@ -58,7 +59,8 @@ document, never its draft rewrite, audit bullets or summary.
 
 ## Letter guardrails
 
-- Voice is welcome, in the register the cover-letter skill's Choices Made names.
+- Voice is welcome, in the register chosen for this letter. Settle the register before
+  the pass; Choices Made reports it afterwards.
 - Where the humanizer and the cover-letter skill's voice reference (`letter-voice.md`)
   disagree, the voice reference wins.
 - Add no emotion, interest, opinion or history the draft did not state. The humanizer's
