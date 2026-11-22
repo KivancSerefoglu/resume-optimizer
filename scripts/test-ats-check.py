@@ -222,6 +222,10 @@ class UndatedEntries(Files, unittest.TestCase):
         found = self.dates(CONTACT + undated("Example Corp", "Experience"))
         self.assertEqual([f.level for f in found], ["fail"])
 
+    def test_combined_heading_still_fails(self):
+        found = self.dates(CONTACT + undated("Example Corp", "Project Experience"))
+        self.assertEqual([f.level for f in found], ["fail"])
+
     def test_sample_dossier_projects_exit_zero(self):
         body = (CONTACT + DATED_EXPERIENCE
                 + undated("Course Scheduler Web App", "Projects").replace("</div></section>", "</div>", 1)

@@ -57,8 +57,10 @@ BOLD_TAGS = ("strong", "b")
 HEADING_TAGS = ("h1", "h2", "h3")
 NO_BOLD_CLASSES = ("contact", "entry-line", "entry-note")
 # Sections whose entries may ship undated (writing-guide.md, Entry format). Matched
-# on heading words; every other heading keeps the date as a hard requirement.
+# on heading words; every other heading keeps the date as a hard requirement, and
+# so does a combined one ("Project Experience"), which may hold a job.
 UNDATED_OK = {"project", "projects", "leadership", "activities"}
+DATED_ALWAYS = {"experience", "education", "work", "employment"}
 
 Finding = namedtuple("Finding", "level check message")
 
@@ -195,7 +197,8 @@ def check_dates(main):
             continue
         org = next((squeeze(text(o)) for o in entry.find(cls="entry-org")), "(unnamed entry)")
         heading = section_heading(ancestors)
-        if UNDATED_OK & set(norm(heading)):
+        words = set(norm(heading))
+        if words & UNDATED_OK and not words & DATED_ALWAYS:
             out.append(Finding("warn", "dates", f"no year on the {heading} entry header for {org}: "
                                "fine when the source gives none -- never invent one; ask for it in Information Requests"))
         else:
