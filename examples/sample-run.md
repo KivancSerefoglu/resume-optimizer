@@ -330,11 +330,12 @@ All five sections, in order:
    paragraphs; a conclusion doing all four of its jobs (employability, thanks, interview
    request, contact method); a salutation and a closing.
 3. **Choices Made** — names the hook's source entry, the evidence threads, what was left
-   to the résumé, and the register chosen.
+   to the résumé, and the register chosen; summarises the humanizer pass and lists
+   reverted edits.
 4. **Information Requests** — plausibly asks about pipeline scale, or whether the
    candidate has used anything the employer publishes.
-5. **Factual Validation** — "None" for unsupported claims, plus the employer source list,
-   ending with a `**Dossier updates:**` line.
+5. **Factual Validation** — "None" for unsupported claims, plus the employer source list
+   and the `**Humanizer:**` line, ending with a `**Dossier updates:**` line.
 
 Files written after approval: `cover-letter.html`, `cover-letter.pdf` (one page),
 `cover-letter.md`.
@@ -360,3 +361,7 @@ Files written after approval: `cover-letter.html`, `cover-letter.pdf` (one page)
   when it ran in-context
 - A reviewer Part A edit that widens scope ("contributed to" → "led") applied
 - Reproduces text from the Illinois Tech guide's sample letters
+- No `**Humanizer:**` line in Factual Validation, or the pass skipped without saying why
+- The humanizer pass run on a non-English letter instead of skipped with `skipped: <language> draft`
+- The salutation, closing or signature changed by the humanizer pass
+- The humanizer pass run after the reviewer, so the reviewer never saw the final wording
