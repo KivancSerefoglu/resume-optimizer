@@ -97,6 +97,10 @@ python3 service/scripts/server.py --host 127.0.0.1 --port 8765
 
 It is looked for at `http://127.0.0.1:8765`. Set `WATERMARKS_SERVICE_URL` to use another address (it must be `https://` if it is not on your own machine), and `WATERMARKS_SERVER_API_KEY` if the service requires a token. When nothing is running, the check is simply reported as skipped. Your wording is never sent through the service's rewrite pass.
 
+### Optional: a humanizer pass
+
+If you have the [humanizer](https://github.com/blader/humanizer) skill installed (`npx skills add blader/humanizer --global`, or as a Claude Code plugin), both the resume and the cover letter are run through it before the review, so they read less like AI output. Names, numbers, dates, tools and bold keywords are protected: any edit that touches them is undone, and the fact check still runs on the rewritten text. Without it, the step is skipped and the report says so. Letters in a language other than English skip it too.
+
 ## What it will never do
 
 - Make up a number, metric, or result you didn't provide
