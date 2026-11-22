@@ -4,8 +4,10 @@
 Two layers. The HTML checks always run on the assembled document render.py
 wrote: contact details as literal text, no images or tables, a single column,
 the keyword-emphasis bold budget from writing-guide.md (asked-for tools, at most
-two per bullet and ten per page), a year on every entry,
-ASCII letters only. The PDF checks run on the PDF's embedded text layer when an
+two per bullet and ten per page), a year on every entry header, ASCII letters
+only. A Projects or Leadership & Activities entry with no year is a warning, not
+a failure: the source may give no date, and evidence-rules.md forbids inventing
+one. Every other entry -- Experience, Education, anything unrecognised -- fails. The PDF checks run on the PDF's embedded text layer when an
 extractor is available -- pypdf first, then Poppler's pdftotext -- and report
 "unverified" when neither is installed, because the plugin promises no installs.
 
@@ -54,6 +56,9 @@ IMAGE_CSS = re.compile(r"url\(|background-image")
 BOLD_TAGS = ("strong", "b")
 HEADING_TAGS = ("h1", "h2", "h3")
 NO_BOLD_CLASSES = ("contact", "entry-line", "entry-note")
+# Sections whose entries may ship undated (writing-guide.md, Entry format). Matched
+# on heading words; every other heading keeps the date as a hard requirement.
+UNDATED_OK = {"project", "projects", "leadership", "activities"}
 
 Finding = namedtuple("Finding", "level check message")
 
@@ -172,12 +177,28 @@ def check_bold(main, page_limit):
     return out
 
 
+def section_heading(ancestors):
+    """Text of the h2 heading the nearest enclosing .section carries, or ""."""
+    for a in reversed(ancestors):
+        if has_cls(a, "section"):
+            return next((squeeze(text(h)) for h in a.find("h2")), "")
+    return ""
+
+
 def check_dates(main):
     out = []
-    for entry in main.find(cls="entry"):
+    for entry, ancestors in walk(main):
+        if not has_cls(entry, "entry"):
+            continue
         lines = [squeeze(text(line)) for line in entry.find(cls="entry-line")]
-        if not any(YEAR.search(line) for line in lines):
-            org = next((squeeze(text(o)) for o in entry.find(cls="entry-org")), "(unnamed entry)")
+        if any(YEAR.search(line) for line in lines):
+            continue
+        org = next((squeeze(text(o)) for o in entry.find(cls="entry-org")), "(unnamed entry)")
+        heading = section_heading(ancestors)
+        if UNDATED_OK & set(norm(heading)):
+            out.append(Finding("warn", "dates", f"no year on the {heading} entry header for {org}: "
+                               "fine when the source gives none -- never invent one; ask for it in Information Requests"))
+        else:
             out.append(Finding("fail", "dates", f"no year on the entry header for {org}: parsers need a date range"))
     return out
 

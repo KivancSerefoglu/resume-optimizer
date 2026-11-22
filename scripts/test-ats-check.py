@@ -42,10 +42,10 @@ def body_of(template_path):
 CONTACT = '<h1 class="name">Jordan Example</h1>\n<p class="contact">Chicago, IL • jordan@example.com</p>\n'
 
 
-def entry(bullets, org="Example Corp", dates="Jun 2024 – Present"):
+def entry(bullets, org="Example Corp", dates="Jun 2024 – Present", section="Experience"):
     items = "".join(f"<li>{b}</li>" for b in bullets)
     return (
-        '<section class="section"><h2>Experience</h2><div class="entry">'
+        f'<section class="section"><h2>{section}</h2><div class="entry">'
         f'<div class="entry-line"><span class="entry-org">{org}</span><span class="entry-loc">Chicago, IL</span></div>'
         f'<div class="entry-line"><span class="entry-title">Software Engineer</span><span class="entry-dates">{dates}</span></div>'
         f"<ul>{items}</ul></div></section>"
@@ -165,6 +165,16 @@ class HtmlFailures(Files, unittest.TestCase):
     def test_entry_without_year(self):
         self.assert_fail(CONTACT + entry(["Built x."], dates="Summer"), "dates", "Example Corp")
 
+    def test_education_without_year(self):
+        self.assert_fail(CONTACT + entry(["Built x."], org="Example University", dates="B.S.", section="Education"), "dates", "Example University")
+
+    def test_unknown_section_without_year_still_fails(self):
+        self.assert_fail(CONTACT + entry(["Built x."], dates="Summer", section="Work History"), "dates", "Example Corp")
+
+    def test_entry_outside_any_section_fails(self):
+        body = CONTACT + '<div class="entry"><div class="entry-line"><span class="entry-org">Loose Entry</span></div></div>'
+        self.assert_fail(body, "dates", "Loose Entry")
+
     def test_non_ascii_flagged_but_urls_skipped(self):
         body = CONTACT.replace("jordan@example.com", "jordan@example.com • github.com/kıvanç") + entry(["Worked with Kıvanç on x."])
         found = [f for f in fails(ats.check_html(wrap(body), 1)) if f.check == "ascii"]
@@ -174,6 +184,58 @@ class HtmlFailures(Files, unittest.TestCase):
 
     def test_missing_email(self):
         self.assert_fail(CONTACT.replace("jordan@example.com", "no email here") + entry(["Built x."]), "contact", "email")
+
+
+def undated(org, section):
+    """An entry the source gave no date for: one header line, name only, as the skill writes it."""
+    return (
+        f'<section class="section"><h2>{section}</h2><div class="entry">'
+        f'<div class="entry-line"><span class="entry-org">{org}</span></div>'
+        "<ul><li>Built it with Docker and Grafana.</li></ul></div></section>"
+    )
+
+
+DATED_EXPERIENCE = entry(["Built x."])
+
+
+class UndatedEntries(Files, unittest.TestCase):
+    """Projects and Leadership & Activities may ship undated; Experience and Education may not.
+
+    evidence-rules.md forbids inventing a date, so an undated project from a truthful
+    dossier must not end the export with exit 1.
+    """
+
+    def dates(self, body):
+        return [f for f in ats.check_html(wrap(body), 1) if f.check == "dates"]
+
+    def test_undated_project_warns(self):
+        found = self.dates(CONTACT + DATED_EXPERIENCE + undated("Homelab Monitoring Stack", "Projects"))
+        self.assertEqual([f.level for f in found], ["warn"])
+        self.assertIn("Homelab Monitoring Stack", found[0].message)
+        self.assertIn("Information Requests", found[0].message)
+
+    def test_undated_leadership_warns(self):
+        found = self.dates(CONTACT + DATED_EXPERIENCE + undated("Example Coding Club", "Leadership &amp; Activities"))
+        self.assertEqual([f.level for f in found], ["warn"])
+
+    def test_undated_experience_still_fails(self):
+        found = self.dates(CONTACT + undated("Example Corp", "Experience"))
+        self.assertEqual([f.level for f in found], ["fail"])
+
+    def test_sample_dossier_projects_exit_zero(self):
+        body = (CONTACT + DATED_EXPERIENCE
+                + undated("Course Scheduler Web App", "Projects").replace("</div></section>", "</div>", 1)
+                + '<div class="entry"><div class="entry-line"><span class="entry-org">Homelab Monitoring Stack</span></div></div></section>')
+        code, out = run([self.tmp(wrap(body))])
+        self.assertEqual(code, 0, out)
+        self.assertIn("WARN dates", out)
+        self.assertIn("Course Scheduler Web App", out)
+        self.assertIn("Homelab Monitoring Stack", out)
+
+    def test_undated_experience_exit_one(self):
+        code, out = run([self.tmp(wrap(CONTACT + undated("Example Corp", "Experience")))])
+        self.assertEqual(code, 1, out)
+        self.assertIn("FAIL dates", out)
 
 
 PDF_BODY = CONTACT + (
