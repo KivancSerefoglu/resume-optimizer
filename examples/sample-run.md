@@ -54,6 +54,8 @@ The skill must return all six sections:
 - A **Verdict:** line or apply/skip recommendation appearing anywhere — that belongs to `/resume-optimizer:match-analysis` only
 - A Hiring Manager Review made of generic résumé advice instead of a reaction to this page and this posting, or one with no hesitation named at all
 - A critique suggestion that would require a fact the candidate never supplied, written as a change instead of asked as a question
+- Questions spread across several turns instead of one numbered message, or the dossier-update offer sent separately from the approval request
+- Export run as separate render, ATS, markdown and provenance commands instead of the chained command, or the page opened in a browser to inspect the layout
 
 ---
 
