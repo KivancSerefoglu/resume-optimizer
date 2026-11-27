@@ -88,7 +88,8 @@ the gap. Good questions are targeted and answerable from memory:
   material never mentions.
 
 Ask the highest-value questions up front, when the answer would change what gets written or
-what leads the page. Do not block on them: write the strongest version supported by the
+what leads the page. Ask them all in one numbered message, ranked, about six at most, never
+one per turn: every extra round re-sends the whole conversation. Do not block on them: write the strongest version supported by the
 current evidence, and carry the unanswered ones into Information Requests, each with what it
 would unlock ("a user count here would turn the strongest bullet in Experience from a task
 description into an impact claim"). If the user answers later, revise.
